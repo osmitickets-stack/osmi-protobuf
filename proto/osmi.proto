@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package osmi;
 
-option go_package = "github.com/franciscozamorau/osmi-protobuf/pb;pb";
+option go_package = "github.com/osmitickets-stack/osmi-protobuf/gen/pb;pb";
 
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";

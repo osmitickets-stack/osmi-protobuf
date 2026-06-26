@@ -5992,7 +5992,7 @@ const file_osmi_proto_rawDesc = "" +
 	"\fUpdateTicket\x12\x19.osmi.UpdateTicketRequest\x1a\x14.osmi.TicketResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*2\x17/v1/tickets/{ticket_id}\x12Z\n" +
 	"\x10GetTicketDetails\x12\x16.osmi.GetTicketRequest\x1a\x14.osmi.TicketResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/tickets/{id}\x12n\n" +
 	"\x0eGetTicketStats\x12\x1b.osmi.GetTicketStatsRequest\x1a\x19.osmi.TicketStatsResponse\"$\x82\xd3\xe4\x93\x02\x1e\x12\x1c/v1/tickets/stats/{event_id}\x12l\n" +
-	"\x12ExpireReservations\x12\v.osmi.Empty\x1a .osmi.ExpireReservationsResponse\"'\x82\xd3\xe4\x93\x02!\"\x1f/v1/tickets/expire-reservationsB1Z/github.com/franciscozamorau/osmi-protobuf/pb;pbb\x06proto3"
+	"\x12ExpireReservations\x12\v.osmi.Empty\x1a .osmi.ExpireReservationsResponse\"'\x82\xd3\xe4\x93\x02!\"\x1f/v1/tickets/expire-reservationsB6Z4github.com/osmitickets-stack/osmi-protobuf/gen/pb;pbb\x06proto3"
 
 var (
 	file_osmi_proto_rawDescOnce sync.Once

@@ -1,4 +1,4 @@
-module github.com/franciscozamorau/osmi-protobuf
+module github.com/osmitickets-stack/osmi-protobuf
 
 go 1.24.0
 
