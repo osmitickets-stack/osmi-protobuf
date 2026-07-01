@@ -23,6 +23,224 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ============ CUSTOMERS ============
+type TaxIdType int32
+
+const (
+	TaxIdType_TAX_ID_TYPE_UNSPECIFIED TaxIdType = 0
+	TaxIdType_TAX_ID_TYPE_RFC         TaxIdType = 1
+	TaxIdType_TAX_ID_TYPE_EIN         TaxIdType = 2
+	TaxIdType_TAX_ID_TYPE_VAT         TaxIdType = 3
+	TaxIdType_TAX_ID_TYPE_OTHER       TaxIdType = 4
+)
+
+// Enum value maps for TaxIdType.
+var (
+	TaxIdType_name = map[int32]string{
+		0: "TAX_ID_TYPE_UNSPECIFIED",
+		1: "TAX_ID_TYPE_RFC",
+		2: "TAX_ID_TYPE_EIN",
+		3: "TAX_ID_TYPE_VAT",
+		4: "TAX_ID_TYPE_OTHER",
+	}
+	TaxIdType_value = map[string]int32{
+		"TAX_ID_TYPE_UNSPECIFIED": 0,
+		"TAX_ID_TYPE_RFC":         1,
+		"TAX_ID_TYPE_EIN":         2,
+		"TAX_ID_TYPE_VAT":         3,
+		"TAX_ID_TYPE_OTHER":       4,
+	}
+)
+
+func (x TaxIdType) Enum() *TaxIdType {
+	p := new(TaxIdType)
+	*p = x
+	return p
+}
+
+func (x TaxIdType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TaxIdType) Descriptor() protoreflect.EnumDescriptor {
+	return file_osmi_proto_enumTypes[0].Descriptor()
+}
+
+func (TaxIdType) Type() protoreflect.EnumType {
+	return &file_osmi_proto_enumTypes[0]
+}
+
+func (x TaxIdType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TaxIdType.Descriptor instead.
+func (TaxIdType) EnumDescriptor() ([]byte, []int) {
+	return file_osmi_proto_rawDescGZIP(), []int{0}
+}
+
+type CustomerType int32
+
+const (
+	CustomerType_CUSTOMER_TYPE_UNSPECIFIED CustomerType = 0
+	CustomerType_CUSTOMER_TYPE_GUEST       CustomerType = 1
+	CustomerType_CUSTOMER_TYPE_REGISTERED  CustomerType = 2
+	CustomerType_CUSTOMER_TYPE_COMPANY     CustomerType = 3
+)
+
+// Enum value maps for CustomerType.
+var (
+	CustomerType_name = map[int32]string{
+		0: "CUSTOMER_TYPE_UNSPECIFIED",
+		1: "CUSTOMER_TYPE_GUEST",
+		2: "CUSTOMER_TYPE_REGISTERED",
+		3: "CUSTOMER_TYPE_COMPANY",
+	}
+	CustomerType_value = map[string]int32{
+		"CUSTOMER_TYPE_UNSPECIFIED": 0,
+		"CUSTOMER_TYPE_GUEST":       1,
+		"CUSTOMER_TYPE_REGISTERED":  2,
+		"CUSTOMER_TYPE_COMPANY":     3,
+	}
+)
+
+func (x CustomerType) Enum() *CustomerType {
+	p := new(CustomerType)
+	*p = x
+	return p
+}
+
+func (x CustomerType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CustomerType) Descriptor() protoreflect.EnumDescriptor {
+	return file_osmi_proto_enumTypes[1].Descriptor()
+}
+
+func (CustomerType) Type() protoreflect.EnumType {
+	return &file_osmi_proto_enumTypes[1]
+}
+
+func (x CustomerType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CustomerType.Descriptor instead.
+func (CustomerType) EnumDescriptor() ([]byte, []int) {
+	return file_osmi_proto_rawDescGZIP(), []int{1}
+}
+
+type CustomerSource int32
+
+const (
+	CustomerSource_CUSTOMER_SOURCE_UNSPECIFIED CustomerSource = 0
+	CustomerSource_CUSTOMER_SOURCE_WEB         CustomerSource = 1
+	CustomerSource_CUSTOMER_SOURCE_MOBILE      CustomerSource = 2
+	CustomerSource_CUSTOMER_SOURCE_BOX_OFFICE  CustomerSource = 3
+	CustomerSource_CUSTOMER_SOURCE_API         CustomerSource = 4
+)
+
+// Enum value maps for CustomerSource.
+var (
+	CustomerSource_name = map[int32]string{
+		0: "CUSTOMER_SOURCE_UNSPECIFIED",
+		1: "CUSTOMER_SOURCE_WEB",
+		2: "CUSTOMER_SOURCE_MOBILE",
+		3: "CUSTOMER_SOURCE_BOX_OFFICE",
+		4: "CUSTOMER_SOURCE_API",
+	}
+	CustomerSource_value = map[string]int32{
+		"CUSTOMER_SOURCE_UNSPECIFIED": 0,
+		"CUSTOMER_SOURCE_WEB":         1,
+		"CUSTOMER_SOURCE_MOBILE":      2,
+		"CUSTOMER_SOURCE_BOX_OFFICE":  3,
+		"CUSTOMER_SOURCE_API":         4,
+	}
+)
+
+func (x CustomerSource) Enum() *CustomerSource {
+	p := new(CustomerSource)
+	*p = x
+	return p
+}
+
+func (x CustomerSource) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CustomerSource) Descriptor() protoreflect.EnumDescriptor {
+	return file_osmi_proto_enumTypes[2].Descriptor()
+}
+
+func (CustomerSource) Type() protoreflect.EnumType {
+	return &file_osmi_proto_enumTypes[2]
+}
+
+func (x CustomerSource) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CustomerSource.Descriptor instead.
+func (CustomerSource) EnumDescriptor() ([]byte, []int) {
+	return file_osmi_proto_rawDescGZIP(), []int{2}
+}
+
+type CustomerSegment int32
+
+const (
+	CustomerSegment_CUSTOMER_SEGMENT_UNSPECIFIED CustomerSegment = 0
+	CustomerSegment_CUSTOMER_SEGMENT_NEW         CustomerSegment = 1
+	CustomerSegment_CUSTOMER_SEGMENT_OCCASIONAL  CustomerSegment = 2
+	CustomerSegment_CUSTOMER_SEGMENT_REGULAR     CustomerSegment = 3
+	CustomerSegment_CUSTOMER_SEGMENT_VIP         CustomerSegment = 4
+)
+
+// Enum value maps for CustomerSegment.
+var (
+	CustomerSegment_name = map[int32]string{
+		0: "CUSTOMER_SEGMENT_UNSPECIFIED",
+		1: "CUSTOMER_SEGMENT_NEW",
+		2: "CUSTOMER_SEGMENT_OCCASIONAL",
+		3: "CUSTOMER_SEGMENT_REGULAR",
+		4: "CUSTOMER_SEGMENT_VIP",
+	}
+	CustomerSegment_value = map[string]int32{
+		"CUSTOMER_SEGMENT_UNSPECIFIED": 0,
+		"CUSTOMER_SEGMENT_NEW":         1,
+		"CUSTOMER_SEGMENT_OCCASIONAL":  2,
+		"CUSTOMER_SEGMENT_REGULAR":     3,
+		"CUSTOMER_SEGMENT_VIP":         4,
+	}
+)
+
+func (x CustomerSegment) Enum() *CustomerSegment {
+	p := new(CustomerSegment)
+	*p = x
+	return p
+}
+
+func (x CustomerSegment) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CustomerSegment) Descriptor() protoreflect.EnumDescriptor {
+	return file_osmi_proto_enumTypes[3].Descriptor()
+}
+
+func (CustomerSegment) Type() protoreflect.EnumType {
+	return &file_osmi_proto_enumTypes[3]
+}
+
+func (x CustomerSegment) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CustomerSegment.Descriptor instead.
+func (CustomerSegment) EnumDescriptor() ([]byte, []int) {
+	return file_osmi_proto_rawDescGZIP(), []int{3}
+}
+
 // ============ COMMON ============
 type Empty struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1927,14 +2145,28 @@ func (x *TicketTypeListResponse) GetTotalPages() int32 {
 	return 0
 }
 
-// ============ CUSTOMERS ============
 type CreateCustomerRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	Phone         string                 `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
-	CustomerType  string                 `protobuf:"bytes,4,opt,name=customer_type,json=customerType,proto3" json:"customer_type,omitempty"`
-	Source        string                 `protobuf:"bytes,5,opt,name=source,proto3" json:"source,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Información básica
+	Name  string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Email string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	Phone string `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
+	// Tipificación
+	CustomerType CustomerType   `protobuf:"varint,4,opt,name=customer_type,json=customerType,proto3,enum=osmi.CustomerType" json:"customer_type,omitempty"`
+	Source       CustomerSource `protobuf:"varint,5,opt,name=source,proto3,enum=osmi.CustomerSource" json:"source,omitempty"`
+	// Facturación
+	CompanyName     string    `protobuf:"bytes,6,opt,name=company_name,json=companyName,proto3" json:"company_name,omitempty"`
+	TaxId           string    `protobuf:"bytes,7,opt,name=tax_id,json=taxId,proto3" json:"tax_id,omitempty"`
+	TaxIdType       TaxIdType `protobuf:"varint,8,opt,name=tax_id_type,json=taxIdType,proto3,enum=osmi.TaxIdType" json:"tax_id_type,omitempty"`
+	TaxName         string    `protobuf:"bytes,9,opt,name=tax_name,json=taxName,proto3" json:"tax_name,omitempty"`
+	RequiresInvoice bool      `protobuf:"varint,10,opt,name=requires_invoice,json=requiresInvoice,proto3" json:"requires_invoice,omitempty"`
+	// Dirección
+	AddressLine1  string `protobuf:"bytes,11,opt,name=address_line1,json=addressLine1,proto3" json:"address_line1,omitempty"`
+	AddressLine2  string `protobuf:"bytes,12,opt,name=address_line2,json=addressLine2,proto3" json:"address_line2,omitempty"`
+	City          string `protobuf:"bytes,13,opt,name=city,proto3" json:"city,omitempty"`
+	State         string `protobuf:"bytes,14,opt,name=state,proto3" json:"state,omitempty"`
+	PostalCode    string `protobuf:"bytes,15,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
+	Country       string `protobuf:"bytes,16,opt,name=country,proto3" json:"country,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1990,16 +2222,93 @@ func (x *CreateCustomerRequest) GetPhone() string {
 	return ""
 }
 
-func (x *CreateCustomerRequest) GetCustomerType() string {
+func (x *CreateCustomerRequest) GetCustomerType() CustomerType {
 	if x != nil {
 		return x.CustomerType
+	}
+	return CustomerType_CUSTOMER_TYPE_UNSPECIFIED
+}
+
+func (x *CreateCustomerRequest) GetSource() CustomerSource {
+	if x != nil {
+		return x.Source
+	}
+	return CustomerSource_CUSTOMER_SOURCE_UNSPECIFIED
+}
+
+func (x *CreateCustomerRequest) GetCompanyName() string {
+	if x != nil {
+		return x.CompanyName
 	}
 	return ""
 }
 
-func (x *CreateCustomerRequest) GetSource() string {
+func (x *CreateCustomerRequest) GetTaxId() string {
 	if x != nil {
-		return x.Source
+		return x.TaxId
+	}
+	return ""
+}
+
+func (x *CreateCustomerRequest) GetTaxIdType() TaxIdType {
+	if x != nil {
+		return x.TaxIdType
+	}
+	return TaxIdType_TAX_ID_TYPE_UNSPECIFIED
+}
+
+func (x *CreateCustomerRequest) GetTaxName() string {
+	if x != nil {
+		return x.TaxName
+	}
+	return ""
+}
+
+func (x *CreateCustomerRequest) GetRequiresInvoice() bool {
+	if x != nil {
+		return x.RequiresInvoice
+	}
+	return false
+}
+
+func (x *CreateCustomerRequest) GetAddressLine1() string {
+	if x != nil {
+		return x.AddressLine1
+	}
+	return ""
+}
+
+func (x *CreateCustomerRequest) GetAddressLine2() string {
+	if x != nil {
+		return x.AddressLine2
+	}
+	return ""
+}
+
+func (x *CreateCustomerRequest) GetCity() string {
+	if x != nil {
+		return x.City
+	}
+	return ""
+}
+
+func (x *CreateCustomerRequest) GetState() string {
+	if x != nil {
+		return x.State
+	}
+	return ""
+}
+
+func (x *CreateCustomerRequest) GetPostalCode() string {
+	if x != nil {
+		return x.PostalCode
+	}
+	return ""
+}
+
+func (x *CreateCustomerRequest) GetCountry() string {
+	if x != nil {
+		return x.Country
 	}
 	return ""
 }
@@ -2056,7 +2365,7 @@ type UpdateCustomerRequest struct {
 	Phone         *string                `protobuf:"bytes,4,opt,name=phone,proto3,oneof" json:"phone,omitempty"`
 	CompanyName   *string                `protobuf:"bytes,5,opt,name=company_name,json=companyName,proto3,oneof" json:"company_name,omitempty"`
 	IsVip         *bool                  `protobuf:"varint,6,opt,name=is_vip,json=isVip,proto3,oneof" json:"is_vip,omitempty"`
-	CustomerType  *string                `protobuf:"bytes,7,opt,name=customer_type,json=customerType,proto3,oneof" json:"customer_type,omitempty"`
+	CustomerType  *CustomerType          `protobuf:"varint,7,opt,name=customer_type,json=customerType,proto3,enum=osmi.CustomerType,oneof" json:"customer_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2133,11 +2442,11 @@ func (x *UpdateCustomerRequest) GetIsVip() bool {
 	return false
 }
 
-func (x *UpdateCustomerRequest) GetCustomerType() string {
+func (x *UpdateCustomerRequest) GetCustomerType() CustomerType {
 	if x != nil && x.CustomerType != nil {
 		return *x.CustomerType
 	}
-	return ""
+	return CustomerType_CUSTOMER_TYPE_UNSPECIFIED
 }
 
 type ListCustomersRequest struct {
@@ -2145,7 +2454,7 @@ type ListCustomersRequest struct {
 	IsActive        bool                   `protobuf:"varint,1,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
 	IsVip           bool                   `protobuf:"varint,2,opt,name=is_vip,json=isVip,proto3" json:"is_vip,omitempty"`
 	Country         string                 `protobuf:"bytes,3,opt,name=country,proto3" json:"country,omitempty"`
-	CustomerSegment string                 `protobuf:"bytes,4,opt,name=customer_segment,json=customerSegment,proto3" json:"customer_segment,omitempty"`
+	CustomerSegment CustomerSegment        `protobuf:"varint,4,opt,name=customer_segment,json=customerSegment,proto3,enum=osmi.CustomerSegment" json:"customer_segment,omitempty"`
 	Search          string                 `protobuf:"bytes,5,opt,name=search,proto3" json:"search,omitempty"`
 	DateFrom        string                 `protobuf:"bytes,6,opt,name=date_from,json=dateFrom,proto3" json:"date_from,omitempty"`
 	DateTo          string                 `protobuf:"bytes,7,opt,name=date_to,json=dateTo,proto3" json:"date_to,omitempty"`
@@ -2206,11 +2515,11 @@ func (x *ListCustomersRequest) GetCountry() string {
 	return ""
 }
 
-func (x *ListCustomersRequest) GetCustomerSegment() string {
+func (x *ListCustomersRequest) GetCustomerSegment() CustomerSegment {
 	if x != nil {
 		return x.CustomerSegment
 	}
-	return ""
+	return CustomerSegment_CUSTOMER_SEGMENT_UNSPECIFIED
 }
 
 func (x *ListCustomersRequest) GetSearch() string {
@@ -2391,20 +2700,37 @@ func (*CustomerLookup_PublicId) isCustomerLookup_Lookup() {}
 func (*CustomerLookup_Email) isCustomerLookup_Lookup() {}
 
 type CustomerResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PublicId      string                 `protobuf:"bytes,2,opt,name=public_id,json=publicId,proto3" json:"public_id,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	Phone         string                 `protobuf:"bytes,5,opt,name=phone,proto3" json:"phone,omitempty"`
-	CustomerType  string                 `protobuf:"bytes,6,opt,name=customer_type,json=customerType,proto3" json:"customer_type,omitempty"`
-	IsVip         bool                   `protobuf:"varint,7,opt,name=is_vip,json=isVip,proto3" json:"is_vip,omitempty"`
-	TotalSpent    float64                `protobuf:"fixed64,8,opt,name=total_spent,json=totalSpent,proto3" json:"total_spent,omitempty"`
-	TotalOrders   int32                  `protobuf:"varint,9,opt,name=total_orders,json=totalOrders,proto3" json:"total_orders,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Id              int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PublicId        string                 `protobuf:"bytes,2,opt,name=public_id,json=publicId,proto3" json:"public_id,omitempty"`
+	Name            string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Email           string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	Phone           string                 `protobuf:"bytes,5,opt,name=phone,proto3" json:"phone,omitempty"`
+	CustomerType    CustomerType           `protobuf:"varint,6,opt,name=customer_type,json=customerType,proto3,enum=osmi.CustomerType" json:"customer_type,omitempty"`
+	Source          CustomerSource         `protobuf:"varint,7,opt,name=source,proto3,enum=osmi.CustomerSource" json:"source,omitempty"`
+	CompanyName     string                 `protobuf:"bytes,8,opt,name=company_name,json=companyName,proto3" json:"company_name,omitempty"`
+	TaxId           string                 `protobuf:"bytes,9,opt,name=tax_id,json=taxId,proto3" json:"tax_id,omitempty"`
+	TaxIdType       TaxIdType              `protobuf:"varint,10,opt,name=tax_id_type,json=taxIdType,proto3,enum=osmi.TaxIdType" json:"tax_id_type,omitempty"`
+	TaxName         string                 `protobuf:"bytes,11,opt,name=tax_name,json=taxName,proto3" json:"tax_name,omitempty"`
+	RequiresInvoice bool                   `protobuf:"varint,12,opt,name=requires_invoice,json=requiresInvoice,proto3" json:"requires_invoice,omitempty"`
+	AddressLine1    string                 `protobuf:"bytes,13,opt,name=address_line1,json=addressLine1,proto3" json:"address_line1,omitempty"`
+	AddressLine2    string                 `protobuf:"bytes,14,opt,name=address_line2,json=addressLine2,proto3" json:"address_line2,omitempty"`
+	City            string                 `protobuf:"bytes,15,opt,name=city,proto3" json:"city,omitempty"`
+	State           string                 `protobuf:"bytes,16,opt,name=state,proto3" json:"state,omitempty"`
+	PostalCode      string                 `protobuf:"bytes,17,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
+	Country         string                 `protobuf:"bytes,18,opt,name=country,proto3" json:"country,omitempty"`
+	IsActive        bool                   `protobuf:"varint,19,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	IsVip           bool                   `protobuf:"varint,20,opt,name=is_vip,json=isVip,proto3" json:"is_vip,omitempty"`
+	CustomerSegment CustomerSegment        `protobuf:"varint,21,opt,name=customer_segment,json=customerSegment,proto3,enum=osmi.CustomerSegment" json:"customer_segment,omitempty"`
+	TotalSpent      float64                `protobuf:"fixed64,22,opt,name=total_spent,json=totalSpent,proto3" json:"total_spent,omitempty"`
+	TotalOrders     int32                  `protobuf:"varint,23,opt,name=total_orders,json=totalOrders,proto3" json:"total_orders,omitempty"`
+	TotalTickets    int32                  `protobuf:"varint,24,opt,name=total_tickets,json=totalTickets,proto3" json:"total_tickets,omitempty"`
+	AvgOrderValue   float64                `protobuf:"fixed64,25,opt,name=avg_order_value,json=avgOrderValue,proto3" json:"avg_order_value,omitempty"`
+	LifetimeValue   float64                `protobuf:"fixed64,26,opt,name=lifetime_value,json=lifetimeValue,proto3" json:"lifetime_value,omitempty"`
+	CreatedAt       *timestamppb.Timestamp `protobuf:"bytes,27,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt       *timestamppb.Timestamp `protobuf:"bytes,28,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *CustomerResponse) Reset() {
@@ -2472,11 +2798,102 @@ func (x *CustomerResponse) GetPhone() string {
 	return ""
 }
 
-func (x *CustomerResponse) GetCustomerType() string {
+func (x *CustomerResponse) GetCustomerType() CustomerType {
 	if x != nil {
 		return x.CustomerType
 	}
+	return CustomerType_CUSTOMER_TYPE_UNSPECIFIED
+}
+
+func (x *CustomerResponse) GetSource() CustomerSource {
+	if x != nil {
+		return x.Source
+	}
+	return CustomerSource_CUSTOMER_SOURCE_UNSPECIFIED
+}
+
+func (x *CustomerResponse) GetCompanyName() string {
+	if x != nil {
+		return x.CompanyName
+	}
 	return ""
+}
+
+func (x *CustomerResponse) GetTaxId() string {
+	if x != nil {
+		return x.TaxId
+	}
+	return ""
+}
+
+func (x *CustomerResponse) GetTaxIdType() TaxIdType {
+	if x != nil {
+		return x.TaxIdType
+	}
+	return TaxIdType_TAX_ID_TYPE_UNSPECIFIED
+}
+
+func (x *CustomerResponse) GetTaxName() string {
+	if x != nil {
+		return x.TaxName
+	}
+	return ""
+}
+
+func (x *CustomerResponse) GetRequiresInvoice() bool {
+	if x != nil {
+		return x.RequiresInvoice
+	}
+	return false
+}
+
+func (x *CustomerResponse) GetAddressLine1() string {
+	if x != nil {
+		return x.AddressLine1
+	}
+	return ""
+}
+
+func (x *CustomerResponse) GetAddressLine2() string {
+	if x != nil {
+		return x.AddressLine2
+	}
+	return ""
+}
+
+func (x *CustomerResponse) GetCity() string {
+	if x != nil {
+		return x.City
+	}
+	return ""
+}
+
+func (x *CustomerResponse) GetState() string {
+	if x != nil {
+		return x.State
+	}
+	return ""
+}
+
+func (x *CustomerResponse) GetPostalCode() string {
+	if x != nil {
+		return x.PostalCode
+	}
+	return ""
+}
+
+func (x *CustomerResponse) GetCountry() string {
+	if x != nil {
+		return x.Country
+	}
+	return ""
+}
+
+func (x *CustomerResponse) GetIsActive() bool {
+	if x != nil {
+		return x.IsActive
+	}
+	return false
 }
 
 func (x *CustomerResponse) GetIsVip() bool {
@@ -2484,6 +2901,13 @@ func (x *CustomerResponse) GetIsVip() bool {
 		return x.IsVip
 	}
 	return false
+}
+
+func (x *CustomerResponse) GetCustomerSegment() CustomerSegment {
+	if x != nil {
+		return x.CustomerSegment
+	}
+	return CustomerSegment_CUSTOMER_SEGMENT_UNSPECIFIED
 }
 
 func (x *CustomerResponse) GetTotalSpent() float64 {
@@ -2496,6 +2920,27 @@ func (x *CustomerResponse) GetTotalSpent() float64 {
 func (x *CustomerResponse) GetTotalOrders() int32 {
 	if x != nil {
 		return x.TotalOrders
+	}
+	return 0
+}
+
+func (x *CustomerResponse) GetTotalTickets() int32 {
+	if x != nil {
+		return x.TotalTickets
+	}
+	return 0
+}
+
+func (x *CustomerResponse) GetAvgOrderValue() float64 {
+	if x != nil {
+		return x.AvgOrderValue
+	}
+	return 0
+}
+
+func (x *CustomerResponse) GetLifetimeValue() float64 {
+	if x != nil {
+		return x.LifetimeValue
 	}
 	return 0
 }
@@ -5586,34 +6031,47 @@ const file_osmi_proto_rawDesc = "" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12\x1f\n" +
 	"\vtotal_pages\x18\x05 \x01(\x05R\n" +
-	"totalPagesJ\x05\bd\x10\xc8\x01\"\x9b\x01\n" +
+	"totalPagesJ\x05\bd\x10\xc8\x01\"\xa5\x04\n" +
 	"\x15CreateCustomerRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x14\n" +
-	"\x05phone\x18\x03 \x01(\tR\x05phone\x12#\n" +
-	"\rcustomer_type\x18\x04 \x01(\tR\fcustomerType\x12\x16\n" +
-	"\x06source\x18\x05 \x01(\tR\x06sourceJ\x05\bd\x10\xc8\x01\"1\n" +
+	"\x05phone\x18\x03 \x01(\tR\x05phone\x127\n" +
+	"\rcustomer_type\x18\x04 \x01(\x0e2\x12.osmi.CustomerTypeR\fcustomerType\x12,\n" +
+	"\x06source\x18\x05 \x01(\x0e2\x14.osmi.CustomerSourceR\x06source\x12!\n" +
+	"\fcompany_name\x18\x06 \x01(\tR\vcompanyName\x12\x15\n" +
+	"\x06tax_id\x18\a \x01(\tR\x05taxId\x12/\n" +
+	"\vtax_id_type\x18\b \x01(\x0e2\x0f.osmi.TaxIdTypeR\ttaxIdType\x12\x19\n" +
+	"\btax_name\x18\t \x01(\tR\ataxName\x12)\n" +
+	"\x10requires_invoice\x18\n" +
+	" \x01(\bR\x0frequiresInvoice\x12#\n" +
+	"\raddress_line1\x18\v \x01(\tR\faddressLine1\x12#\n" +
+	"\raddress_line2\x18\f \x01(\tR\faddressLine2\x12\x12\n" +
+	"\x04city\x18\r \x01(\tR\x04city\x12\x14\n" +
+	"\x05state\x18\x0e \x01(\tR\x05state\x12\x1f\n" +
+	"\vpostal_code\x18\x0f \x01(\tR\n" +
+	"postalCode\x12\x18\n" +
+	"\acountry\x18\x10 \x01(\tR\acountryJ\x05\bd\x10\xc8\x01\"1\n" +
 	"\x12GetCustomerRequest\x12\x1b\n" +
-	"\tpublic_id\x18\x01 \x01(\tR\bpublicId\"\xc3\x02\n" +
+	"\tpublic_id\x18\x01 \x01(\tR\bpublicId\"\xd7\x02\n" +
 	"\x15UpdateCustomerRequest\x12\x1b\n" +
 	"\tpublic_id\x18\x01 \x01(\tR\bpublicId\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
 	"\x05email\x18\x03 \x01(\tH\x01R\x05email\x88\x01\x01\x12\x19\n" +
 	"\x05phone\x18\x04 \x01(\tH\x02R\x05phone\x88\x01\x01\x12&\n" +
 	"\fcompany_name\x18\x05 \x01(\tH\x03R\vcompanyName\x88\x01\x01\x12\x1a\n" +
-	"\x06is_vip\x18\x06 \x01(\bH\x04R\x05isVip\x88\x01\x01\x12(\n" +
-	"\rcustomer_type\x18\a \x01(\tH\x05R\fcustomerType\x88\x01\x01B\a\n" +
+	"\x06is_vip\x18\x06 \x01(\bH\x04R\x05isVip\x88\x01\x01\x12<\n" +
+	"\rcustomer_type\x18\a \x01(\x0e2\x12.osmi.CustomerTypeH\x05R\fcustomerType\x88\x01\x01B\a\n" +
 	"\x05_nameB\b\n" +
 	"\x06_emailB\b\n" +
 	"\x06_phoneB\x0f\n" +
 	"\r_company_nameB\t\n" +
 	"\a_is_vipB\x10\n" +
-	"\x0e_customer_typeJ\x05\bd\x10\xc8\x01\"\x95\x02\n" +
+	"\x0e_customer_typeJ\x05\bd\x10\xc8\x01\"\xac\x02\n" +
 	"\x14ListCustomersRequest\x12\x1b\n" +
 	"\tis_active\x18\x01 \x01(\bR\bisActive\x12\x15\n" +
 	"\x06is_vip\x18\x02 \x01(\bR\x05isVip\x12\x18\n" +
-	"\acountry\x18\x03 \x01(\tR\acountry\x12)\n" +
-	"\x10customer_segment\x18\x04 \x01(\tR\x0fcustomerSegment\x12\x16\n" +
+	"\acountry\x18\x03 \x01(\tR\acountry\x12@\n" +
+	"\x10customer_segment\x18\x04 \x01(\x0e2\x15.osmi.CustomerSegmentR\x0fcustomerSegment\x12\x16\n" +
 	"\x06search\x18\x05 \x01(\tR\x06search\x12\x1b\n" +
 	"\tdate_from\x18\x06 \x01(\tR\bdateFrom\x12\x17\n" +
 	"\adate_to\x18\a \x01(\tR\x06dateTo\x12\x12\n" +
@@ -5625,23 +6083,41 @@ const file_osmi_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x05H\x00R\x02id\x12\x1d\n" +
 	"\tpublic_id\x18\x02 \x01(\tH\x00R\bpublicId\x12\x16\n" +
 	"\x05email\x18\x03 \x01(\tH\x00R\x05emailB\b\n" +
-	"\x06lookup\"\xfc\x02\n" +
+	"\x06lookup\"\xf1\a\n" +
 	"\x10CustomerResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1b\n" +
 	"\tpublic_id\x18\x02 \x01(\tR\bpublicId\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x04 \x01(\tR\x05email\x12\x14\n" +
-	"\x05phone\x18\x05 \x01(\tR\x05phone\x12#\n" +
-	"\rcustomer_type\x18\x06 \x01(\tR\fcustomerType\x12\x15\n" +
-	"\x06is_vip\x18\a \x01(\bR\x05isVip\x12\x1f\n" +
-	"\vtotal_spent\x18\b \x01(\x01R\n" +
+	"\x05phone\x18\x05 \x01(\tR\x05phone\x127\n" +
+	"\rcustomer_type\x18\x06 \x01(\x0e2\x12.osmi.CustomerTypeR\fcustomerType\x12,\n" +
+	"\x06source\x18\a \x01(\x0e2\x14.osmi.CustomerSourceR\x06source\x12!\n" +
+	"\fcompany_name\x18\b \x01(\tR\vcompanyName\x12\x15\n" +
+	"\x06tax_id\x18\t \x01(\tR\x05taxId\x12/\n" +
+	"\vtax_id_type\x18\n" +
+	" \x01(\x0e2\x0f.osmi.TaxIdTypeR\ttaxIdType\x12\x19\n" +
+	"\btax_name\x18\v \x01(\tR\ataxName\x12)\n" +
+	"\x10requires_invoice\x18\f \x01(\bR\x0frequiresInvoice\x12#\n" +
+	"\raddress_line1\x18\r \x01(\tR\faddressLine1\x12#\n" +
+	"\raddress_line2\x18\x0e \x01(\tR\faddressLine2\x12\x12\n" +
+	"\x04city\x18\x0f \x01(\tR\x04city\x12\x14\n" +
+	"\x05state\x18\x10 \x01(\tR\x05state\x12\x1f\n" +
+	"\vpostal_code\x18\x11 \x01(\tR\n" +
+	"postalCode\x12\x18\n" +
+	"\acountry\x18\x12 \x01(\tR\acountry\x12\x1b\n" +
+	"\tis_active\x18\x13 \x01(\bR\bisActive\x12\x15\n" +
+	"\x06is_vip\x18\x14 \x01(\bR\x05isVip\x12@\n" +
+	"\x10customer_segment\x18\x15 \x01(\x0e2\x15.osmi.CustomerSegmentR\x0fcustomerSegment\x12\x1f\n" +
+	"\vtotal_spent\x18\x16 \x01(\x01R\n" +
 	"totalSpent\x12!\n" +
-	"\ftotal_orders\x18\t \x01(\x05R\vtotalOrders\x129\n" +
+	"\ftotal_orders\x18\x17 \x01(\x05R\vtotalOrders\x12#\n" +
+	"\rtotal_tickets\x18\x18 \x01(\x05R\ftotalTickets\x12&\n" +
+	"\x0favg_order_value\x18\x19 \x01(\x01R\ravgOrderValue\x12%\n" +
+	"\x0elifetime_value\x18\x1a \x01(\x01R\rlifetimeValue\x129\n" +
 	"\n" +
-	"created_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x1b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtJ\x05\bd\x10\xc8\x01\"\xc6\x01\n" +
+	"updated_at\x18\x1c \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtJ\x05\bd\x10\xc8\x01\"\xc6\x01\n" +
 	"\x14CustomerListResponse\x124\n" +
 	"\tcustomers\x18\x01 \x03(\v2\x16.osmi.CustomerResponseR\tcustomers\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
@@ -5940,7 +6416,30 @@ const file_osmi_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"U\n" +
 	"\x0eWebhookRequest\x12\x18\n" +
 	"\apayload\x18\x01 \x01(\tR\apayload\x12)\n" +
-	"\x10signature_header\x18\x02 \x01(\tR\x0fsignatureHeader2\xe2 \n" +
+	"\x10signature_header\x18\x02 \x01(\tR\x0fsignatureHeader*~\n" +
+	"\tTaxIdType\x12\x1b\n" +
+	"\x17TAX_ID_TYPE_UNSPECIFIED\x10\x00\x12\x13\n" +
+	"\x0fTAX_ID_TYPE_RFC\x10\x01\x12\x13\n" +
+	"\x0fTAX_ID_TYPE_EIN\x10\x02\x12\x13\n" +
+	"\x0fTAX_ID_TYPE_VAT\x10\x03\x12\x15\n" +
+	"\x11TAX_ID_TYPE_OTHER\x10\x04*\x7f\n" +
+	"\fCustomerType\x12\x1d\n" +
+	"\x19CUSTOMER_TYPE_UNSPECIFIED\x10\x00\x12\x17\n" +
+	"\x13CUSTOMER_TYPE_GUEST\x10\x01\x12\x1c\n" +
+	"\x18CUSTOMER_TYPE_REGISTERED\x10\x02\x12\x19\n" +
+	"\x15CUSTOMER_TYPE_COMPANY\x10\x03*\x9f\x01\n" +
+	"\x0eCustomerSource\x12\x1f\n" +
+	"\x1bCUSTOMER_SOURCE_UNSPECIFIED\x10\x00\x12\x17\n" +
+	"\x13CUSTOMER_SOURCE_WEB\x10\x01\x12\x1a\n" +
+	"\x16CUSTOMER_SOURCE_MOBILE\x10\x02\x12\x1e\n" +
+	"\x1aCUSTOMER_SOURCE_BOX_OFFICE\x10\x03\x12\x17\n" +
+	"\x13CUSTOMER_SOURCE_API\x10\x04*\xa6\x01\n" +
+	"\x0fCustomerSegment\x12 \n" +
+	"\x1cCUSTOMER_SEGMENT_UNSPECIFIED\x10\x00\x12\x18\n" +
+	"\x14CUSTOMER_SEGMENT_NEW\x10\x01\x12\x1f\n" +
+	"\x1bCUSTOMER_SEGMENT_OCCASIONAL\x10\x02\x12\x1c\n" +
+	"\x18CUSTOMER_SEGMENT_REGULAR\x10\x03\x12\x18\n" +
+	"\x14CUSTOMER_SEGMENT_VIP\x10\x042\xe2 \n" +
 	"\vOsmiService\x12t\n" +
 	"\x13CreatePaymentIntent\x12 .osmi.CreatePaymentIntentRequest\x1a\x1b.osmi.PaymentIntentResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/v1/payments/intent\x12e\n" +
 	"\rCreatePayment\x12\x1a.osmi.CreatePaymentRequest\x1a\x1f.osmi.PaymentProcessingResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/payments\x12]\n" +
@@ -6006,206 +6505,220 @@ func file_osmi_proto_rawDescGZIP() []byte {
 	return file_osmi_proto_rawDescData
 }
 
+var file_osmi_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
 var file_osmi_proto_msgTypes = make([]protoimpl.MessageInfo, 69)
 var file_osmi_proto_goTypes = []any{
-	(*Empty)(nil),                      // 0: osmi.Empty
-	(*HealthResponse)(nil),             // 1: osmi.HealthResponse
-	(*CreateTicketRequest)(nil),        // 2: osmi.CreateTicketRequest
-	(*ReserveTicketRequest)(nil),       // 3: osmi.ReserveTicketRequest
-	(*PurchaseTicketRequest)(nil),      // 4: osmi.PurchaseTicketRequest
-	(*CheckInTicketRequest)(nil),       // 5: osmi.CheckInTicketRequest
-	(*TransferTicketRequest)(nil),      // 6: osmi.TransferTicketRequest
-	(*ListTicketsRequest)(nil),         // 7: osmi.ListTicketsRequest
-	(*UpdateTicketRequest)(nil),        // 8: osmi.UpdateTicketRequest
-	(*UpdateTicketStatusRequest)(nil),  // 9: osmi.UpdateTicketStatusRequest
-	(*GetTicketRequest)(nil),           // 10: osmi.GetTicketRequest
-	(*GetTicketStatsRequest)(nil),      // 11: osmi.GetTicketStatsRequest
-	(*TicketResponse)(nil),             // 12: osmi.TicketResponse
-	(*TicketListResponse)(nil),         // 13: osmi.TicketListResponse
-	(*TicketStatsResponse)(nil),        // 14: osmi.TicketStatsResponse
-	(*ExpireReservationsResponse)(nil), // 15: osmi.ExpireReservationsResponse
-	(*CreateTicketTypeRequest)(nil),    // 16: osmi.CreateTicketTypeRequest
-	(*GetTicketTypeRequest)(nil),       // 17: osmi.GetTicketTypeRequest
-	(*ListTicketTypesRequest)(nil),     // 18: osmi.ListTicketTypesRequest
-	(*UpdateTicketTypeRequest)(nil),    // 19: osmi.UpdateTicketTypeRequest
-	(*DeleteTicketTypeRequest)(nil),    // 20: osmi.DeleteTicketTypeRequest
-	(*TicketTypeResponse)(nil),         // 21: osmi.TicketTypeResponse
-	(*TicketTypeListResponse)(nil),     // 22: osmi.TicketTypeListResponse
-	(*CreateCustomerRequest)(nil),      // 23: osmi.CreateCustomerRequest
-	(*GetCustomerRequest)(nil),         // 24: osmi.GetCustomerRequest
-	(*UpdateCustomerRequest)(nil),      // 25: osmi.UpdateCustomerRequest
-	(*ListCustomersRequest)(nil),       // 26: osmi.ListCustomersRequest
-	(*GetCustomerTicketsRequest)(nil),  // 27: osmi.GetCustomerTicketsRequest
-	(*CustomerLookup)(nil),             // 28: osmi.CustomerLookup
-	(*CustomerResponse)(nil),           // 29: osmi.CustomerResponse
-	(*CustomerListResponse)(nil),       // 30: osmi.CustomerListResponse
-	(*CustomerStatsResponse)(nil),      // 31: osmi.CustomerStatsResponse
-	(*CountryStats)(nil),               // 32: osmi.CountryStats
-	(*CreateUserRequest)(nil),          // 33: osmi.CreateUserRequest
-	(*GetUserRequest)(nil),             // 34: osmi.GetUserRequest
-	(*UpdateUserRequest)(nil),          // 35: osmi.UpdateUserRequest
-	(*DeleteUserRequest)(nil),          // 36: osmi.DeleteUserRequest
-	(*GetUserTicketsRequest)(nil),      // 37: osmi.GetUserTicketsRequest
-	(*UserLookup)(nil),                 // 38: osmi.UserLookup
-	(*UserResponse)(nil),               // 39: osmi.UserResponse
-	(*LoginRequest)(nil),               // 40: osmi.LoginRequest
-	(*LoginResponse)(nil),              // 41: osmi.LoginResponse
-	(*LogoutRequest)(nil),              // 42: osmi.LogoutRequest
-	(*RefreshTokenRequest)(nil),        // 43: osmi.RefreshTokenRequest
-	(*RefreshTokenResponse)(nil),       // 44: osmi.RefreshTokenResponse
-	(*CreateEventRequest)(nil),         // 45: osmi.CreateEventRequest
-	(*GetEventRequest)(nil),            // 46: osmi.GetEventRequest
-	(*UpdateEventRequest)(nil),         // 47: osmi.UpdateEventRequest
-	(*ListEventsRequest)(nil),          // 48: osmi.ListEventsRequest
-	(*EventLookup)(nil),                // 49: osmi.EventLookup
-	(*EventResponse)(nil),              // 50: osmi.EventResponse
-	(*EventListResponse)(nil),          // 51: osmi.EventListResponse
-	(*CreateCategoryRequest)(nil),      // 52: osmi.CreateCategoryRequest
-	(*GetEventCategoriesRequest)(nil),  // 53: osmi.GetEventCategoriesRequest
-	(*CategoryResponse)(nil),           // 54: osmi.CategoryResponse
-	(*CategoryListResponse)(nil),       // 55: osmi.CategoryListResponse
-	(*ListUsersRequest)(nil),           // 56: osmi.ListUsersRequest
-	(*UserListResponse)(nil),           // 57: osmi.UserListResponse
-	(*CreateOrderRequest)(nil),         // 58: osmi.CreateOrderRequest
-	(*OrderItem)(nil),                  // 59: osmi.OrderItem
-	(*OrderResponse)(nil),              // 60: osmi.OrderResponse
-	(*CreatePaymentIntentRequest)(nil), // 61: osmi.CreatePaymentIntentRequest
-	(*PaymentIntentResponse)(nil),      // 62: osmi.PaymentIntentResponse
-	(*ProcessOrderRequest)(nil),        // 63: osmi.ProcessOrderRequest
-	(*CreatePaymentRequest)(nil),       // 64: osmi.CreatePaymentRequest
-	(*PaymentProcessingResponse)(nil),  // 65: osmi.PaymentProcessingResponse
-	(*WebhookRequest)(nil),             // 66: osmi.WebhookRequest
-	nil,                                // 67: osmi.CreatePaymentRequest.PaymentMethodDetailsEntry
-	nil,                                // 68: osmi.PaymentProcessingResponse.ProviderInstructionsEntry
-	(*timestamppb.Timestamp)(nil),      // 69: google.protobuf.Timestamp
+	(TaxIdType)(0),                     // 0: osmi.TaxIdType
+	(CustomerType)(0),                  // 1: osmi.CustomerType
+	(CustomerSource)(0),                // 2: osmi.CustomerSource
+	(CustomerSegment)(0),               // 3: osmi.CustomerSegment
+	(*Empty)(nil),                      // 4: osmi.Empty
+	(*HealthResponse)(nil),             // 5: osmi.HealthResponse
+	(*CreateTicketRequest)(nil),        // 6: osmi.CreateTicketRequest
+	(*ReserveTicketRequest)(nil),       // 7: osmi.ReserveTicketRequest
+	(*PurchaseTicketRequest)(nil),      // 8: osmi.PurchaseTicketRequest
+	(*CheckInTicketRequest)(nil),       // 9: osmi.CheckInTicketRequest
+	(*TransferTicketRequest)(nil),      // 10: osmi.TransferTicketRequest
+	(*ListTicketsRequest)(nil),         // 11: osmi.ListTicketsRequest
+	(*UpdateTicketRequest)(nil),        // 12: osmi.UpdateTicketRequest
+	(*UpdateTicketStatusRequest)(nil),  // 13: osmi.UpdateTicketStatusRequest
+	(*GetTicketRequest)(nil),           // 14: osmi.GetTicketRequest
+	(*GetTicketStatsRequest)(nil),      // 15: osmi.GetTicketStatsRequest
+	(*TicketResponse)(nil),             // 16: osmi.TicketResponse
+	(*TicketListResponse)(nil),         // 17: osmi.TicketListResponse
+	(*TicketStatsResponse)(nil),        // 18: osmi.TicketStatsResponse
+	(*ExpireReservationsResponse)(nil), // 19: osmi.ExpireReservationsResponse
+	(*CreateTicketTypeRequest)(nil),    // 20: osmi.CreateTicketTypeRequest
+	(*GetTicketTypeRequest)(nil),       // 21: osmi.GetTicketTypeRequest
+	(*ListTicketTypesRequest)(nil),     // 22: osmi.ListTicketTypesRequest
+	(*UpdateTicketTypeRequest)(nil),    // 23: osmi.UpdateTicketTypeRequest
+	(*DeleteTicketTypeRequest)(nil),    // 24: osmi.DeleteTicketTypeRequest
+	(*TicketTypeResponse)(nil),         // 25: osmi.TicketTypeResponse
+	(*TicketTypeListResponse)(nil),     // 26: osmi.TicketTypeListResponse
+	(*CreateCustomerRequest)(nil),      // 27: osmi.CreateCustomerRequest
+	(*GetCustomerRequest)(nil),         // 28: osmi.GetCustomerRequest
+	(*UpdateCustomerRequest)(nil),      // 29: osmi.UpdateCustomerRequest
+	(*ListCustomersRequest)(nil),       // 30: osmi.ListCustomersRequest
+	(*GetCustomerTicketsRequest)(nil),  // 31: osmi.GetCustomerTicketsRequest
+	(*CustomerLookup)(nil),             // 32: osmi.CustomerLookup
+	(*CustomerResponse)(nil),           // 33: osmi.CustomerResponse
+	(*CustomerListResponse)(nil),       // 34: osmi.CustomerListResponse
+	(*CustomerStatsResponse)(nil),      // 35: osmi.CustomerStatsResponse
+	(*CountryStats)(nil),               // 36: osmi.CountryStats
+	(*CreateUserRequest)(nil),          // 37: osmi.CreateUserRequest
+	(*GetUserRequest)(nil),             // 38: osmi.GetUserRequest
+	(*UpdateUserRequest)(nil),          // 39: osmi.UpdateUserRequest
+	(*DeleteUserRequest)(nil),          // 40: osmi.DeleteUserRequest
+	(*GetUserTicketsRequest)(nil),      // 41: osmi.GetUserTicketsRequest
+	(*UserLookup)(nil),                 // 42: osmi.UserLookup
+	(*UserResponse)(nil),               // 43: osmi.UserResponse
+	(*LoginRequest)(nil),               // 44: osmi.LoginRequest
+	(*LoginResponse)(nil),              // 45: osmi.LoginResponse
+	(*LogoutRequest)(nil),              // 46: osmi.LogoutRequest
+	(*RefreshTokenRequest)(nil),        // 47: osmi.RefreshTokenRequest
+	(*RefreshTokenResponse)(nil),       // 48: osmi.RefreshTokenResponse
+	(*CreateEventRequest)(nil),         // 49: osmi.CreateEventRequest
+	(*GetEventRequest)(nil),            // 50: osmi.GetEventRequest
+	(*UpdateEventRequest)(nil),         // 51: osmi.UpdateEventRequest
+	(*ListEventsRequest)(nil),          // 52: osmi.ListEventsRequest
+	(*EventLookup)(nil),                // 53: osmi.EventLookup
+	(*EventResponse)(nil),              // 54: osmi.EventResponse
+	(*EventListResponse)(nil),          // 55: osmi.EventListResponse
+	(*CreateCategoryRequest)(nil),      // 56: osmi.CreateCategoryRequest
+	(*GetEventCategoriesRequest)(nil),  // 57: osmi.GetEventCategoriesRequest
+	(*CategoryResponse)(nil),           // 58: osmi.CategoryResponse
+	(*CategoryListResponse)(nil),       // 59: osmi.CategoryListResponse
+	(*ListUsersRequest)(nil),           // 60: osmi.ListUsersRequest
+	(*UserListResponse)(nil),           // 61: osmi.UserListResponse
+	(*CreateOrderRequest)(nil),         // 62: osmi.CreateOrderRequest
+	(*OrderItem)(nil),                  // 63: osmi.OrderItem
+	(*OrderResponse)(nil),              // 64: osmi.OrderResponse
+	(*CreatePaymentIntentRequest)(nil), // 65: osmi.CreatePaymentIntentRequest
+	(*PaymentIntentResponse)(nil),      // 66: osmi.PaymentIntentResponse
+	(*ProcessOrderRequest)(nil),        // 67: osmi.ProcessOrderRequest
+	(*CreatePaymentRequest)(nil),       // 68: osmi.CreatePaymentRequest
+	(*PaymentProcessingResponse)(nil),  // 69: osmi.PaymentProcessingResponse
+	(*WebhookRequest)(nil),             // 70: osmi.WebhookRequest
+	nil,                                // 71: osmi.CreatePaymentRequest.PaymentMethodDetailsEntry
+	nil,                                // 72: osmi.PaymentProcessingResponse.ProviderInstructionsEntry
+	(*timestamppb.Timestamp)(nil),      // 73: google.protobuf.Timestamp
 }
 var file_osmi_proto_depIdxs = []int32{
-	69, // 0: osmi.HealthResponse.timestamp:type_name -> google.protobuf.Timestamp
-	69, // 1: osmi.ReserveTicketRequest.expires_at:type_name -> google.protobuf.Timestamp
-	69, // 2: osmi.TicketResponse.created_at:type_name -> google.protobuf.Timestamp
-	69, // 3: osmi.TicketResponse.used_at:type_name -> google.protobuf.Timestamp
-	12, // 4: osmi.TicketListResponse.tickets:type_name -> osmi.TicketResponse
-	69, // 5: osmi.CreateTicketTypeRequest.sale_starts_at:type_name -> google.protobuf.Timestamp
-	69, // 6: osmi.CreateTicketTypeRequest.sale_ends_at:type_name -> google.protobuf.Timestamp
-	69, // 7: osmi.UpdateTicketTypeRequest.sale_starts_at:type_name -> google.protobuf.Timestamp
-	69, // 8: osmi.UpdateTicketTypeRequest.sale_ends_at:type_name -> google.protobuf.Timestamp
-	69, // 9: osmi.TicketTypeResponse.sale_starts_at:type_name -> google.protobuf.Timestamp
-	69, // 10: osmi.TicketTypeResponse.sale_ends_at:type_name -> google.protobuf.Timestamp
-	69, // 11: osmi.TicketTypeResponse.created_at:type_name -> google.protobuf.Timestamp
-	69, // 12: osmi.TicketTypeResponse.updated_at:type_name -> google.protobuf.Timestamp
-	21, // 13: osmi.TicketTypeListResponse.ticket_types:type_name -> osmi.TicketTypeResponse
-	69, // 14: osmi.CustomerResponse.created_at:type_name -> google.protobuf.Timestamp
-	69, // 15: osmi.CustomerResponse.updated_at:type_name -> google.protobuf.Timestamp
-	29, // 16: osmi.CustomerListResponse.customers:type_name -> osmi.CustomerResponse
-	32, // 17: osmi.CustomerStatsResponse.top_countries:type_name -> osmi.CountryStats
-	69, // 18: osmi.UserResponse.created_at:type_name -> google.protobuf.Timestamp
-	39, // 19: osmi.LoginResponse.user:type_name -> osmi.UserResponse
-	69, // 20: osmi.LoginResponse.expires_at:type_name -> google.protobuf.Timestamp
-	69, // 21: osmi.RefreshTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
-	69, // 22: osmi.EventResponse.created_at:type_name -> google.protobuf.Timestamp
-	69, // 23: osmi.EventResponse.updated_at:type_name -> google.protobuf.Timestamp
-	50, // 24: osmi.EventListResponse.events:type_name -> osmi.EventResponse
-	69, // 25: osmi.CategoryResponse.created_at:type_name -> google.protobuf.Timestamp
-	69, // 26: osmi.CategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
-	54, // 27: osmi.CategoryListResponse.categories:type_name -> osmi.CategoryResponse
-	39, // 28: osmi.UserListResponse.users:type_name -> osmi.UserResponse
-	59, // 29: osmi.CreateOrderRequest.items:type_name -> osmi.OrderItem
-	12, // 30: osmi.OrderResponse.tickets:type_name -> osmi.TicketResponse
-	69, // 31: osmi.OrderResponse.created_at:type_name -> google.protobuf.Timestamp
-	67, // 32: osmi.CreatePaymentRequest.payment_method_details:type_name -> osmi.CreatePaymentRequest.PaymentMethodDetailsEntry
-	68, // 33: osmi.PaymentProcessingResponse.provider_instructions:type_name -> osmi.PaymentProcessingResponse.ProviderInstructionsEntry
-	69, // 34: osmi.PaymentProcessingResponse.estimated_completion:type_name -> google.protobuf.Timestamp
-	61, // 35: osmi.OsmiService.CreatePaymentIntent:input_type -> osmi.CreatePaymentIntentRequest
-	64, // 36: osmi.OsmiService.CreatePayment:input_type -> osmi.CreatePaymentRequest
-	63, // 37: osmi.OsmiService.ProcessOrder:input_type -> osmi.ProcessOrderRequest
-	66, // 38: osmi.OsmiService.HandleWebhook:input_type -> osmi.WebhookRequest
-	0,  // 39: osmi.OsmiService.HealthCheck:input_type -> osmi.Empty
-	58, // 40: osmi.OsmiService.CreateOrder:input_type -> osmi.CreateOrderRequest
-	40, // 41: osmi.OsmiService.Login:input_type -> osmi.LoginRequest
-	42, // 42: osmi.OsmiService.Logout:input_type -> osmi.LogoutRequest
-	43, // 43: osmi.OsmiService.RefreshToken:input_type -> osmi.RefreshTokenRequest
-	33, // 44: osmi.OsmiService.CreateUser:input_type -> osmi.CreateUserRequest
-	34, // 45: osmi.OsmiService.GetUser:input_type -> osmi.GetUserRequest
-	35, // 46: osmi.OsmiService.UpdateUser:input_type -> osmi.UpdateUserRequest
-	36, // 47: osmi.OsmiService.DeleteUser:input_type -> osmi.DeleteUserRequest
-	56, // 48: osmi.OsmiService.ListUsers:input_type -> osmi.ListUsersRequest
-	23, // 49: osmi.OsmiService.CreateCustomer:input_type -> osmi.CreateCustomerRequest
-	24, // 50: osmi.OsmiService.GetCustomer:input_type -> osmi.GetCustomerRequest
-	25, // 51: osmi.OsmiService.UpdateCustomer:input_type -> osmi.UpdateCustomerRequest
-	26, // 52: osmi.OsmiService.ListCustomers:input_type -> osmi.ListCustomersRequest
-	0,  // 53: osmi.OsmiService.GetCustomerStats:input_type -> osmi.Empty
-	27, // 54: osmi.OsmiService.GetCustomerTickets:input_type -> osmi.GetCustomerTicketsRequest
-	45, // 55: osmi.OsmiService.CreateEvent:input_type -> osmi.CreateEventRequest
-	46, // 56: osmi.OsmiService.GetEvent:input_type -> osmi.GetEventRequest
-	48, // 57: osmi.OsmiService.ListEvents:input_type -> osmi.ListEventsRequest
-	47, // 58: osmi.OsmiService.UpdateEvent:input_type -> osmi.UpdateEventRequest
-	52, // 59: osmi.OsmiService.CreateCategory:input_type -> osmi.CreateCategoryRequest
-	53, // 60: osmi.OsmiService.GetEventCategories:input_type -> osmi.GetEventCategoriesRequest
-	16, // 61: osmi.OsmiService.CreateTicketType:input_type -> osmi.CreateTicketTypeRequest
-	17, // 62: osmi.OsmiService.GetTicketType:input_type -> osmi.GetTicketTypeRequest
-	18, // 63: osmi.OsmiService.ListTicketTypes:input_type -> osmi.ListTicketTypesRequest
-	19, // 64: osmi.OsmiService.UpdateTicketType:input_type -> osmi.UpdateTicketTypeRequest
-	20, // 65: osmi.OsmiService.DeleteTicketType:input_type -> osmi.DeleteTicketTypeRequest
-	2,  // 66: osmi.OsmiService.CreateTicket:input_type -> osmi.CreateTicketRequest
-	3,  // 67: osmi.OsmiService.ReserveTicket:input_type -> osmi.ReserveTicketRequest
-	4,  // 68: osmi.OsmiService.PurchaseTicket:input_type -> osmi.PurchaseTicketRequest
-	5,  // 69: osmi.OsmiService.CheckInTicket:input_type -> osmi.CheckInTicketRequest
-	6,  // 70: osmi.OsmiService.TransferTicket:input_type -> osmi.TransferTicketRequest
-	7,  // 71: osmi.OsmiService.ListTickets:input_type -> osmi.ListTicketsRequest
-	37, // 72: osmi.OsmiService.GetUserTickets:input_type -> osmi.GetUserTicketsRequest
-	9,  // 73: osmi.OsmiService.UpdateTicketStatus:input_type -> osmi.UpdateTicketStatusRequest
-	8,  // 74: osmi.OsmiService.UpdateTicket:input_type -> osmi.UpdateTicketRequest
-	10, // 75: osmi.OsmiService.GetTicketDetails:input_type -> osmi.GetTicketRequest
-	11, // 76: osmi.OsmiService.GetTicketStats:input_type -> osmi.GetTicketStatsRequest
-	0,  // 77: osmi.OsmiService.ExpireReservations:input_type -> osmi.Empty
-	62, // 78: osmi.OsmiService.CreatePaymentIntent:output_type -> osmi.PaymentIntentResponse
-	65, // 79: osmi.OsmiService.CreatePayment:output_type -> osmi.PaymentProcessingResponse
-	0,  // 80: osmi.OsmiService.ProcessOrder:output_type -> osmi.Empty
-	0,  // 81: osmi.OsmiService.HandleWebhook:output_type -> osmi.Empty
-	1,  // 82: osmi.OsmiService.HealthCheck:output_type -> osmi.HealthResponse
-	60, // 83: osmi.OsmiService.CreateOrder:output_type -> osmi.OrderResponse
-	41, // 84: osmi.OsmiService.Login:output_type -> osmi.LoginResponse
-	0,  // 85: osmi.OsmiService.Logout:output_type -> osmi.Empty
-	44, // 86: osmi.OsmiService.RefreshToken:output_type -> osmi.RefreshTokenResponse
-	39, // 87: osmi.OsmiService.CreateUser:output_type -> osmi.UserResponse
-	39, // 88: osmi.OsmiService.GetUser:output_type -> osmi.UserResponse
-	39, // 89: osmi.OsmiService.UpdateUser:output_type -> osmi.UserResponse
-	0,  // 90: osmi.OsmiService.DeleteUser:output_type -> osmi.Empty
-	57, // 91: osmi.OsmiService.ListUsers:output_type -> osmi.UserListResponse
-	29, // 92: osmi.OsmiService.CreateCustomer:output_type -> osmi.CustomerResponse
-	29, // 93: osmi.OsmiService.GetCustomer:output_type -> osmi.CustomerResponse
-	29, // 94: osmi.OsmiService.UpdateCustomer:output_type -> osmi.CustomerResponse
-	30, // 95: osmi.OsmiService.ListCustomers:output_type -> osmi.CustomerListResponse
-	31, // 96: osmi.OsmiService.GetCustomerStats:output_type -> osmi.CustomerStatsResponse
-	13, // 97: osmi.OsmiService.GetCustomerTickets:output_type -> osmi.TicketListResponse
-	50, // 98: osmi.OsmiService.CreateEvent:output_type -> osmi.EventResponse
-	50, // 99: osmi.OsmiService.GetEvent:output_type -> osmi.EventResponse
-	51, // 100: osmi.OsmiService.ListEvents:output_type -> osmi.EventListResponse
-	50, // 101: osmi.OsmiService.UpdateEvent:output_type -> osmi.EventResponse
-	54, // 102: osmi.OsmiService.CreateCategory:output_type -> osmi.CategoryResponse
-	55, // 103: osmi.OsmiService.GetEventCategories:output_type -> osmi.CategoryListResponse
-	21, // 104: osmi.OsmiService.CreateTicketType:output_type -> osmi.TicketTypeResponse
-	21, // 105: osmi.OsmiService.GetTicketType:output_type -> osmi.TicketTypeResponse
-	22, // 106: osmi.OsmiService.ListTicketTypes:output_type -> osmi.TicketTypeListResponse
-	21, // 107: osmi.OsmiService.UpdateTicketType:output_type -> osmi.TicketTypeResponse
-	0,  // 108: osmi.OsmiService.DeleteTicketType:output_type -> osmi.Empty
-	12, // 109: osmi.OsmiService.CreateTicket:output_type -> osmi.TicketResponse
-	12, // 110: osmi.OsmiService.ReserveTicket:output_type -> osmi.TicketResponse
-	12, // 111: osmi.OsmiService.PurchaseTicket:output_type -> osmi.TicketResponse
-	12, // 112: osmi.OsmiService.CheckInTicket:output_type -> osmi.TicketResponse
-	12, // 113: osmi.OsmiService.TransferTicket:output_type -> osmi.TicketResponse
-	13, // 114: osmi.OsmiService.ListTickets:output_type -> osmi.TicketListResponse
-	13, // 115: osmi.OsmiService.GetUserTickets:output_type -> osmi.TicketListResponse
-	12, // 116: osmi.OsmiService.UpdateTicketStatus:output_type -> osmi.TicketResponse
-	12, // 117: osmi.OsmiService.UpdateTicket:output_type -> osmi.TicketResponse
-	12, // 118: osmi.OsmiService.GetTicketDetails:output_type -> osmi.TicketResponse
-	14, // 119: osmi.OsmiService.GetTicketStats:output_type -> osmi.TicketStatsResponse
-	15, // 120: osmi.OsmiService.ExpireReservations:output_type -> osmi.ExpireReservationsResponse
-	78, // [78:121] is the sub-list for method output_type
-	35, // [35:78] is the sub-list for method input_type
-	35, // [35:35] is the sub-list for extension type_name
-	35, // [35:35] is the sub-list for extension extendee
-	0,  // [0:35] is the sub-list for field type_name
+	73, // 0: osmi.HealthResponse.timestamp:type_name -> google.protobuf.Timestamp
+	73, // 1: osmi.ReserveTicketRequest.expires_at:type_name -> google.protobuf.Timestamp
+	73, // 2: osmi.TicketResponse.created_at:type_name -> google.protobuf.Timestamp
+	73, // 3: osmi.TicketResponse.used_at:type_name -> google.protobuf.Timestamp
+	16, // 4: osmi.TicketListResponse.tickets:type_name -> osmi.TicketResponse
+	73, // 5: osmi.CreateTicketTypeRequest.sale_starts_at:type_name -> google.protobuf.Timestamp
+	73, // 6: osmi.CreateTicketTypeRequest.sale_ends_at:type_name -> google.protobuf.Timestamp
+	73, // 7: osmi.UpdateTicketTypeRequest.sale_starts_at:type_name -> google.protobuf.Timestamp
+	73, // 8: osmi.UpdateTicketTypeRequest.sale_ends_at:type_name -> google.protobuf.Timestamp
+	73, // 9: osmi.TicketTypeResponse.sale_starts_at:type_name -> google.protobuf.Timestamp
+	73, // 10: osmi.TicketTypeResponse.sale_ends_at:type_name -> google.protobuf.Timestamp
+	73, // 11: osmi.TicketTypeResponse.created_at:type_name -> google.protobuf.Timestamp
+	73, // 12: osmi.TicketTypeResponse.updated_at:type_name -> google.protobuf.Timestamp
+	25, // 13: osmi.TicketTypeListResponse.ticket_types:type_name -> osmi.TicketTypeResponse
+	1,  // 14: osmi.CreateCustomerRequest.customer_type:type_name -> osmi.CustomerType
+	2,  // 15: osmi.CreateCustomerRequest.source:type_name -> osmi.CustomerSource
+	0,  // 16: osmi.CreateCustomerRequest.tax_id_type:type_name -> osmi.TaxIdType
+	1,  // 17: osmi.UpdateCustomerRequest.customer_type:type_name -> osmi.CustomerType
+	3,  // 18: osmi.ListCustomersRequest.customer_segment:type_name -> osmi.CustomerSegment
+	1,  // 19: osmi.CustomerResponse.customer_type:type_name -> osmi.CustomerType
+	2,  // 20: osmi.CustomerResponse.source:type_name -> osmi.CustomerSource
+	0,  // 21: osmi.CustomerResponse.tax_id_type:type_name -> osmi.TaxIdType
+	3,  // 22: osmi.CustomerResponse.customer_segment:type_name -> osmi.CustomerSegment
+	73, // 23: osmi.CustomerResponse.created_at:type_name -> google.protobuf.Timestamp
+	73, // 24: osmi.CustomerResponse.updated_at:type_name -> google.protobuf.Timestamp
+	33, // 25: osmi.CustomerListResponse.customers:type_name -> osmi.CustomerResponse
+	36, // 26: osmi.CustomerStatsResponse.top_countries:type_name -> osmi.CountryStats
+	73, // 27: osmi.UserResponse.created_at:type_name -> google.protobuf.Timestamp
+	43, // 28: osmi.LoginResponse.user:type_name -> osmi.UserResponse
+	73, // 29: osmi.LoginResponse.expires_at:type_name -> google.protobuf.Timestamp
+	73, // 30: osmi.RefreshTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
+	73, // 31: osmi.EventResponse.created_at:type_name -> google.protobuf.Timestamp
+	73, // 32: osmi.EventResponse.updated_at:type_name -> google.protobuf.Timestamp
+	54, // 33: osmi.EventListResponse.events:type_name -> osmi.EventResponse
+	73, // 34: osmi.CategoryResponse.created_at:type_name -> google.protobuf.Timestamp
+	73, // 35: osmi.CategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
+	58, // 36: osmi.CategoryListResponse.categories:type_name -> osmi.CategoryResponse
+	43, // 37: osmi.UserListResponse.users:type_name -> osmi.UserResponse
+	63, // 38: osmi.CreateOrderRequest.items:type_name -> osmi.OrderItem
+	16, // 39: osmi.OrderResponse.tickets:type_name -> osmi.TicketResponse
+	73, // 40: osmi.OrderResponse.created_at:type_name -> google.protobuf.Timestamp
+	71, // 41: osmi.CreatePaymentRequest.payment_method_details:type_name -> osmi.CreatePaymentRequest.PaymentMethodDetailsEntry
+	72, // 42: osmi.PaymentProcessingResponse.provider_instructions:type_name -> osmi.PaymentProcessingResponse.ProviderInstructionsEntry
+	73, // 43: osmi.PaymentProcessingResponse.estimated_completion:type_name -> google.protobuf.Timestamp
+	65, // 44: osmi.OsmiService.CreatePaymentIntent:input_type -> osmi.CreatePaymentIntentRequest
+	68, // 45: osmi.OsmiService.CreatePayment:input_type -> osmi.CreatePaymentRequest
+	67, // 46: osmi.OsmiService.ProcessOrder:input_type -> osmi.ProcessOrderRequest
+	70, // 47: osmi.OsmiService.HandleWebhook:input_type -> osmi.WebhookRequest
+	4,  // 48: osmi.OsmiService.HealthCheck:input_type -> osmi.Empty
+	62, // 49: osmi.OsmiService.CreateOrder:input_type -> osmi.CreateOrderRequest
+	44, // 50: osmi.OsmiService.Login:input_type -> osmi.LoginRequest
+	46, // 51: osmi.OsmiService.Logout:input_type -> osmi.LogoutRequest
+	47, // 52: osmi.OsmiService.RefreshToken:input_type -> osmi.RefreshTokenRequest
+	37, // 53: osmi.OsmiService.CreateUser:input_type -> osmi.CreateUserRequest
+	38, // 54: osmi.OsmiService.GetUser:input_type -> osmi.GetUserRequest
+	39, // 55: osmi.OsmiService.UpdateUser:input_type -> osmi.UpdateUserRequest
+	40, // 56: osmi.OsmiService.DeleteUser:input_type -> osmi.DeleteUserRequest
+	60, // 57: osmi.OsmiService.ListUsers:input_type -> osmi.ListUsersRequest
+	27, // 58: osmi.OsmiService.CreateCustomer:input_type -> osmi.CreateCustomerRequest
+	28, // 59: osmi.OsmiService.GetCustomer:input_type -> osmi.GetCustomerRequest
+	29, // 60: osmi.OsmiService.UpdateCustomer:input_type -> osmi.UpdateCustomerRequest
+	30, // 61: osmi.OsmiService.ListCustomers:input_type -> osmi.ListCustomersRequest
+	4,  // 62: osmi.OsmiService.GetCustomerStats:input_type -> osmi.Empty
+	31, // 63: osmi.OsmiService.GetCustomerTickets:input_type -> osmi.GetCustomerTicketsRequest
+	49, // 64: osmi.OsmiService.CreateEvent:input_type -> osmi.CreateEventRequest
+	50, // 65: osmi.OsmiService.GetEvent:input_type -> osmi.GetEventRequest
+	52, // 66: osmi.OsmiService.ListEvents:input_type -> osmi.ListEventsRequest
+	51, // 67: osmi.OsmiService.UpdateEvent:input_type -> osmi.UpdateEventRequest
+	56, // 68: osmi.OsmiService.CreateCategory:input_type -> osmi.CreateCategoryRequest
+	57, // 69: osmi.OsmiService.GetEventCategories:input_type -> osmi.GetEventCategoriesRequest
+	20, // 70: osmi.OsmiService.CreateTicketType:input_type -> osmi.CreateTicketTypeRequest
+	21, // 71: osmi.OsmiService.GetTicketType:input_type -> osmi.GetTicketTypeRequest
+	22, // 72: osmi.OsmiService.ListTicketTypes:input_type -> osmi.ListTicketTypesRequest
+	23, // 73: osmi.OsmiService.UpdateTicketType:input_type -> osmi.UpdateTicketTypeRequest
+	24, // 74: osmi.OsmiService.DeleteTicketType:input_type -> osmi.DeleteTicketTypeRequest
+	6,  // 75: osmi.OsmiService.CreateTicket:input_type -> osmi.CreateTicketRequest
+	7,  // 76: osmi.OsmiService.ReserveTicket:input_type -> osmi.ReserveTicketRequest
+	8,  // 77: osmi.OsmiService.PurchaseTicket:input_type -> osmi.PurchaseTicketRequest
+	9,  // 78: osmi.OsmiService.CheckInTicket:input_type -> osmi.CheckInTicketRequest
+	10, // 79: osmi.OsmiService.TransferTicket:input_type -> osmi.TransferTicketRequest
+	11, // 80: osmi.OsmiService.ListTickets:input_type -> osmi.ListTicketsRequest
+	41, // 81: osmi.OsmiService.GetUserTickets:input_type -> osmi.GetUserTicketsRequest
+	13, // 82: osmi.OsmiService.UpdateTicketStatus:input_type -> osmi.UpdateTicketStatusRequest
+	12, // 83: osmi.OsmiService.UpdateTicket:input_type -> osmi.UpdateTicketRequest
+	14, // 84: osmi.OsmiService.GetTicketDetails:input_type -> osmi.GetTicketRequest
+	15, // 85: osmi.OsmiService.GetTicketStats:input_type -> osmi.GetTicketStatsRequest
+	4,  // 86: osmi.OsmiService.ExpireReservations:input_type -> osmi.Empty
+	66, // 87: osmi.OsmiService.CreatePaymentIntent:output_type -> osmi.PaymentIntentResponse
+	69, // 88: osmi.OsmiService.CreatePayment:output_type -> osmi.PaymentProcessingResponse
+	4,  // 89: osmi.OsmiService.ProcessOrder:output_type -> osmi.Empty
+	4,  // 90: osmi.OsmiService.HandleWebhook:output_type -> osmi.Empty
+	5,  // 91: osmi.OsmiService.HealthCheck:output_type -> osmi.HealthResponse
+	64, // 92: osmi.OsmiService.CreateOrder:output_type -> osmi.OrderResponse
+	45, // 93: osmi.OsmiService.Login:output_type -> osmi.LoginResponse
+	4,  // 94: osmi.OsmiService.Logout:output_type -> osmi.Empty
+	48, // 95: osmi.OsmiService.RefreshToken:output_type -> osmi.RefreshTokenResponse
+	43, // 96: osmi.OsmiService.CreateUser:output_type -> osmi.UserResponse
+	43, // 97: osmi.OsmiService.GetUser:output_type -> osmi.UserResponse
+	43, // 98: osmi.OsmiService.UpdateUser:output_type -> osmi.UserResponse
+	4,  // 99: osmi.OsmiService.DeleteUser:output_type -> osmi.Empty
+	61, // 100: osmi.OsmiService.ListUsers:output_type -> osmi.UserListResponse
+	33, // 101: osmi.OsmiService.CreateCustomer:output_type -> osmi.CustomerResponse
+	33, // 102: osmi.OsmiService.GetCustomer:output_type -> osmi.CustomerResponse
+	33, // 103: osmi.OsmiService.UpdateCustomer:output_type -> osmi.CustomerResponse
+	34, // 104: osmi.OsmiService.ListCustomers:output_type -> osmi.CustomerListResponse
+	35, // 105: osmi.OsmiService.GetCustomerStats:output_type -> osmi.CustomerStatsResponse
+	17, // 106: osmi.OsmiService.GetCustomerTickets:output_type -> osmi.TicketListResponse
+	54, // 107: osmi.OsmiService.CreateEvent:output_type -> osmi.EventResponse
+	54, // 108: osmi.OsmiService.GetEvent:output_type -> osmi.EventResponse
+	55, // 109: osmi.OsmiService.ListEvents:output_type -> osmi.EventListResponse
+	54, // 110: osmi.OsmiService.UpdateEvent:output_type -> osmi.EventResponse
+	58, // 111: osmi.OsmiService.CreateCategory:output_type -> osmi.CategoryResponse
+	59, // 112: osmi.OsmiService.GetEventCategories:output_type -> osmi.CategoryListResponse
+	25, // 113: osmi.OsmiService.CreateTicketType:output_type -> osmi.TicketTypeResponse
+	25, // 114: osmi.OsmiService.GetTicketType:output_type -> osmi.TicketTypeResponse
+	26, // 115: osmi.OsmiService.ListTicketTypes:output_type -> osmi.TicketTypeListResponse
+	25, // 116: osmi.OsmiService.UpdateTicketType:output_type -> osmi.TicketTypeResponse
+	4,  // 117: osmi.OsmiService.DeleteTicketType:output_type -> osmi.Empty
+	16, // 118: osmi.OsmiService.CreateTicket:output_type -> osmi.TicketResponse
+	16, // 119: osmi.OsmiService.ReserveTicket:output_type -> osmi.TicketResponse
+	16, // 120: osmi.OsmiService.PurchaseTicket:output_type -> osmi.TicketResponse
+	16, // 121: osmi.OsmiService.CheckInTicket:output_type -> osmi.TicketResponse
+	16, // 122: osmi.OsmiService.TransferTicket:output_type -> osmi.TicketResponse
+	17, // 123: osmi.OsmiService.ListTickets:output_type -> osmi.TicketListResponse
+	17, // 124: osmi.OsmiService.GetUserTickets:output_type -> osmi.TicketListResponse
+	16, // 125: osmi.OsmiService.UpdateTicketStatus:output_type -> osmi.TicketResponse
+	16, // 126: osmi.OsmiService.UpdateTicket:output_type -> osmi.TicketResponse
+	16, // 127: osmi.OsmiService.GetTicketDetails:output_type -> osmi.TicketResponse
+	18, // 128: osmi.OsmiService.GetTicketStats:output_type -> osmi.TicketStatsResponse
+	19, // 129: osmi.OsmiService.ExpireReservations:output_type -> osmi.ExpireReservationsResponse
+	87, // [87:130] is the sub-list for method output_type
+	44, // [44:87] is the sub-list for method input_type
+	44, // [44:44] is the sub-list for extension type_name
+	44, // [44:44] is the sub-list for extension extendee
+	0,  // [0:44] is the sub-list for field type_name
 }
 
 func init() { file_osmi_proto_init() }
@@ -6228,13 +6741,14 @@ func file_osmi_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_osmi_proto_rawDesc), len(file_osmi_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      4,
 			NumMessages:   69,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_osmi_proto_goTypes,
 		DependencyIndexes: file_osmi_proto_depIdxs,
+		EnumInfos:         file_osmi_proto_enumTypes,
 		MessageInfos:      file_osmi_proto_msgTypes,
 	}.Build()
 	File_osmi_proto = out.File

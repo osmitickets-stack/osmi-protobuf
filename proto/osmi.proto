@@ -538,12 +538,63 @@ message TicketTypeListResponse {
 }
 
 // ============ CUSTOMERS ============
+enum TaxIdType {
+  TAX_ID_TYPE_UNSPECIFIED = 0;
+  TAX_ID_TYPE_RFC = 1;
+  TAX_ID_TYPE_EIN = 2;
+  TAX_ID_TYPE_VAT = 3;
+  TAX_ID_TYPE_OTHER = 4;
+}
+
+enum CustomerType {
+  CUSTOMER_TYPE_UNSPECIFIED = 0;
+  CUSTOMER_TYPE_GUEST = 1;
+  CUSTOMER_TYPE_REGISTERED = 2;
+  CUSTOMER_TYPE_COMPANY = 3;
+}
+
+enum CustomerSource {
+  CUSTOMER_SOURCE_UNSPECIFIED = 0;
+  CUSTOMER_SOURCE_WEB = 1;
+  CUSTOMER_SOURCE_MOBILE = 2;
+  CUSTOMER_SOURCE_BOX_OFFICE = 3;
+  CUSTOMER_SOURCE_API = 4;
+}
+
+enum CustomerSegment {
+  CUSTOMER_SEGMENT_UNSPECIFIED = 0;
+  CUSTOMER_SEGMENT_NEW = 1;
+  CUSTOMER_SEGMENT_OCCASIONAL = 2;
+  CUSTOMER_SEGMENT_REGULAR = 3;
+  CUSTOMER_SEGMENT_VIP = 4;
+}
+
 message CreateCustomerRequest {
+
+  // Información básica
   string name = 1;
   string email = 2;
   string phone = 3;
-  string customer_type = 4;
-  string source = 5;
+
+  // Tipificación
+  CustomerType customer_type = 4;
+  CustomerSource source = 5;
+
+  // Facturación
+  string company_name = 6;
+  string tax_id = 7;
+  TaxIdType tax_id_type = 8;
+  string tax_name = 9;
+  bool requires_invoice = 10;
+
+  // Dirección
+  string address_line1 = 11;
+  string address_line2 = 12;
+  string city = 13;
+  string state = 14;
+  string postal_code = 15;
+  string country = 16;
+
   reserved 100 to 199;
 }
 
@@ -558,7 +609,7 @@ message UpdateCustomerRequest {
   optional string phone = 4;
   optional string company_name = 5;
   optional bool is_vip = 6;
-  optional string customer_type = 7;
+  optional CustomerType customer_type = 7;
   reserved 100 to 199;
 }
 
@@ -566,7 +617,7 @@ message ListCustomersRequest {
   bool is_active = 1;
   bool is_vip = 2;
   string country = 3;
-  string customer_segment = 4;
+  CustomerSegment customer_segment = 4;
   string search = 5;
   string date_from = 6;
   string date_to = 7;
@@ -590,15 +641,42 @@ message CustomerLookup {
 message CustomerResponse {
   int32 id = 1;
   string public_id = 2;
+
   string name = 3;
   string email = 4;
   string phone = 5;
-  string customer_type = 6;
-  bool is_vip = 7;
-  double total_spent = 8;
-  int32 total_orders = 9;
-  google.protobuf.Timestamp created_at = 10;
-  google.protobuf.Timestamp updated_at = 11;
+
+  CustomerType customer_type = 6;
+  CustomerSource source = 7;
+
+  string company_name = 8;
+
+  string tax_id = 9;
+  TaxIdType tax_id_type = 10;
+  string tax_name = 11;
+  bool requires_invoice = 12;
+
+  string address_line1 = 13;
+  string address_line2 = 14;
+  string city = 15;
+  string state = 16;
+  string postal_code = 17;
+  string country = 18;
+
+  bool is_active = 19;
+  bool is_vip = 20;
+
+  CustomerSegment customer_segment = 21;
+
+  double total_spent = 22;
+  int32 total_orders = 23;
+  int32 total_tickets = 24;
+  double avg_order_value = 25;
+  double lifetime_value = 26;
+
+  google.protobuf.Timestamp created_at = 27;
+  google.protobuf.Timestamp updated_at = 28;
+
   reserved 100 to 199;
 }
 
