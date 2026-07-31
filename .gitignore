@@ -13,10 +13,6 @@ vendor/
 *.DS_Store
 Thumbs.db
 
-# Protobuf generated files
-gen/*.pb.go
-gen/*.pb_grpc.go
-
 # Config / Environment variables
 .env
 .env.local
@@ -34,9 +30,6 @@ volumes/
 .vscode/
 .idea/
 *.code-workspace
-
-# Archivos generados
-gen/
 
 # Dependencias de protobuf (si las quieres ignorar)
 third_party/googleapis/
