@@ -6,6 +6,7 @@ option go_package = "github.com/osmitickets-stack/osmi-protobuf/gen/pb;pb";
 
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 
 service OsmiService {
   // =========================
@@ -613,17 +614,27 @@ message UpdateCustomerRequest {
   reserved 100 to 199;
 }
 
+import "google/protobuf/wrappers.proto";
+
+message CustomerFilter {
+    string search = 1;
+    string email = 2;
+    string phone = 3;
+    string tax_id = 4;
+    string public_id = 5;
+    string company_name = 6;
+    string country = 7;
+    string customer_segment = 8;
+    google.protobuf.BoolValue is_active = 9;   // ← CAMBIADO
+    google.protobuf.BoolValue is_vip = 10;     // ← CAMBIADO
+    string date_from = 11;
+    string date_to = 12;
+}
+
 message ListCustomersRequest {
-  bool is_active = 1;
-  bool is_vip = 2;
-  string country = 3;
-  CustomerSegment customer_segment = 4;
-  string search = 5;
-  string date_from = 6;
-  string date_to = 7;
-  int32 page = 8;
-  int32 page_size = 9;
-  reserved 100 to 199;
+    CustomerFilter filter = 1;
+    int32 page = 2;
+    int32 page_size = 3;
 }
 
 message GetCustomerTicketsRequest {
