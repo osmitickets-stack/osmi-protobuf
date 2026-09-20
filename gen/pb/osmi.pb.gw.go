@@ -89,33 +89,6 @@ func local_request_OsmiService_CreatePayment_0(ctx context.Context, marshaler ru
 	return msg, metadata, err
 }
 
-func request_OsmiService_ProcessOrder_0(ctx context.Context, marshaler runtime.Marshaler, client OsmiServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq ProcessOrderRequest
-		metadata runtime.ServerMetadata
-	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if req.Body != nil {
-		_, _ = io.Copy(io.Discard, req.Body)
-	}
-	msg, err := client.ProcessOrder(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-}
-
-func local_request_OsmiService_ProcessOrder_0(ctx context.Context, marshaler runtime.Marshaler, server OsmiServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq ProcessOrderRequest
-		metadata runtime.ServerMetadata
-	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	msg, err := server.ProcessOrder(ctx, &protoReq)
-	return msg, metadata, err
-}
-
 func request_OsmiService_HandleWebhook_0(ctx context.Context, marshaler runtime.Marshaler, client OsmiServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq WebhookRequest
@@ -1060,33 +1033,6 @@ func local_request_OsmiService_DeleteTicketType_0(ctx context.Context, marshaler
 	return msg, metadata, err
 }
 
-func request_OsmiService_CreateTicket_0(ctx context.Context, marshaler runtime.Marshaler, client OsmiServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq CreateTicketRequest
-		metadata runtime.ServerMetadata
-	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if req.Body != nil {
-		_, _ = io.Copy(io.Discard, req.Body)
-	}
-	msg, err := client.CreateTicket(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-}
-
-func local_request_OsmiService_CreateTicket_0(ctx context.Context, marshaler runtime.Marshaler, server OsmiServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq CreateTicketRequest
-		metadata runtime.ServerMetadata
-	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	msg, err := server.CreateTicket(ctx, &protoReq)
-	return msg, metadata, err
-}
-
 func request_OsmiService_ReserveTicket_0(ctx context.Context, marshaler runtime.Marshaler, client OsmiServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq ReserveTicketRequest
@@ -1111,33 +1057,6 @@ func local_request_OsmiService_ReserveTicket_0(ctx context.Context, marshaler ru
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := server.ReserveTicket(ctx, &protoReq)
-	return msg, metadata, err
-}
-
-func request_OsmiService_PurchaseTicket_0(ctx context.Context, marshaler runtime.Marshaler, client OsmiServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq PurchaseTicketRequest
-		metadata runtime.ServerMetadata
-	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if req.Body != nil {
-		_, _ = io.Copy(io.Discard, req.Body)
-	}
-	msg, err := client.PurchaseTicket(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-}
-
-func local_request_OsmiService_PurchaseTicket_0(ctx context.Context, marshaler runtime.Marshaler, server OsmiServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq PurchaseTicketRequest
-		metadata runtime.ServerMetadata
-	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	msg, err := server.PurchaseTicket(ctx, &protoReq)
 	return msg, metadata, err
 }
 
@@ -1539,26 +1458,6 @@ func RegisterOsmiServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 		forward_OsmiService_CreatePayment_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
-	mux.Handle(http.MethodPost, pattern_OsmiService_ProcessOrder_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		var stream runtime.ServerTransportStream
-		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/osmi.OsmiService/ProcessOrder", runtime.WithHTTPPathPattern("/v1/payments/process-order"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_OsmiService_ProcessOrder_0(annotatedContext, inboundMarshaler, server, req, pathParams)
-		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_OsmiService_ProcessOrder_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 	mux.Handle(http.MethodPost, pattern_OsmiService_HandleWebhook_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -2120,26 +2019,6 @@ func RegisterOsmiServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		}
 		forward_OsmiService_DeleteTicketType_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
-	mux.Handle(http.MethodPost, pattern_OsmiService_CreateTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		var stream runtime.ServerTransportStream
-		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/osmi.OsmiService/CreateTicket", runtime.WithHTTPPathPattern("/v1/tickets"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_OsmiService_CreateTicket_0(annotatedContext, inboundMarshaler, server, req, pathParams)
-		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_OsmiService_CreateTicket_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
 	mux.Handle(http.MethodPost, pattern_OsmiService_ReserveTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -2159,26 +2038,6 @@ func RegisterOsmiServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 		forward_OsmiService_ReserveTicket_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
-	mux.Handle(http.MethodPost, pattern_OsmiService_PurchaseTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		var stream runtime.ServerTransportStream
-		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/osmi.OsmiService/PurchaseTicket", runtime.WithHTTPPathPattern("/v1/tickets/purchase"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_OsmiService_PurchaseTicket_0(annotatedContext, inboundMarshaler, server, req, pathParams)
-		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_OsmiService_PurchaseTicket_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 	mux.Handle(http.MethodPost, pattern_OsmiService_CheckInTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -2433,23 +2292,6 @@ func RegisterOsmiServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 		forward_OsmiService_CreatePayment_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
-	mux.Handle(http.MethodPost, pattern_OsmiService_ProcessOrder_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/osmi.OsmiService/ProcessOrder", runtime.WithHTTPPathPattern("/v1/payments/process-order"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_OsmiService_ProcessOrder_0(annotatedContext, inboundMarshaler, client, req, pathParams)
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_OsmiService_ProcessOrder_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 	mux.Handle(http.MethodPost, pattern_OsmiService_HandleWebhook_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -2927,23 +2769,6 @@ func RegisterOsmiServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		}
 		forward_OsmiService_DeleteTicketType_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
-	mux.Handle(http.MethodPost, pattern_OsmiService_CreateTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/osmi.OsmiService/CreateTicket", runtime.WithHTTPPathPattern("/v1/tickets"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_OsmiService_CreateTicket_0(annotatedContext, inboundMarshaler, client, req, pathParams)
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_OsmiService_CreateTicket_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
 	mux.Handle(http.MethodPost, pattern_OsmiService_ReserveTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -2960,23 +2785,6 @@ func RegisterOsmiServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 		forward_OsmiService_ReserveTicket_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
-	mux.Handle(http.MethodPost, pattern_OsmiService_PurchaseTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/osmi.OsmiService/PurchaseTicket", runtime.WithHTTPPathPattern("/v1/tickets/purchase"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_OsmiService_PurchaseTicket_0(annotatedContext, inboundMarshaler, client, req, pathParams)
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_OsmiService_PurchaseTicket_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 	mux.Handle(http.MethodPost, pattern_OsmiService_CheckInTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -3137,7 +2945,6 @@ func RegisterOsmiServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 var (
 	pattern_OsmiService_CreatePaymentIntent_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "payments", "intent"}, ""))
 	pattern_OsmiService_CreatePayment_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "payments"}, ""))
-	pattern_OsmiService_ProcessOrder_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "payments", "process-order"}, ""))
 	pattern_OsmiService_HandleWebhook_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "webhooks", "stripe"}, ""))
 	pattern_OsmiService_HealthCheck_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "health"}, ""))
 	pattern_OsmiService_CreateOrder_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "orders"}, ""))
@@ -3166,9 +2973,7 @@ var (
 	pattern_OsmiService_ListTicketTypes_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "ticket-types"}, ""))
 	pattern_OsmiService_UpdateTicketType_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "ticket-types", "id"}, ""))
 	pattern_OsmiService_DeleteTicketType_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "ticket-types", "id"}, ""))
-	pattern_OsmiService_CreateTicket_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "tickets"}, ""))
 	pattern_OsmiService_ReserveTicket_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "tickets", "reserve"}, ""))
-	pattern_OsmiService_PurchaseTicket_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "tickets", "purchase"}, ""))
 	pattern_OsmiService_CheckInTicket_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "tickets", "ticket_id", "checkin"}, ""))
 	pattern_OsmiService_TransferTicket_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "tickets", "ticket_id", "transfer"}, ""))
 	pattern_OsmiService_ListTickets_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "tickets"}, ""))
@@ -3183,7 +2988,6 @@ var (
 var (
 	forward_OsmiService_CreatePaymentIntent_0 = runtime.ForwardResponseMessage
 	forward_OsmiService_CreatePayment_0       = runtime.ForwardResponseMessage
-	forward_OsmiService_ProcessOrder_0        = runtime.ForwardResponseMessage
 	forward_OsmiService_HandleWebhook_0       = runtime.ForwardResponseMessage
 	forward_OsmiService_HealthCheck_0         = runtime.ForwardResponseMessage
 	forward_OsmiService_CreateOrder_0         = runtime.ForwardResponseMessage
@@ -3212,9 +3016,7 @@ var (
 	forward_OsmiService_ListTicketTypes_0     = runtime.ForwardResponseMessage
 	forward_OsmiService_UpdateTicketType_0    = runtime.ForwardResponseMessage
 	forward_OsmiService_DeleteTicketType_0    = runtime.ForwardResponseMessage
-	forward_OsmiService_CreateTicket_0        = runtime.ForwardResponseMessage
 	forward_OsmiService_ReserveTicket_0       = runtime.ForwardResponseMessage
-	forward_OsmiService_PurchaseTicket_0      = runtime.ForwardResponseMessage
 	forward_OsmiService_CheckInTicket_0       = runtime.ForwardResponseMessage
 	forward_OsmiService_TransferTicket_0      = runtime.ForwardResponseMessage
 	forward_OsmiService_ListTickets_0         = runtime.ForwardResponseMessage

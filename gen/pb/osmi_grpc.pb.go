@@ -21,7 +21,6 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	OsmiService_CreatePaymentIntent_FullMethodName = "/osmi.OsmiService/CreatePaymentIntent"
 	OsmiService_CreatePayment_FullMethodName       = "/osmi.OsmiService/CreatePayment"
-	OsmiService_ProcessOrder_FullMethodName        = "/osmi.OsmiService/ProcessOrder"
 	OsmiService_HandleWebhook_FullMethodName       = "/osmi.OsmiService/HandleWebhook"
 	OsmiService_HealthCheck_FullMethodName         = "/osmi.OsmiService/HealthCheck"
 	OsmiService_CreateOrder_FullMethodName         = "/osmi.OsmiService/CreateOrder"
@@ -50,9 +49,7 @@ const (
 	OsmiService_ListTicketTypes_FullMethodName     = "/osmi.OsmiService/ListTicketTypes"
 	OsmiService_UpdateTicketType_FullMethodName    = "/osmi.OsmiService/UpdateTicketType"
 	OsmiService_DeleteTicketType_FullMethodName    = "/osmi.OsmiService/DeleteTicketType"
-	OsmiService_CreateTicket_FullMethodName        = "/osmi.OsmiService/CreateTicket"
 	OsmiService_ReserveTicket_FullMethodName       = "/osmi.OsmiService/ReserveTicket"
-	OsmiService_PurchaseTicket_FullMethodName      = "/osmi.OsmiService/PurchaseTicket"
 	OsmiService_CheckInTicket_FullMethodName       = "/osmi.OsmiService/CheckInTicket"
 	OsmiService_TransferTicket_FullMethodName      = "/osmi.OsmiService/TransferTicket"
 	OsmiService_ListTickets_FullMethodName         = "/osmi.OsmiService/ListTickets"
@@ -73,7 +70,6 @@ type OsmiServiceClient interface {
 	// =========================
 	CreatePaymentIntent(ctx context.Context, in *CreatePaymentIntentRequest, opts ...grpc.CallOption) (*PaymentIntentResponse, error)
 	CreatePayment(ctx context.Context, in *CreatePaymentRequest, opts ...grpc.CallOption) (*PaymentProcessingResponse, error)
-	ProcessOrder(ctx context.Context, in *ProcessOrderRequest, opts ...grpc.CallOption) (*Empty, error)
 	HandleWebhook(ctx context.Context, in *WebhookRequest, opts ...grpc.CallOption) (*Empty, error)
 	// =========================
 	// HEALTH
@@ -129,9 +125,7 @@ type OsmiServiceClient interface {
 	// =========================
 	// TICKETS
 	// =========================
-	CreateTicket(ctx context.Context, in *CreateTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
 	ReserveTicket(ctx context.Context, in *ReserveTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
-	PurchaseTicket(ctx context.Context, in *PurchaseTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
 	CheckInTicket(ctx context.Context, in *CheckInTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
 	TransferTicket(ctx context.Context, in *TransferTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
 	ListTickets(ctx context.Context, in *ListTicketsRequest, opts ...grpc.CallOption) (*TicketListResponse, error)
@@ -166,16 +160,6 @@ func (c *osmiServiceClient) CreatePayment(ctx context.Context, in *CreatePayment
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(PaymentProcessingResponse)
 	err := c.cc.Invoke(ctx, OsmiService_CreatePayment_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *osmiServiceClient) ProcessOrder(ctx context.Context, in *ProcessOrderRequest, opts ...grpc.CallOption) (*Empty, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, OsmiService_ProcessOrder_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -462,30 +446,10 @@ func (c *osmiServiceClient) DeleteTicketType(ctx context.Context, in *DeleteTick
 	return out, nil
 }
 
-func (c *osmiServiceClient) CreateTicket(ctx context.Context, in *CreateTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(TicketResponse)
-	err := c.cc.Invoke(ctx, OsmiService_CreateTicket_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *osmiServiceClient) ReserveTicket(ctx context.Context, in *ReserveTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(TicketResponse)
 	err := c.cc.Invoke(ctx, OsmiService_ReserveTicket_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *osmiServiceClient) PurchaseTicket(ctx context.Context, in *PurchaseTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(TicketResponse)
-	err := c.cc.Invoke(ctx, OsmiService_PurchaseTicket_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -591,7 +555,6 @@ type OsmiServiceServer interface {
 	// =========================
 	CreatePaymentIntent(context.Context, *CreatePaymentIntentRequest) (*PaymentIntentResponse, error)
 	CreatePayment(context.Context, *CreatePaymentRequest) (*PaymentProcessingResponse, error)
-	ProcessOrder(context.Context, *ProcessOrderRequest) (*Empty, error)
 	HandleWebhook(context.Context, *WebhookRequest) (*Empty, error)
 	// =========================
 	// HEALTH
@@ -647,9 +610,7 @@ type OsmiServiceServer interface {
 	// =========================
 	// TICKETS
 	// =========================
-	CreateTicket(context.Context, *CreateTicketRequest) (*TicketResponse, error)
 	ReserveTicket(context.Context, *ReserveTicketRequest) (*TicketResponse, error)
-	PurchaseTicket(context.Context, *PurchaseTicketRequest) (*TicketResponse, error)
 	CheckInTicket(context.Context, *CheckInTicketRequest) (*TicketResponse, error)
 	TransferTicket(context.Context, *TransferTicketRequest) (*TicketResponse, error)
 	ListTickets(context.Context, *ListTicketsRequest) (*TicketListResponse, error)
@@ -675,9 +636,6 @@ func (UnimplementedOsmiServiceServer) CreatePaymentIntent(context.Context, *Crea
 }
 func (UnimplementedOsmiServiceServer) CreatePayment(context.Context, *CreatePaymentRequest) (*PaymentProcessingResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreatePayment not implemented")
-}
-func (UnimplementedOsmiServiceServer) ProcessOrder(context.Context, *ProcessOrderRequest) (*Empty, error) {
-	return nil, status.Error(codes.Unimplemented, "method ProcessOrder not implemented")
 }
 func (UnimplementedOsmiServiceServer) HandleWebhook(context.Context, *WebhookRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method HandleWebhook not implemented")
@@ -763,14 +721,8 @@ func (UnimplementedOsmiServiceServer) UpdateTicketType(context.Context, *UpdateT
 func (UnimplementedOsmiServiceServer) DeleteTicketType(context.Context, *DeleteTicketTypeRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteTicketType not implemented")
 }
-func (UnimplementedOsmiServiceServer) CreateTicket(context.Context, *CreateTicketRequest) (*TicketResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method CreateTicket not implemented")
-}
 func (UnimplementedOsmiServiceServer) ReserveTicket(context.Context, *ReserveTicketRequest) (*TicketResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ReserveTicket not implemented")
-}
-func (UnimplementedOsmiServiceServer) PurchaseTicket(context.Context, *PurchaseTicketRequest) (*TicketResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method PurchaseTicket not implemented")
 }
 func (UnimplementedOsmiServiceServer) CheckInTicket(context.Context, *CheckInTicketRequest) (*TicketResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CheckInTicket not implemented")
@@ -852,24 +804,6 @@ func _OsmiService_CreatePayment_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(OsmiServiceServer).CreatePayment(ctx, req.(*CreatePaymentRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OsmiService_ProcessOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ProcessOrderRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OsmiServiceServer).ProcessOrder(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OsmiService_ProcessOrder_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OsmiServiceServer).ProcessOrder(ctx, req.(*ProcessOrderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1378,24 +1312,6 @@ func _OsmiService_DeleteTicketType_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OsmiService_CreateTicket_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateTicketRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OsmiServiceServer).CreateTicket(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OsmiService_CreateTicket_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OsmiServiceServer).CreateTicket(ctx, req.(*CreateTicketRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _OsmiService_ReserveTicket_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReserveTicketRequest)
 	if err := dec(in); err != nil {
@@ -1410,24 +1326,6 @@ func _OsmiService_ReserveTicket_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(OsmiServiceServer).ReserveTicket(ctx, req.(*ReserveTicketRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OsmiService_PurchaseTicket_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PurchaseTicketRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OsmiServiceServer).PurchaseTicket(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OsmiService_PurchaseTicket_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OsmiServiceServer).PurchaseTicket(ctx, req.(*PurchaseTicketRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1610,10 +1508,6 @@ var OsmiService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _OsmiService_CreatePayment_Handler,
 		},
 		{
-			MethodName: "ProcessOrder",
-			Handler:    _OsmiService_ProcessOrder_Handler,
-		},
-		{
 			MethodName: "HandleWebhook",
 			Handler:    _OsmiService_HandleWebhook_Handler,
 		},
@@ -1726,16 +1620,8 @@ var OsmiService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _OsmiService_DeleteTicketType_Handler,
 		},
 		{
-			MethodName: "CreateTicket",
-			Handler:    _OsmiService_CreateTicket_Handler,
-		},
-		{
 			MethodName: "ReserveTicket",
 			Handler:    _OsmiService_ReserveTicket_Handler,
-		},
-		{
-			MethodName: "PurchaseTicket",
-			Handler:    _OsmiService_PurchaseTicket_Handler,
 		},
 		{
 			MethodName: "CheckInTicket",

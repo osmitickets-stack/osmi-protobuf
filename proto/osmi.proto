@@ -25,13 +25,6 @@ service OsmiService {
     };
   }
 
-  rpc ProcessOrder(ProcessOrderRequest) returns (Empty) {
-    option (google.api.http) = {
-      post: "/v1/payments/process-order"
-      body: "*"
-    };
-  }
-
   rpc HandleWebhook(WebhookRequest) returns (Empty) {
     option (google.api.http) = {
       post: "/v1/webhooks/stripe"
@@ -241,23 +234,9 @@ service OsmiService {
   // =========================
   // TICKETS
   // =========================
-  rpc CreateTicket(CreateTicketRequest) returns (TicketResponse) {
-    option (google.api.http) = {
-      post: "/v1/tickets"
-      body: "*"
-    };
-  }
-
   rpc ReserveTicket(ReserveTicketRequest) returns (TicketResponse) {
     option (google.api.http) = {
       post: "/v1/tickets/reserve"
-      body: "*"
-    };
-  }
-
-  rpc PurchaseTicket(PurchaseTicketRequest) returns (TicketResponse) {
-    option (google.api.http) = {
-      post: "/v1/tickets/purchase"
       body: "*"
     };
   }
@@ -334,23 +313,10 @@ message HealthResponse {
 }
 
 // ============ TICKETS ============
-message CreateTicketRequest {
-  string event_id = 1;
-  string user_id = 2;
-  string customer_id = 3;
-  string ticket_type_id = 4;
-  int32 quantity = 5;
-}
-
 message ReserveTicketRequest {
   string ticket_type_id = 1;
   string user_id = 2;
   google.protobuf.Timestamp expires_at = 3;
-}
-
-message PurchaseTicketRequest {
-  string ticket_id = 1;
-  string customer_id = 2;
 }
 
 message CheckInTicketRequest {
@@ -985,10 +951,6 @@ message PaymentIntentResponse {
   string payment_intent_id = 2;
   int64 amount = 3;
   string currency = 4;
-}
-
-message ProcessOrderRequest {
-  string order_id = 1;
 }
 
 message CreatePaymentRequest {
