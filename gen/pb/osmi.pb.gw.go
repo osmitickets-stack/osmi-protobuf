@@ -164,6 +164,59 @@ func local_request_OsmiService_CreateOrder_0(ctx context.Context, marshaler runt
 	return msg, metadata, err
 }
 
+var filter_OsmiService_GetOrderConfirmation_0 = &utilities.DoubleArray{Encoding: map[string]int{"order_id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+
+func request_OsmiService_GetOrderConfirmation_0(ctx context.Context, marshaler runtime.Marshaler, client OsmiServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var (
+		protoReq GetOrderConfirmationRequest
+		metadata runtime.ServerMetadata
+		err      error
+	)
+	if req.Body != nil {
+		_, _ = io.Copy(io.Discard, req.Body)
+	}
+	val, ok := pathParams["order_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "order_id")
+	}
+	protoReq.OrderId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_OsmiService_GetOrderConfirmation_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	msg, err := client.GetOrderConfirmation(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+}
+
+func local_request_OsmiService_GetOrderConfirmation_0(ctx context.Context, marshaler runtime.Marshaler, server OsmiServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var (
+		protoReq GetOrderConfirmationRequest
+		metadata runtime.ServerMetadata
+		err      error
+	)
+	val, ok := pathParams["order_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "order_id")
+	}
+	protoReq.OrderId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_OsmiService_GetOrderConfirmation_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	msg, err := server.GetOrderConfirmation(ctx, &protoReq)
+	return msg, metadata, err
+}
+
 func request_OsmiService_Login_0(ctx context.Context, marshaler runtime.Marshaler, client OsmiServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq LoginRequest
@@ -1519,6 +1572,26 @@ func RegisterOsmiServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		}
 		forward_OsmiService_CreateOrder_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
+	mux.Handle(http.MethodGet, pattern_OsmiService_GetOrderConfirmation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/osmi.OsmiService/GetOrderConfirmation", runtime.WithHTTPPathPattern("/v1/orders/{order_id}/confirmation"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_OsmiService_GetOrderConfirmation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		forward_OsmiService_GetOrderConfirmation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+	})
 	mux.Handle(http.MethodPost, pattern_OsmiService_Login_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -2344,6 +2417,23 @@ func RegisterOsmiServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		}
 		forward_OsmiService_CreateOrder_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
+	mux.Handle(http.MethodGet, pattern_OsmiService_GetOrderConfirmation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/osmi.OsmiService/GetOrderConfirmation", runtime.WithHTTPPathPattern("/v1/orders/{order_id}/confirmation"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_OsmiService_GetOrderConfirmation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		forward_OsmiService_GetOrderConfirmation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+	})
 	mux.Handle(http.MethodPost, pattern_OsmiService_Login_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -2943,87 +3033,89 @@ func RegisterOsmiServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_OsmiService_CreatePaymentIntent_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "payments", "intent"}, ""))
-	pattern_OsmiService_CreatePayment_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "payments"}, ""))
-	pattern_OsmiService_HandleWebhook_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "webhooks", "stripe"}, ""))
-	pattern_OsmiService_HealthCheck_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "health"}, ""))
-	pattern_OsmiService_CreateOrder_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "orders"}, ""))
-	pattern_OsmiService_Login_0               = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "auth", "login"}, ""))
-	pattern_OsmiService_Logout_0              = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "auth", "logout"}, ""))
-	pattern_OsmiService_RefreshToken_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "auth", "refresh"}, ""))
-	pattern_OsmiService_CreateUser_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "users"}, ""))
-	pattern_OsmiService_GetUser_0             = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "users", "user_id"}, ""))
-	pattern_OsmiService_UpdateUser_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "users", "user_id"}, ""))
-	pattern_OsmiService_DeleteUser_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "users", "user_id"}, ""))
-	pattern_OsmiService_ListUsers_0           = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "users"}, ""))
-	pattern_OsmiService_CreateCustomer_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "customers"}, ""))
-	pattern_OsmiService_GetCustomer_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "customers", "public_id"}, ""))
-	pattern_OsmiService_UpdateCustomer_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "customers", "public_id"}, ""))
-	pattern_OsmiService_ListCustomers_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "customers"}, ""))
-	pattern_OsmiService_GetCustomerStats_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "customers", "stats"}, ""))
-	pattern_OsmiService_GetCustomerTickets_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "customers", "public_id", "tickets"}, ""))
-	pattern_OsmiService_CreateEvent_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "events"}, ""))
-	pattern_OsmiService_GetEvent_0            = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "events", "public_id"}, ""))
-	pattern_OsmiService_ListEvents_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "events"}, ""))
-	pattern_OsmiService_UpdateEvent_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "events", "public_id"}, ""))
-	pattern_OsmiService_CreateCategory_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "categories"}, ""))
-	pattern_OsmiService_GetEventCategories_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "events", "public_id", "categories"}, ""))
-	pattern_OsmiService_CreateTicketType_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "ticket-types"}, ""))
-	pattern_OsmiService_GetTicketType_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "ticket-types", "id"}, ""))
-	pattern_OsmiService_ListTicketTypes_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "ticket-types"}, ""))
-	pattern_OsmiService_UpdateTicketType_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "ticket-types", "id"}, ""))
-	pattern_OsmiService_DeleteTicketType_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "ticket-types", "id"}, ""))
-	pattern_OsmiService_ReserveTicket_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "tickets", "reserve"}, ""))
-	pattern_OsmiService_CheckInTicket_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "tickets", "ticket_id", "checkin"}, ""))
-	pattern_OsmiService_TransferTicket_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "tickets", "ticket_id", "transfer"}, ""))
-	pattern_OsmiService_ListTickets_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "tickets"}, ""))
-	pattern_OsmiService_GetUserTickets_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "users", "user_id", "tickets"}, ""))
-	pattern_OsmiService_UpdateTicketStatus_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "tickets", "ticket_id", "status"}, ""))
-	pattern_OsmiService_UpdateTicket_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "tickets", "ticket_id"}, ""))
-	pattern_OsmiService_GetTicketDetails_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "tickets", "id"}, ""))
-	pattern_OsmiService_GetTicketStats_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "tickets", "stats", "event_id"}, ""))
-	pattern_OsmiService_ExpireReservations_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "tickets", "expire-reservations"}, ""))
+	pattern_OsmiService_CreatePaymentIntent_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "payments", "intent"}, ""))
+	pattern_OsmiService_CreatePayment_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "payments"}, ""))
+	pattern_OsmiService_HandleWebhook_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "webhooks", "stripe"}, ""))
+	pattern_OsmiService_HealthCheck_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "health"}, ""))
+	pattern_OsmiService_CreateOrder_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "orders"}, ""))
+	pattern_OsmiService_GetOrderConfirmation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "orders", "order_id", "confirmation"}, ""))
+	pattern_OsmiService_Login_0                = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "auth", "login"}, ""))
+	pattern_OsmiService_Logout_0               = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "auth", "logout"}, ""))
+	pattern_OsmiService_RefreshToken_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "auth", "refresh"}, ""))
+	pattern_OsmiService_CreateUser_0           = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "users"}, ""))
+	pattern_OsmiService_GetUser_0              = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "users", "user_id"}, ""))
+	pattern_OsmiService_UpdateUser_0           = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "users", "user_id"}, ""))
+	pattern_OsmiService_DeleteUser_0           = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "users", "user_id"}, ""))
+	pattern_OsmiService_ListUsers_0            = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "users"}, ""))
+	pattern_OsmiService_CreateCustomer_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "customers"}, ""))
+	pattern_OsmiService_GetCustomer_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "customers", "public_id"}, ""))
+	pattern_OsmiService_UpdateCustomer_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "customers", "public_id"}, ""))
+	pattern_OsmiService_ListCustomers_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "customers"}, ""))
+	pattern_OsmiService_GetCustomerStats_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "customers", "stats"}, ""))
+	pattern_OsmiService_GetCustomerTickets_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "customers", "public_id", "tickets"}, ""))
+	pattern_OsmiService_CreateEvent_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "events"}, ""))
+	pattern_OsmiService_GetEvent_0             = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "events", "public_id"}, ""))
+	pattern_OsmiService_ListEvents_0           = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "events"}, ""))
+	pattern_OsmiService_UpdateEvent_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "events", "public_id"}, ""))
+	pattern_OsmiService_CreateCategory_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "categories"}, ""))
+	pattern_OsmiService_GetEventCategories_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "events", "public_id", "categories"}, ""))
+	pattern_OsmiService_CreateTicketType_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "ticket-types"}, ""))
+	pattern_OsmiService_GetTicketType_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "ticket-types", "id"}, ""))
+	pattern_OsmiService_ListTicketTypes_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "ticket-types"}, ""))
+	pattern_OsmiService_UpdateTicketType_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "ticket-types", "id"}, ""))
+	pattern_OsmiService_DeleteTicketType_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "ticket-types", "id"}, ""))
+	pattern_OsmiService_ReserveTicket_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "tickets", "reserve"}, ""))
+	pattern_OsmiService_CheckInTicket_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "tickets", "ticket_id", "checkin"}, ""))
+	pattern_OsmiService_TransferTicket_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "tickets", "ticket_id", "transfer"}, ""))
+	pattern_OsmiService_ListTickets_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "tickets"}, ""))
+	pattern_OsmiService_GetUserTickets_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "users", "user_id", "tickets"}, ""))
+	pattern_OsmiService_UpdateTicketStatus_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "tickets", "ticket_id", "status"}, ""))
+	pattern_OsmiService_UpdateTicket_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "tickets", "ticket_id"}, ""))
+	pattern_OsmiService_GetTicketDetails_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "tickets", "id"}, ""))
+	pattern_OsmiService_GetTicketStats_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "tickets", "stats", "event_id"}, ""))
+	pattern_OsmiService_ExpireReservations_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "tickets", "expire-reservations"}, ""))
 )
 
 var (
-	forward_OsmiService_CreatePaymentIntent_0 = runtime.ForwardResponseMessage
-	forward_OsmiService_CreatePayment_0       = runtime.ForwardResponseMessage
-	forward_OsmiService_HandleWebhook_0       = runtime.ForwardResponseMessage
-	forward_OsmiService_HealthCheck_0         = runtime.ForwardResponseMessage
-	forward_OsmiService_CreateOrder_0         = runtime.ForwardResponseMessage
-	forward_OsmiService_Login_0               = runtime.ForwardResponseMessage
-	forward_OsmiService_Logout_0              = runtime.ForwardResponseMessage
-	forward_OsmiService_RefreshToken_0        = runtime.ForwardResponseMessage
-	forward_OsmiService_CreateUser_0          = runtime.ForwardResponseMessage
-	forward_OsmiService_GetUser_0             = runtime.ForwardResponseMessage
-	forward_OsmiService_UpdateUser_0          = runtime.ForwardResponseMessage
-	forward_OsmiService_DeleteUser_0          = runtime.ForwardResponseMessage
-	forward_OsmiService_ListUsers_0           = runtime.ForwardResponseMessage
-	forward_OsmiService_CreateCustomer_0      = runtime.ForwardResponseMessage
-	forward_OsmiService_GetCustomer_0         = runtime.ForwardResponseMessage
-	forward_OsmiService_UpdateCustomer_0      = runtime.ForwardResponseMessage
-	forward_OsmiService_ListCustomers_0       = runtime.ForwardResponseMessage
-	forward_OsmiService_GetCustomerStats_0    = runtime.ForwardResponseMessage
-	forward_OsmiService_GetCustomerTickets_0  = runtime.ForwardResponseMessage
-	forward_OsmiService_CreateEvent_0         = runtime.ForwardResponseMessage
-	forward_OsmiService_GetEvent_0            = runtime.ForwardResponseMessage
-	forward_OsmiService_ListEvents_0          = runtime.ForwardResponseMessage
-	forward_OsmiService_UpdateEvent_0         = runtime.ForwardResponseMessage
-	forward_OsmiService_CreateCategory_0      = runtime.ForwardResponseMessage
-	forward_OsmiService_GetEventCategories_0  = runtime.ForwardResponseMessage
-	forward_OsmiService_CreateTicketType_0    = runtime.ForwardResponseMessage
-	forward_OsmiService_GetTicketType_0       = runtime.ForwardResponseMessage
-	forward_OsmiService_ListTicketTypes_0     = runtime.ForwardResponseMessage
-	forward_OsmiService_UpdateTicketType_0    = runtime.ForwardResponseMessage
-	forward_OsmiService_DeleteTicketType_0    = runtime.ForwardResponseMessage
-	forward_OsmiService_ReserveTicket_0       = runtime.ForwardResponseMessage
-	forward_OsmiService_CheckInTicket_0       = runtime.ForwardResponseMessage
-	forward_OsmiService_TransferTicket_0      = runtime.ForwardResponseMessage
-	forward_OsmiService_ListTickets_0         = runtime.ForwardResponseMessage
-	forward_OsmiService_GetUserTickets_0      = runtime.ForwardResponseMessage
-	forward_OsmiService_UpdateTicketStatus_0  = runtime.ForwardResponseMessage
-	forward_OsmiService_UpdateTicket_0        = runtime.ForwardResponseMessage
-	forward_OsmiService_GetTicketDetails_0    = runtime.ForwardResponseMessage
-	forward_OsmiService_GetTicketStats_0      = runtime.ForwardResponseMessage
-	forward_OsmiService_ExpireReservations_0  = runtime.ForwardResponseMessage
+	forward_OsmiService_CreatePaymentIntent_0  = runtime.ForwardResponseMessage
+	forward_OsmiService_CreatePayment_0        = runtime.ForwardResponseMessage
+	forward_OsmiService_HandleWebhook_0        = runtime.ForwardResponseMessage
+	forward_OsmiService_HealthCheck_0          = runtime.ForwardResponseMessage
+	forward_OsmiService_CreateOrder_0          = runtime.ForwardResponseMessage
+	forward_OsmiService_GetOrderConfirmation_0 = runtime.ForwardResponseMessage
+	forward_OsmiService_Login_0                = runtime.ForwardResponseMessage
+	forward_OsmiService_Logout_0               = runtime.ForwardResponseMessage
+	forward_OsmiService_RefreshToken_0         = runtime.ForwardResponseMessage
+	forward_OsmiService_CreateUser_0           = runtime.ForwardResponseMessage
+	forward_OsmiService_GetUser_0              = runtime.ForwardResponseMessage
+	forward_OsmiService_UpdateUser_0           = runtime.ForwardResponseMessage
+	forward_OsmiService_DeleteUser_0           = runtime.ForwardResponseMessage
+	forward_OsmiService_ListUsers_0            = runtime.ForwardResponseMessage
+	forward_OsmiService_CreateCustomer_0       = runtime.ForwardResponseMessage
+	forward_OsmiService_GetCustomer_0          = runtime.ForwardResponseMessage
+	forward_OsmiService_UpdateCustomer_0       = runtime.ForwardResponseMessage
+	forward_OsmiService_ListCustomers_0        = runtime.ForwardResponseMessage
+	forward_OsmiService_GetCustomerStats_0     = runtime.ForwardResponseMessage
+	forward_OsmiService_GetCustomerTickets_0   = runtime.ForwardResponseMessage
+	forward_OsmiService_CreateEvent_0          = runtime.ForwardResponseMessage
+	forward_OsmiService_GetEvent_0             = runtime.ForwardResponseMessage
+	forward_OsmiService_ListEvents_0           = runtime.ForwardResponseMessage
+	forward_OsmiService_UpdateEvent_0          = runtime.ForwardResponseMessage
+	forward_OsmiService_CreateCategory_0       = runtime.ForwardResponseMessage
+	forward_OsmiService_GetEventCategories_0   = runtime.ForwardResponseMessage
+	forward_OsmiService_CreateTicketType_0     = runtime.ForwardResponseMessage
+	forward_OsmiService_GetTicketType_0        = runtime.ForwardResponseMessage
+	forward_OsmiService_ListTicketTypes_0      = runtime.ForwardResponseMessage
+	forward_OsmiService_UpdateTicketType_0     = runtime.ForwardResponseMessage
+	forward_OsmiService_DeleteTicketType_0     = runtime.ForwardResponseMessage
+	forward_OsmiService_ReserveTicket_0        = runtime.ForwardResponseMessage
+	forward_OsmiService_CheckInTicket_0        = runtime.ForwardResponseMessage
+	forward_OsmiService_TransferTicket_0       = runtime.ForwardResponseMessage
+	forward_OsmiService_ListTickets_0          = runtime.ForwardResponseMessage
+	forward_OsmiService_GetUserTickets_0       = runtime.ForwardResponseMessage
+	forward_OsmiService_UpdateTicketStatus_0   = runtime.ForwardResponseMessage
+	forward_OsmiService_UpdateTicket_0         = runtime.ForwardResponseMessage
+	forward_OsmiService_GetTicketDetails_0     = runtime.ForwardResponseMessage
+	forward_OsmiService_GetTicketStats_0       = runtime.ForwardResponseMessage
+	forward_OsmiService_ExpireReservations_0   = runtime.ForwardResponseMessage
 )

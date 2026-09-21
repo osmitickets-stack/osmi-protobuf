@@ -51,6 +51,12 @@ service OsmiService {
     };
   }
 
+  rpc GetOrderConfirmation(GetOrderConfirmationRequest) returns (OrderConfirmationResponse) {
+  option (google.api.http) = {
+    get: "/v1/orders/{order_id}/confirmation"
+  };
+}
+
   // =========================
   // AUTH
   // =========================
@@ -938,6 +944,31 @@ message OrderResponse {
   string currency = 5;
   repeated TicketResponse tickets = 6;
   google.protobuf.Timestamp created_at = 7;
+}
+
+message GetOrderConfirmationRequest {
+  string order_id = 1;
+  string payment_intent_id = 2;
+}
+
+message OrderConfirmationItem {
+  string ticket_type_id = 1;
+  string ticket_type_name = 2;
+  int32 quantity = 3;
+  double unit_price = 4;
+  double total_price = 5;
+  string event_name = 6;
+}
+
+message OrderConfirmationResponse {
+  string order_id = 1;
+  string order_status = 2;
+  string payment_status = 3;
+  string customer_email = 4;
+  string customer_name = 5;
+  double total_amount = 6;
+  string currency = 7;
+  repeated OrderConfirmationItem items = 8;
 }
 
 // ============ PAYMENTS ============
