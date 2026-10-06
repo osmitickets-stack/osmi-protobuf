@@ -347,7 +347,166 @@ func (x *HealthResponse) GetTimestamp() *timestamppb.Timestamp {
 	return nil
 }
 
-// ============ TICKETS ============
+type ValidateTicketCredentialRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Credential    string                 `protobuf:"bytes,1,opt,name=credential,proto3" json:"credential,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ValidateTicketCredentialRequest) Reset() {
+	*x = ValidateTicketCredentialRequest{}
+	mi := &file_osmi_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ValidateTicketCredentialRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ValidateTicketCredentialRequest) ProtoMessage() {}
+
+func (x *ValidateTicketCredentialRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_osmi_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ValidateTicketCredentialRequest.ProtoReflect.Descriptor instead.
+func (*ValidateTicketCredentialRequest) Descriptor() ([]byte, []int) {
+	return file_osmi_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ValidateTicketCredentialRequest) GetCredential() string {
+	if x != nil {
+		return x.Credential
+	}
+	return ""
+}
+
+type ValidateTicketCredentialResponse struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Authentic       bool                   `protobuf:"varint,1,opt,name=authentic,proto3" json:"authentic,omitempty"`
+	CanCheckIn      bool                   `protobuf:"varint,2,opt,name=can_check_in,json=canCheckIn,proto3" json:"can_check_in,omitempty"`
+	Result          string                 `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
+	TicketId        string                 `protobuf:"bytes,4,opt,name=ticket_id,json=ticketId,proto3" json:"ticket_id,omitempty"`
+	TicketCode      string                 `protobuf:"bytes,5,opt,name=ticket_code,json=ticketCode,proto3" json:"ticket_code,omitempty"`
+	EventId         int64                  `protobuf:"varint,6,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
+	TicketTypeId    int64                  `protobuf:"varint,7,opt,name=ticket_type_id,json=ticketTypeId,proto3" json:"ticket_type_id,omitempty"`
+	Status          string                 `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
+	CheckedInAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=checked_in_at,json=checkedInAt,proto3" json:"checked_in_at,omitempty"`
+	LastValidatedAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=last_validated_at,json=lastValidatedAt,proto3" json:"last_validated_at,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *ValidateTicketCredentialResponse) Reset() {
+	*x = ValidateTicketCredentialResponse{}
+	mi := &file_osmi_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ValidateTicketCredentialResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ValidateTicketCredentialResponse) ProtoMessage() {}
+
+func (x *ValidateTicketCredentialResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_osmi_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ValidateTicketCredentialResponse.ProtoReflect.Descriptor instead.
+func (*ValidateTicketCredentialResponse) Descriptor() ([]byte, []int) {
+	return file_osmi_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ValidateTicketCredentialResponse) GetAuthentic() bool {
+	if x != nil {
+		return x.Authentic
+	}
+	return false
+}
+
+func (x *ValidateTicketCredentialResponse) GetCanCheckIn() bool {
+	if x != nil {
+		return x.CanCheckIn
+	}
+	return false
+}
+
+func (x *ValidateTicketCredentialResponse) GetResult() string {
+	if x != nil {
+		return x.Result
+	}
+	return ""
+}
+
+func (x *ValidateTicketCredentialResponse) GetTicketId() string {
+	if x != nil {
+		return x.TicketId
+	}
+	return ""
+}
+
+func (x *ValidateTicketCredentialResponse) GetTicketCode() string {
+	if x != nil {
+		return x.TicketCode
+	}
+	return ""
+}
+
+func (x *ValidateTicketCredentialResponse) GetEventId() int64 {
+	if x != nil {
+		return x.EventId
+	}
+	return 0
+}
+
+func (x *ValidateTicketCredentialResponse) GetTicketTypeId() int64 {
+	if x != nil {
+		return x.TicketTypeId
+	}
+	return 0
+}
+
+func (x *ValidateTicketCredentialResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *ValidateTicketCredentialResponse) GetCheckedInAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CheckedInAt
+	}
+	return nil
+}
+
+func (x *ValidateTicketCredentialResponse) GetLastValidatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LastValidatedAt
+	}
+	return nil
+}
+
 type ReserveTicketRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TicketTypeId  string                 `protobuf:"bytes,1,opt,name=ticket_type_id,json=ticketTypeId,proto3" json:"ticket_type_id,omitempty"`
@@ -359,7 +518,7 @@ type ReserveTicketRequest struct {
 
 func (x *ReserveTicketRequest) Reset() {
 	*x = ReserveTicketRequest{}
-	mi := &file_osmi_proto_msgTypes[2]
+	mi := &file_osmi_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -371,7 +530,7 @@ func (x *ReserveTicketRequest) String() string {
 func (*ReserveTicketRequest) ProtoMessage() {}
 
 func (x *ReserveTicketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[2]
+	mi := &file_osmi_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -384,7 +543,7 @@ func (x *ReserveTicketRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReserveTicketRequest.ProtoReflect.Descriptor instead.
 func (*ReserveTicketRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{2}
+	return file_osmi_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ReserveTicketRequest) GetTicketTypeId() string {
@@ -420,7 +579,7 @@ type CheckInTicketRequest struct {
 
 func (x *CheckInTicketRequest) Reset() {
 	*x = CheckInTicketRequest{}
-	mi := &file_osmi_proto_msgTypes[3]
+	mi := &file_osmi_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -432,7 +591,7 @@ func (x *CheckInTicketRequest) String() string {
 func (*CheckInTicketRequest) ProtoMessage() {}
 
 func (x *CheckInTicketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[3]
+	mi := &file_osmi_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -445,7 +604,7 @@ func (x *CheckInTicketRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckInTicketRequest.ProtoReflect.Descriptor instead.
 func (*CheckInTicketRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{3}
+	return file_osmi_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CheckInTicketRequest) GetTicketId() string {
@@ -488,7 +647,7 @@ type TransferTicketRequest struct {
 
 func (x *TransferTicketRequest) Reset() {
 	*x = TransferTicketRequest{}
-	mi := &file_osmi_proto_msgTypes[4]
+	mi := &file_osmi_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -500,7 +659,7 @@ func (x *TransferTicketRequest) String() string {
 func (*TransferTicketRequest) ProtoMessage() {}
 
 func (x *TransferTicketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[4]
+	mi := &file_osmi_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -513,7 +672,7 @@ func (x *TransferTicketRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransferTicketRequest.ProtoReflect.Descriptor instead.
 func (*TransferTicketRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{4}
+	return file_osmi_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *TransferTicketRequest) GetTicketId() string {
@@ -559,7 +718,7 @@ type ListTicketsRequest struct {
 
 func (x *ListTicketsRequest) Reset() {
 	*x = ListTicketsRequest{}
-	mi := &file_osmi_proto_msgTypes[5]
+	mi := &file_osmi_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -571,7 +730,7 @@ func (x *ListTicketsRequest) String() string {
 func (*ListTicketsRequest) ProtoMessage() {}
 
 func (x *ListTicketsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[5]
+	mi := &file_osmi_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -584,7 +743,7 @@ func (x *ListTicketsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTicketsRequest.ProtoReflect.Descriptor instead.
 func (*ListTicketsRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{5}
+	return file_osmi_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListTicketsRequest) GetEventId() string {
@@ -649,7 +808,7 @@ type UpdateTicketRequest struct {
 
 func (x *UpdateTicketRequest) Reset() {
 	*x = UpdateTicketRequest{}
-	mi := &file_osmi_proto_msgTypes[6]
+	mi := &file_osmi_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -661,7 +820,7 @@ func (x *UpdateTicketRequest) String() string {
 func (*UpdateTicketRequest) ProtoMessage() {}
 
 func (x *UpdateTicketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[6]
+	mi := &file_osmi_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +833,7 @@ func (x *UpdateTicketRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTicketRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTicketRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{6}
+	return file_osmi_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateTicketRequest) GetTicketId() string {
@@ -723,7 +882,7 @@ type UpdateTicketStatusRequest struct {
 
 func (x *UpdateTicketStatusRequest) Reset() {
 	*x = UpdateTicketStatusRequest{}
-	mi := &file_osmi_proto_msgTypes[7]
+	mi := &file_osmi_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -735,7 +894,7 @@ func (x *UpdateTicketStatusRequest) String() string {
 func (*UpdateTicketStatusRequest) ProtoMessage() {}
 
 func (x *UpdateTicketStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[7]
+	mi := &file_osmi_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -748,7 +907,7 @@ func (x *UpdateTicketStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTicketStatusRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTicketStatusRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{7}
+	return file_osmi_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UpdateTicketStatusRequest) GetTicketId() string {
@@ -781,7 +940,7 @@ type GetTicketRequest struct {
 
 func (x *GetTicketRequest) Reset() {
 	*x = GetTicketRequest{}
-	mi := &file_osmi_proto_msgTypes[8]
+	mi := &file_osmi_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -793,7 +952,7 @@ func (x *GetTicketRequest) String() string {
 func (*GetTicketRequest) ProtoMessage() {}
 
 func (x *GetTicketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[8]
+	mi := &file_osmi_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -806,7 +965,7 @@ func (x *GetTicketRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTicketRequest.ProtoReflect.Descriptor instead.
 func (*GetTicketRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{8}
+	return file_osmi_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetTicketRequest) GetId() string {
@@ -825,7 +984,7 @@ type GetTicketStatsRequest struct {
 
 func (x *GetTicketStatsRequest) Reset() {
 	*x = GetTicketStatsRequest{}
-	mi := &file_osmi_proto_msgTypes[9]
+	mi := &file_osmi_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -837,7 +996,7 @@ func (x *GetTicketStatsRequest) String() string {
 func (*GetTicketStatsRequest) ProtoMessage() {}
 
 func (x *GetTicketStatsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[9]
+	mi := &file_osmi_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -850,7 +1009,7 @@ func (x *GetTicketStatsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTicketStatsRequest.ProtoReflect.Descriptor instead.
 func (*GetTicketStatsRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{9}
+	return file_osmi_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetTicketStatsRequest) GetEventId() string {
@@ -883,7 +1042,7 @@ type TicketResponse struct {
 
 func (x *TicketResponse) Reset() {
 	*x = TicketResponse{}
-	mi := &file_osmi_proto_msgTypes[10]
+	mi := &file_osmi_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -895,7 +1054,7 @@ func (x *TicketResponse) String() string {
 func (*TicketResponse) ProtoMessage() {}
 
 func (x *TicketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[10]
+	mi := &file_osmi_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -908,7 +1067,7 @@ func (x *TicketResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TicketResponse.ProtoReflect.Descriptor instead.
 func (*TicketResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{10}
+	return file_osmi_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *TicketResponse) GetTicketId() string {
@@ -1029,7 +1188,7 @@ type TicketListResponse struct {
 
 func (x *TicketListResponse) Reset() {
 	*x = TicketListResponse{}
-	mi := &file_osmi_proto_msgTypes[11]
+	mi := &file_osmi_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1041,7 +1200,7 @@ func (x *TicketListResponse) String() string {
 func (*TicketListResponse) ProtoMessage() {}
 
 func (x *TicketListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[11]
+	mi := &file_osmi_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1054,7 +1213,7 @@ func (x *TicketListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TicketListResponse.ProtoReflect.Descriptor instead.
 func (*TicketListResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{11}
+	return file_osmi_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *TicketListResponse) GetTickets() []*TicketResponse {
@@ -1110,7 +1269,7 @@ type TicketStatsResponse struct {
 
 func (x *TicketStatsResponse) Reset() {
 	*x = TicketStatsResponse{}
-	mi := &file_osmi_proto_msgTypes[12]
+	mi := &file_osmi_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1122,7 +1281,7 @@ func (x *TicketStatsResponse) String() string {
 func (*TicketStatsResponse) ProtoMessage() {}
 
 func (x *TicketStatsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[12]
+	mi := &file_osmi_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1135,7 +1294,7 @@ func (x *TicketStatsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TicketStatsResponse.ProtoReflect.Descriptor instead.
 func (*TicketStatsResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{12}
+	return file_osmi_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *TicketStatsResponse) GetTotalTickets() int64 {
@@ -1218,7 +1377,7 @@ type ExpireReservationsResponse struct {
 
 func (x *ExpireReservationsResponse) Reset() {
 	*x = ExpireReservationsResponse{}
-	mi := &file_osmi_proto_msgTypes[13]
+	mi := &file_osmi_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1230,7 +1389,7 @@ func (x *ExpireReservationsResponse) String() string {
 func (*ExpireReservationsResponse) ProtoMessage() {}
 
 func (x *ExpireReservationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[13]
+	mi := &file_osmi_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1243,7 +1402,7 @@ func (x *ExpireReservationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExpireReservationsResponse.ProtoReflect.Descriptor instead.
 func (*ExpireReservationsResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{13}
+	return file_osmi_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ExpireReservationsResponse) GetExpiredCount() int32 {
@@ -1283,7 +1442,7 @@ type CreateTicketTypeRequest struct {
 
 func (x *CreateTicketTypeRequest) Reset() {
 	*x = CreateTicketTypeRequest{}
-	mi := &file_osmi_proto_msgTypes[14]
+	mi := &file_osmi_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1295,7 +1454,7 @@ func (x *CreateTicketTypeRequest) String() string {
 func (*CreateTicketTypeRequest) ProtoMessage() {}
 
 func (x *CreateTicketTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[14]
+	mi := &file_osmi_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1308,7 +1467,7 @@ func (x *CreateTicketTypeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTicketTypeRequest.ProtoReflect.Descriptor instead.
 func (*CreateTicketTypeRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{14}
+	return file_osmi_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *CreateTicketTypeRequest) GetEventId() string {
@@ -1467,7 +1626,7 @@ type GetTicketTypeRequest struct {
 
 func (x *GetTicketTypeRequest) Reset() {
 	*x = GetTicketTypeRequest{}
-	mi := &file_osmi_proto_msgTypes[15]
+	mi := &file_osmi_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1479,7 +1638,7 @@ func (x *GetTicketTypeRequest) String() string {
 func (*GetTicketTypeRequest) ProtoMessage() {}
 
 func (x *GetTicketTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[15]
+	mi := &file_osmi_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1492,7 +1651,7 @@ func (x *GetTicketTypeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTicketTypeRequest.ProtoReflect.Descriptor instead.
 func (*GetTicketTypeRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{15}
+	return file_osmi_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetTicketTypeRequest) GetId() string {
@@ -1514,7 +1673,7 @@ type ListTicketTypesRequest struct {
 
 func (x *ListTicketTypesRequest) Reset() {
 	*x = ListTicketTypesRequest{}
-	mi := &file_osmi_proto_msgTypes[16]
+	mi := &file_osmi_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1526,7 +1685,7 @@ func (x *ListTicketTypesRequest) String() string {
 func (*ListTicketTypesRequest) ProtoMessage() {}
 
 func (x *ListTicketTypesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[16]
+	mi := &file_osmi_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1539,7 +1698,7 @@ func (x *ListTicketTypesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTicketTypesRequest.ProtoReflect.Descriptor instead.
 func (*ListTicketTypesRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{16}
+	return file_osmi_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ListTicketTypesRequest) GetEventId() string {
@@ -1589,7 +1748,7 @@ type UpdateTicketTypeRequest struct {
 
 func (x *UpdateTicketTypeRequest) Reset() {
 	*x = UpdateTicketTypeRequest{}
-	mi := &file_osmi_proto_msgTypes[17]
+	mi := &file_osmi_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1601,7 +1760,7 @@ func (x *UpdateTicketTypeRequest) String() string {
 func (*UpdateTicketTypeRequest) ProtoMessage() {}
 
 func (x *UpdateTicketTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[17]
+	mi := &file_osmi_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1614,7 +1773,7 @@ func (x *UpdateTicketTypeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTicketTypeRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTicketTypeRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{17}
+	return file_osmi_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *UpdateTicketTypeRequest) GetId() string {
@@ -1703,7 +1862,7 @@ type DeleteTicketTypeRequest struct {
 
 func (x *DeleteTicketTypeRequest) Reset() {
 	*x = DeleteTicketTypeRequest{}
-	mi := &file_osmi_proto_msgTypes[18]
+	mi := &file_osmi_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1715,7 +1874,7 @@ func (x *DeleteTicketTypeRequest) String() string {
 func (*DeleteTicketTypeRequest) ProtoMessage() {}
 
 func (x *DeleteTicketTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[18]
+	mi := &file_osmi_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1728,7 +1887,7 @@ func (x *DeleteTicketTypeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTicketTypeRequest.ProtoReflect.Descriptor instead.
 func (*DeleteTicketTypeRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{18}
+	return file_osmi_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *DeleteTicketTypeRequest) GetId() string {
@@ -1767,7 +1926,7 @@ type TicketTypeResponse struct {
 
 func (x *TicketTypeResponse) Reset() {
 	*x = TicketTypeResponse{}
-	mi := &file_osmi_proto_msgTypes[19]
+	mi := &file_osmi_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1779,7 +1938,7 @@ func (x *TicketTypeResponse) String() string {
 func (*TicketTypeResponse) ProtoMessage() {}
 
 func (x *TicketTypeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[19]
+	mi := &file_osmi_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1792,7 +1951,7 @@ func (x *TicketTypeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TicketTypeResponse.ProtoReflect.Descriptor instead.
 func (*TicketTypeResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{19}
+	return file_osmi_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *TicketTypeResponse) GetId() string {
@@ -1955,7 +2114,7 @@ type TicketTypeListResponse struct {
 
 func (x *TicketTypeListResponse) Reset() {
 	*x = TicketTypeListResponse{}
-	mi := &file_osmi_proto_msgTypes[20]
+	mi := &file_osmi_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1967,7 +2126,7 @@ func (x *TicketTypeListResponse) String() string {
 func (*TicketTypeListResponse) ProtoMessage() {}
 
 func (x *TicketTypeListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[20]
+	mi := &file_osmi_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1980,7 +2139,7 @@ func (x *TicketTypeListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TicketTypeListResponse.ProtoReflect.Descriptor instead.
 func (*TicketTypeListResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{20}
+	return file_osmi_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *TicketTypeListResponse) GetTicketTypes() []*TicketTypeResponse {
@@ -2046,7 +2205,7 @@ type CreateCustomerRequest struct {
 
 func (x *CreateCustomerRequest) Reset() {
 	*x = CreateCustomerRequest{}
-	mi := &file_osmi_proto_msgTypes[21]
+	mi := &file_osmi_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2058,7 +2217,7 @@ func (x *CreateCustomerRequest) String() string {
 func (*CreateCustomerRequest) ProtoMessage() {}
 
 func (x *CreateCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[21]
+	mi := &file_osmi_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2071,7 +2230,7 @@ func (x *CreateCustomerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCustomerRequest.ProtoReflect.Descriptor instead.
 func (*CreateCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{21}
+	return file_osmi_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CreateCustomerRequest) GetName() string {
@@ -2195,7 +2354,7 @@ type GetCustomerRequest struct {
 
 func (x *GetCustomerRequest) Reset() {
 	*x = GetCustomerRequest{}
-	mi := &file_osmi_proto_msgTypes[22]
+	mi := &file_osmi_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2207,7 +2366,7 @@ func (x *GetCustomerRequest) String() string {
 func (*GetCustomerRequest) ProtoMessage() {}
 
 func (x *GetCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[22]
+	mi := &file_osmi_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2220,7 +2379,7 @@ func (x *GetCustomerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCustomerRequest.ProtoReflect.Descriptor instead.
 func (*GetCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{22}
+	return file_osmi_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GetCustomerRequest) GetPublicId() string {
@@ -2245,7 +2404,7 @@ type UpdateCustomerRequest struct {
 
 func (x *UpdateCustomerRequest) Reset() {
 	*x = UpdateCustomerRequest{}
-	mi := &file_osmi_proto_msgTypes[23]
+	mi := &file_osmi_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2257,7 +2416,7 @@ func (x *UpdateCustomerRequest) String() string {
 func (*UpdateCustomerRequest) ProtoMessage() {}
 
 func (x *UpdateCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[23]
+	mi := &file_osmi_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2270,7 +2429,7 @@ func (x *UpdateCustomerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCustomerRequest.ProtoReflect.Descriptor instead.
 func (*UpdateCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{23}
+	return file_osmi_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *UpdateCustomerRequest) GetPublicId() string {
@@ -2342,7 +2501,7 @@ type CustomerFilter struct {
 
 func (x *CustomerFilter) Reset() {
 	*x = CustomerFilter{}
-	mi := &file_osmi_proto_msgTypes[24]
+	mi := &file_osmi_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2354,7 +2513,7 @@ func (x *CustomerFilter) String() string {
 func (*CustomerFilter) ProtoMessage() {}
 
 func (x *CustomerFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[24]
+	mi := &file_osmi_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2367,7 +2526,7 @@ func (x *CustomerFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomerFilter.ProtoReflect.Descriptor instead.
 func (*CustomerFilter) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{24}
+	return file_osmi_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *CustomerFilter) GetSearch() string {
@@ -2465,7 +2624,7 @@ type ListCustomersRequest struct {
 
 func (x *ListCustomersRequest) Reset() {
 	*x = ListCustomersRequest{}
-	mi := &file_osmi_proto_msgTypes[25]
+	mi := &file_osmi_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2477,7 +2636,7 @@ func (x *ListCustomersRequest) String() string {
 func (*ListCustomersRequest) ProtoMessage() {}
 
 func (x *ListCustomersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[25]
+	mi := &file_osmi_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2490,7 +2649,7 @@ func (x *ListCustomersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCustomersRequest.ProtoReflect.Descriptor instead.
 func (*ListCustomersRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{25}
+	return file_osmi_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ListCustomersRequest) GetFilter() *CustomerFilter {
@@ -2523,7 +2682,7 @@ type GetCustomerTicketsRequest struct {
 
 func (x *GetCustomerTicketsRequest) Reset() {
 	*x = GetCustomerTicketsRequest{}
-	mi := &file_osmi_proto_msgTypes[26]
+	mi := &file_osmi_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2535,7 +2694,7 @@ func (x *GetCustomerTicketsRequest) String() string {
 func (*GetCustomerTicketsRequest) ProtoMessage() {}
 
 func (x *GetCustomerTicketsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[26]
+	mi := &file_osmi_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2548,7 +2707,7 @@ func (x *GetCustomerTicketsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCustomerTicketsRequest.ProtoReflect.Descriptor instead.
 func (*GetCustomerTicketsRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{26}
+	return file_osmi_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *GetCustomerTicketsRequest) GetPublicId() string {
@@ -2572,7 +2731,7 @@ type CustomerLookup struct {
 
 func (x *CustomerLookup) Reset() {
 	*x = CustomerLookup{}
-	mi := &file_osmi_proto_msgTypes[27]
+	mi := &file_osmi_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2584,7 +2743,7 @@ func (x *CustomerLookup) String() string {
 func (*CustomerLookup) ProtoMessage() {}
 
 func (x *CustomerLookup) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[27]
+	mi := &file_osmi_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2597,7 +2756,7 @@ func (x *CustomerLookup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomerLookup.ProtoReflect.Descriptor instead.
 func (*CustomerLookup) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{27}
+	return file_osmi_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CustomerLookup) GetLookup() isCustomerLookup_Lookup {
@@ -2692,7 +2851,7 @@ type CustomerResponse struct {
 
 func (x *CustomerResponse) Reset() {
 	*x = CustomerResponse{}
-	mi := &file_osmi_proto_msgTypes[28]
+	mi := &file_osmi_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2704,7 +2863,7 @@ func (x *CustomerResponse) String() string {
 func (*CustomerResponse) ProtoMessage() {}
 
 func (x *CustomerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[28]
+	mi := &file_osmi_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2717,7 +2876,7 @@ func (x *CustomerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomerResponse.ProtoReflect.Descriptor instead.
 func (*CustomerResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{28}
+	return file_osmi_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *CustomerResponse) GetId() int32 {
@@ -2929,7 +3088,7 @@ type CustomerListResponse struct {
 
 func (x *CustomerListResponse) Reset() {
 	*x = CustomerListResponse{}
-	mi := &file_osmi_proto_msgTypes[29]
+	mi := &file_osmi_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2941,7 +3100,7 @@ func (x *CustomerListResponse) String() string {
 func (*CustomerListResponse) ProtoMessage() {}
 
 func (x *CustomerListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[29]
+	mi := &file_osmi_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2954,7 +3113,7 @@ func (x *CustomerListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomerListResponse.ProtoReflect.Descriptor instead.
 func (*CustomerListResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{29}
+	return file_osmi_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *CustomerListResponse) GetCustomers() []*CustomerResponse {
@@ -3007,7 +3166,7 @@ type CustomerStatsResponse struct {
 
 func (x *CustomerStatsResponse) Reset() {
 	*x = CustomerStatsResponse{}
-	mi := &file_osmi_proto_msgTypes[30]
+	mi := &file_osmi_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3019,7 +3178,7 @@ func (x *CustomerStatsResponse) String() string {
 func (*CustomerStatsResponse) ProtoMessage() {}
 
 func (x *CustomerStatsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[30]
+	mi := &file_osmi_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3032,7 +3191,7 @@ func (x *CustomerStatsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomerStatsResponse.ProtoReflect.Descriptor instead.
 func (*CustomerStatsResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{30}
+	return file_osmi_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CustomerStatsResponse) GetTotalCustomers() int64 {
@@ -3095,7 +3254,7 @@ type CountryStats struct {
 
 func (x *CountryStats) Reset() {
 	*x = CountryStats{}
-	mi := &file_osmi_proto_msgTypes[31]
+	mi := &file_osmi_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3107,7 +3266,7 @@ func (x *CountryStats) String() string {
 func (*CountryStats) ProtoMessage() {}
 
 func (x *CountryStats) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[31]
+	mi := &file_osmi_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3120,7 +3279,7 @@ func (x *CountryStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CountryStats.ProtoReflect.Descriptor instead.
 func (*CountryStats) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{31}
+	return file_osmi_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *CountryStats) GetCountry() string {
@@ -3157,7 +3316,7 @@ type CreateUserRequest struct {
 
 func (x *CreateUserRequest) Reset() {
 	*x = CreateUserRequest{}
-	mi := &file_osmi_proto_msgTypes[32]
+	mi := &file_osmi_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3169,7 +3328,7 @@ func (x *CreateUserRequest) String() string {
 func (*CreateUserRequest) ProtoMessage() {}
 
 func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[32]
+	mi := &file_osmi_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3182,7 +3341,7 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
 func (*CreateUserRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{32}
+	return file_osmi_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *CreateUserRequest) GetName() string {
@@ -3222,7 +3381,7 @@ type GetUserRequest struct {
 
 func (x *GetUserRequest) Reset() {
 	*x = GetUserRequest{}
-	mi := &file_osmi_proto_msgTypes[33]
+	mi := &file_osmi_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3234,7 +3393,7 @@ func (x *GetUserRequest) String() string {
 func (*GetUserRequest) ProtoMessage() {}
 
 func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[33]
+	mi := &file_osmi_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3247,7 +3406,7 @@ func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRequest.ProtoReflect.Descriptor instead.
 func (*GetUserRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{33}
+	return file_osmi_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *GetUserRequest) GetUserId() string {
@@ -3273,7 +3432,7 @@ type UpdateUserRequest struct {
 
 func (x *UpdateUserRequest) Reset() {
 	*x = UpdateUserRequest{}
-	mi := &file_osmi_proto_msgTypes[34]
+	mi := &file_osmi_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3285,7 +3444,7 @@ func (x *UpdateUserRequest) String() string {
 func (*UpdateUserRequest) ProtoMessage() {}
 
 func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[34]
+	mi := &file_osmi_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3298,7 +3457,7 @@ func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserRequest.ProtoReflect.Descriptor instead.
 func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{34}
+	return file_osmi_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *UpdateUserRequest) GetUserId() string {
@@ -3366,7 +3525,7 @@ type DeleteUserRequest struct {
 
 func (x *DeleteUserRequest) Reset() {
 	*x = DeleteUserRequest{}
-	mi := &file_osmi_proto_msgTypes[35]
+	mi := &file_osmi_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3378,7 +3537,7 @@ func (x *DeleteUserRequest) String() string {
 func (*DeleteUserRequest) ProtoMessage() {}
 
 func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[35]
+	mi := &file_osmi_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3391,7 +3550,7 @@ func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserRequest.ProtoReflect.Descriptor instead.
 func (*DeleteUserRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{35}
+	return file_osmi_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *DeleteUserRequest) GetUserId() string {
@@ -3410,7 +3569,7 @@ type GetUserTicketsRequest struct {
 
 func (x *GetUserTicketsRequest) Reset() {
 	*x = GetUserTicketsRequest{}
-	mi := &file_osmi_proto_msgTypes[36]
+	mi := &file_osmi_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3422,7 +3581,7 @@ func (x *GetUserTicketsRequest) String() string {
 func (*GetUserTicketsRequest) ProtoMessage() {}
 
 func (x *GetUserTicketsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[36]
+	mi := &file_osmi_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3435,7 +3594,7 @@ func (x *GetUserTicketsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserTicketsRequest.ProtoReflect.Descriptor instead.
 func (*GetUserTicketsRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{36}
+	return file_osmi_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *GetUserTicketsRequest) GetUserId() string {
@@ -3454,7 +3613,7 @@ type UserLookup struct {
 
 func (x *UserLookup) Reset() {
 	*x = UserLookup{}
-	mi := &file_osmi_proto_msgTypes[37]
+	mi := &file_osmi_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3466,7 +3625,7 @@ func (x *UserLookup) String() string {
 func (*UserLookup) ProtoMessage() {}
 
 func (x *UserLookup) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[37]
+	mi := &file_osmi_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3479,7 +3638,7 @@ func (x *UserLookup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserLookup.ProtoReflect.Descriptor instead.
 func (*UserLookup) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{37}
+	return file_osmi_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *UserLookup) GetUserId() string {
@@ -3503,7 +3662,7 @@ type UserResponse struct {
 
 func (x *UserResponse) Reset() {
 	*x = UserResponse{}
-	mi := &file_osmi_proto_msgTypes[38]
+	mi := &file_osmi_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3515,7 +3674,7 @@ func (x *UserResponse) String() string {
 func (*UserResponse) ProtoMessage() {}
 
 func (x *UserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[38]
+	mi := &file_osmi_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3528,7 +3687,7 @@ func (x *UserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserResponse.ProtoReflect.Descriptor instead.
 func (*UserResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{38}
+	return file_osmi_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *UserResponse) GetUserId() string {
@@ -3584,7 +3743,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_osmi_proto_msgTypes[39]
+	mi := &file_osmi_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3596,7 +3755,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[39]
+	mi := &file_osmi_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3609,7 +3768,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{39}
+	return file_osmi_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *LoginRequest) GetEmail() string {
@@ -3638,7 +3797,7 @@ type LoginResponse struct {
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_osmi_proto_msgTypes[40]
+	mi := &file_osmi_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3650,7 +3809,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[40]
+	mi := &file_osmi_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3663,7 +3822,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{40}
+	return file_osmi_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *LoginResponse) GetToken() string {
@@ -3703,7 +3862,7 @@ type LogoutRequest struct {
 
 func (x *LogoutRequest) Reset() {
 	*x = LogoutRequest{}
-	mi := &file_osmi_proto_msgTypes[41]
+	mi := &file_osmi_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3715,7 +3874,7 @@ func (x *LogoutRequest) String() string {
 func (*LogoutRequest) ProtoMessage() {}
 
 func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[41]
+	mi := &file_osmi_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3728,7 +3887,7 @@ func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
 func (*LogoutRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{41}
+	return file_osmi_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *LogoutRequest) GetToken() string {
@@ -3747,7 +3906,7 @@ type RefreshTokenRequest struct {
 
 func (x *RefreshTokenRequest) Reset() {
 	*x = RefreshTokenRequest{}
-	mi := &file_osmi_proto_msgTypes[42]
+	mi := &file_osmi_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3759,7 +3918,7 @@ func (x *RefreshTokenRequest) String() string {
 func (*RefreshTokenRequest) ProtoMessage() {}
 
 func (x *RefreshTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[42]
+	mi := &file_osmi_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3772,7 +3931,7 @@ func (x *RefreshTokenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshTokenRequest.ProtoReflect.Descriptor instead.
 func (*RefreshTokenRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{42}
+	return file_osmi_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *RefreshTokenRequest) GetRefreshToken() string {
@@ -3793,7 +3952,7 @@ type RefreshTokenResponse struct {
 
 func (x *RefreshTokenResponse) Reset() {
 	*x = RefreshTokenResponse{}
-	mi := &file_osmi_proto_msgTypes[43]
+	mi := &file_osmi_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3805,7 +3964,7 @@ func (x *RefreshTokenResponse) String() string {
 func (*RefreshTokenResponse) ProtoMessage() {}
 
 func (x *RefreshTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[43]
+	mi := &file_osmi_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3818,7 +3977,7 @@ func (x *RefreshTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshTokenResponse.ProtoReflect.Descriptor instead.
 func (*RefreshTokenResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{43}
+	return file_osmi_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *RefreshTokenResponse) GetToken() string {
@@ -3881,7 +4040,7 @@ type CreateEventRequest struct {
 
 func (x *CreateEventRequest) Reset() {
 	*x = CreateEventRequest{}
-	mi := &file_osmi_proto_msgTypes[44]
+	mi := &file_osmi_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3893,7 +4052,7 @@ func (x *CreateEventRequest) String() string {
 func (*CreateEventRequest) ProtoMessage() {}
 
 func (x *CreateEventRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[44]
+	mi := &file_osmi_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3906,7 +4065,7 @@ func (x *CreateEventRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateEventRequest.ProtoReflect.Descriptor instead.
 func (*CreateEventRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{44}
+	return file_osmi_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *CreateEventRequest) GetName() string {
@@ -4128,7 +4287,7 @@ type GetEventRequest struct {
 
 func (x *GetEventRequest) Reset() {
 	*x = GetEventRequest{}
-	mi := &file_osmi_proto_msgTypes[45]
+	mi := &file_osmi_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4140,7 +4299,7 @@ func (x *GetEventRequest) String() string {
 func (*GetEventRequest) ProtoMessage() {}
 
 func (x *GetEventRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[45]
+	mi := &file_osmi_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4153,7 +4312,7 @@ func (x *GetEventRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEventRequest.ProtoReflect.Descriptor instead.
 func (*GetEventRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{45}
+	return file_osmi_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *GetEventRequest) GetPublicId() string {
@@ -4184,7 +4343,7 @@ type UpdateEventRequest struct {
 
 func (x *UpdateEventRequest) Reset() {
 	*x = UpdateEventRequest{}
-	mi := &file_osmi_proto_msgTypes[46]
+	mi := &file_osmi_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4196,7 +4355,7 @@ func (x *UpdateEventRequest) String() string {
 func (*UpdateEventRequest) ProtoMessage() {}
 
 func (x *UpdateEventRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[46]
+	mi := &file_osmi_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4209,7 +4368,7 @@ func (x *UpdateEventRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateEventRequest.ProtoReflect.Descriptor instead.
 func (*UpdateEventRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{46}
+	return file_osmi_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *UpdateEventRequest) GetPublicId() string {
@@ -4324,7 +4483,7 @@ type ListEventsRequest struct {
 
 func (x *ListEventsRequest) Reset() {
 	*x = ListEventsRequest{}
-	mi := &file_osmi_proto_msgTypes[47]
+	mi := &file_osmi_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4336,7 +4495,7 @@ func (x *ListEventsRequest) String() string {
 func (*ListEventsRequest) ProtoMessage() {}
 
 func (x *ListEventsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[47]
+	mi := &file_osmi_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4349,7 +4508,7 @@ func (x *ListEventsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListEventsRequest.ProtoReflect.Descriptor instead.
 func (*ListEventsRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{47}
+	return file_osmi_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *ListEventsRequest) GetName() string {
@@ -4452,7 +4611,7 @@ type EventLookup struct {
 
 func (x *EventLookup) Reset() {
 	*x = EventLookup{}
-	mi := &file_osmi_proto_msgTypes[48]
+	mi := &file_osmi_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4464,7 +4623,7 @@ func (x *EventLookup) String() string {
 func (*EventLookup) ProtoMessage() {}
 
 func (x *EventLookup) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[48]
+	mi := &file_osmi_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4477,7 +4636,7 @@ func (x *EventLookup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EventLookup.ProtoReflect.Descriptor instead.
 func (*EventLookup) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{48}
+	return file_osmi_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *EventLookup) GetPublicId() string {
@@ -4516,7 +4675,7 @@ type EventResponse struct {
 
 func (x *EventResponse) Reset() {
 	*x = EventResponse{}
-	mi := &file_osmi_proto_msgTypes[49]
+	mi := &file_osmi_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4528,7 +4687,7 @@ func (x *EventResponse) String() string {
 func (*EventResponse) ProtoMessage() {}
 
 func (x *EventResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[49]
+	mi := &file_osmi_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4541,7 +4700,7 @@ func (x *EventResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EventResponse.ProtoReflect.Descriptor instead.
 func (*EventResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{49}
+	return file_osmi_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *EventResponse) GetPublicId() string {
@@ -4704,7 +4863,7 @@ type EventListResponse struct {
 
 func (x *EventListResponse) Reset() {
 	*x = EventListResponse{}
-	mi := &file_osmi_proto_msgTypes[50]
+	mi := &file_osmi_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4716,7 +4875,7 @@ func (x *EventListResponse) String() string {
 func (*EventListResponse) ProtoMessage() {}
 
 func (x *EventListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[50]
+	mi := &file_osmi_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4729,7 +4888,7 @@ func (x *EventListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EventListResponse.ProtoReflect.Descriptor instead.
 func (*EventListResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{50}
+	return file_osmi_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *EventListResponse) GetEvents() []*EventResponse {
@@ -4780,7 +4939,7 @@ type CreateCategoryRequest struct {
 
 func (x *CreateCategoryRequest) Reset() {
 	*x = CreateCategoryRequest{}
-	mi := &file_osmi_proto_msgTypes[51]
+	mi := &file_osmi_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4792,7 +4951,7 @@ func (x *CreateCategoryRequest) String() string {
 func (*CreateCategoryRequest) ProtoMessage() {}
 
 func (x *CreateCategoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[51]
+	mi := &file_osmi_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4805,7 +4964,7 @@ func (x *CreateCategoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCategoryRequest.ProtoReflect.Descriptor instead.
 func (*CreateCategoryRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{51}
+	return file_osmi_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *CreateCategoryRequest) GetEventId() string {
@@ -4845,7 +5004,7 @@ type GetEventCategoriesRequest struct {
 
 func (x *GetEventCategoriesRequest) Reset() {
 	*x = GetEventCategoriesRequest{}
-	mi := &file_osmi_proto_msgTypes[52]
+	mi := &file_osmi_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4857,7 +5016,7 @@ func (x *GetEventCategoriesRequest) String() string {
 func (*GetEventCategoriesRequest) ProtoMessage() {}
 
 func (x *GetEventCategoriesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[52]
+	mi := &file_osmi_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4870,7 +5029,7 @@ func (x *GetEventCategoriesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEventCategoriesRequest.ProtoReflect.Descriptor instead.
 func (*GetEventCategoriesRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{52}
+	return file_osmi_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *GetEventCategoriesRequest) GetPublicId() string {
@@ -4895,7 +5054,7 @@ type CategoryResponse struct {
 
 func (x *CategoryResponse) Reset() {
 	*x = CategoryResponse{}
-	mi := &file_osmi_proto_msgTypes[53]
+	mi := &file_osmi_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4907,7 +5066,7 @@ func (x *CategoryResponse) String() string {
 func (*CategoryResponse) ProtoMessage() {}
 
 func (x *CategoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[53]
+	mi := &file_osmi_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4920,7 +5079,7 @@ func (x *CategoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CategoryResponse.ProtoReflect.Descriptor instead.
 func (*CategoryResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{53}
+	return file_osmi_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *CategoryResponse) GetPublicId() string {
@@ -4983,7 +5142,7 @@ type CategoryListResponse struct {
 
 func (x *CategoryListResponse) Reset() {
 	*x = CategoryListResponse{}
-	mi := &file_osmi_proto_msgTypes[54]
+	mi := &file_osmi_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4995,7 +5154,7 @@ func (x *CategoryListResponse) String() string {
 func (*CategoryListResponse) ProtoMessage() {}
 
 func (x *CategoryListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[54]
+	mi := &file_osmi_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5008,7 +5167,7 @@ func (x *CategoryListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CategoryListResponse.ProtoReflect.Descriptor instead.
 func (*CategoryListResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{54}
+	return file_osmi_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *CategoryListResponse) GetCategories() []*CategoryResponse {
@@ -5043,7 +5202,7 @@ type ListUsersRequest struct {
 
 func (x *ListUsersRequest) Reset() {
 	*x = ListUsersRequest{}
-	mi := &file_osmi_proto_msgTypes[55]
+	mi := &file_osmi_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5055,7 +5214,7 @@ func (x *ListUsersRequest) String() string {
 func (*ListUsersRequest) ProtoMessage() {}
 
 func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[55]
+	mi := &file_osmi_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5068,7 +5227,7 @@ func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersRequest.ProtoReflect.Descriptor instead.
 func (*ListUsersRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{55}
+	return file_osmi_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *ListUsersRequest) GetPage() int32 {
@@ -5098,7 +5257,7 @@ type UserListResponse struct {
 
 func (x *UserListResponse) Reset() {
 	*x = UserListResponse{}
-	mi := &file_osmi_proto_msgTypes[56]
+	mi := &file_osmi_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5110,7 +5269,7 @@ func (x *UserListResponse) String() string {
 func (*UserListResponse) ProtoMessage() {}
 
 func (x *UserListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[56]
+	mi := &file_osmi_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5123,7 +5282,7 @@ func (x *UserListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserListResponse.ProtoReflect.Descriptor instead.
 func (*UserListResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{56}
+	return file_osmi_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *UserListResponse) GetUsers() []*UserResponse {
@@ -5174,7 +5333,7 @@ type CreateOrderRequest struct {
 
 func (x *CreateOrderRequest) Reset() {
 	*x = CreateOrderRequest{}
-	mi := &file_osmi_proto_msgTypes[57]
+	mi := &file_osmi_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5186,7 +5345,7 @@ func (x *CreateOrderRequest) String() string {
 func (*CreateOrderRequest) ProtoMessage() {}
 
 func (x *CreateOrderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[57]
+	mi := &file_osmi_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5199,7 +5358,7 @@ func (x *CreateOrderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrderRequest.ProtoReflect.Descriptor instead.
 func (*CreateOrderRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{57}
+	return file_osmi_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *CreateOrderRequest) GetCustomerId() string {
@@ -5240,7 +5399,7 @@ type OrderItem struct {
 
 func (x *OrderItem) Reset() {
 	*x = OrderItem{}
-	mi := &file_osmi_proto_msgTypes[58]
+	mi := &file_osmi_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5252,7 +5411,7 @@ func (x *OrderItem) String() string {
 func (*OrderItem) ProtoMessage() {}
 
 func (x *OrderItem) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[58]
+	mi := &file_osmi_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5265,7 +5424,7 @@ func (x *OrderItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderItem.ProtoReflect.Descriptor instead.
 func (*OrderItem) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{58}
+	return file_osmi_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *OrderItem) GetTicketTypeId() string {
@@ -5297,7 +5456,7 @@ type OrderResponse struct {
 
 func (x *OrderResponse) Reset() {
 	*x = OrderResponse{}
-	mi := &file_osmi_proto_msgTypes[59]
+	mi := &file_osmi_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5309,7 +5468,7 @@ func (x *OrderResponse) String() string {
 func (*OrderResponse) ProtoMessage() {}
 
 func (x *OrderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[59]
+	mi := &file_osmi_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5322,7 +5481,7 @@ func (x *OrderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderResponse.ProtoReflect.Descriptor instead.
 func (*OrderResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{59}
+	return file_osmi_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *OrderResponse) GetPublicId() string {
@@ -5384,7 +5543,7 @@ type GetOrderConfirmationRequest struct {
 
 func (x *GetOrderConfirmationRequest) Reset() {
 	*x = GetOrderConfirmationRequest{}
-	mi := &file_osmi_proto_msgTypes[60]
+	mi := &file_osmi_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5396,7 +5555,7 @@ func (x *GetOrderConfirmationRequest) String() string {
 func (*GetOrderConfirmationRequest) ProtoMessage() {}
 
 func (x *GetOrderConfirmationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[60]
+	mi := &file_osmi_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5409,7 +5568,7 @@ func (x *GetOrderConfirmationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOrderConfirmationRequest.ProtoReflect.Descriptor instead.
 func (*GetOrderConfirmationRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{60}
+	return file_osmi_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *GetOrderConfirmationRequest) GetOrderId() string {
@@ -5440,7 +5599,7 @@ type OrderConfirmationItem struct {
 
 func (x *OrderConfirmationItem) Reset() {
 	*x = OrderConfirmationItem{}
-	mi := &file_osmi_proto_msgTypes[61]
+	mi := &file_osmi_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5452,7 +5611,7 @@ func (x *OrderConfirmationItem) String() string {
 func (*OrderConfirmationItem) ProtoMessage() {}
 
 func (x *OrderConfirmationItem) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[61]
+	mi := &file_osmi_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5465,7 +5624,7 @@ func (x *OrderConfirmationItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderConfirmationItem.ProtoReflect.Descriptor instead.
 func (*OrderConfirmationItem) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{61}
+	return file_osmi_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *OrderConfirmationItem) GetTicketTypeId() string {
@@ -5526,7 +5685,7 @@ type OrderConfirmationResponse struct {
 
 func (x *OrderConfirmationResponse) Reset() {
 	*x = OrderConfirmationResponse{}
-	mi := &file_osmi_proto_msgTypes[62]
+	mi := &file_osmi_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5538,7 +5697,7 @@ func (x *OrderConfirmationResponse) String() string {
 func (*OrderConfirmationResponse) ProtoMessage() {}
 
 func (x *OrderConfirmationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[62]
+	mi := &file_osmi_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5551,7 +5710,7 @@ func (x *OrderConfirmationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderConfirmationResponse.ProtoReflect.Descriptor instead.
 func (*OrderConfirmationResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{62}
+	return file_osmi_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *OrderConfirmationResponse) GetOrderId() string {
@@ -5621,7 +5780,7 @@ type CreatePaymentIntentRequest struct {
 
 func (x *CreatePaymentIntentRequest) Reset() {
 	*x = CreatePaymentIntentRequest{}
-	mi := &file_osmi_proto_msgTypes[63]
+	mi := &file_osmi_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5633,7 +5792,7 @@ func (x *CreatePaymentIntentRequest) String() string {
 func (*CreatePaymentIntentRequest) ProtoMessage() {}
 
 func (x *CreatePaymentIntentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[63]
+	mi := &file_osmi_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5646,7 +5805,7 @@ func (x *CreatePaymentIntentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePaymentIntentRequest.ProtoReflect.Descriptor instead.
 func (*CreatePaymentIntentRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{63}
+	return file_osmi_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *CreatePaymentIntentRequest) GetOrderId() string {
@@ -5675,7 +5834,7 @@ type PaymentIntentResponse struct {
 
 func (x *PaymentIntentResponse) Reset() {
 	*x = PaymentIntentResponse{}
-	mi := &file_osmi_proto_msgTypes[64]
+	mi := &file_osmi_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5687,7 +5846,7 @@ func (x *PaymentIntentResponse) String() string {
 func (*PaymentIntentResponse) ProtoMessage() {}
 
 func (x *PaymentIntentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[64]
+	mi := &file_osmi_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5700,7 +5859,7 @@ func (x *PaymentIntentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PaymentIntentResponse.ProtoReflect.Descriptor instead.
 func (*PaymentIntentResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{64}
+	return file_osmi_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *PaymentIntentResponse) GetClientSecret() string {
@@ -5746,7 +5905,7 @@ type CreatePaymentRequest struct {
 
 func (x *CreatePaymentRequest) Reset() {
 	*x = CreatePaymentRequest{}
-	mi := &file_osmi_proto_msgTypes[65]
+	mi := &file_osmi_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5758,7 +5917,7 @@ func (x *CreatePaymentRequest) String() string {
 func (*CreatePaymentRequest) ProtoMessage() {}
 
 func (x *CreatePaymentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[65]
+	mi := &file_osmi_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5771,7 +5930,7 @@ func (x *CreatePaymentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePaymentRequest.ProtoReflect.Descriptor instead.
 func (*CreatePaymentRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{65}
+	return file_osmi_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *CreatePaymentRequest) GetOrderId() string {
@@ -5839,7 +5998,7 @@ type PaymentProcessingResponse struct {
 
 func (x *PaymentProcessingResponse) Reset() {
 	*x = PaymentProcessingResponse{}
-	mi := &file_osmi_proto_msgTypes[66]
+	mi := &file_osmi_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5851,7 +6010,7 @@ func (x *PaymentProcessingResponse) String() string {
 func (*PaymentProcessingResponse) ProtoMessage() {}
 
 func (x *PaymentProcessingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[66]
+	mi := &file_osmi_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5864,7 +6023,7 @@ func (x *PaymentProcessingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PaymentProcessingResponse.ProtoReflect.Descriptor instead.
 func (*PaymentProcessingResponse) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{66}
+	return file_osmi_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *PaymentProcessingResponse) GetPaymentId() string {
@@ -5933,7 +6092,7 @@ type WebhookRequest struct {
 
 func (x *WebhookRequest) Reset() {
 	*x = WebhookRequest{}
-	mi := &file_osmi_proto_msgTypes[67]
+	mi := &file_osmi_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5945,7 +6104,7 @@ func (x *WebhookRequest) String() string {
 func (*WebhookRequest) ProtoMessage() {}
 
 func (x *WebhookRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_osmi_proto_msgTypes[67]
+	mi := &file_osmi_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5958,7 +6117,7 @@ func (x *WebhookRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WebhookRequest.ProtoReflect.Descriptor instead.
 func (*WebhookRequest) Descriptor() ([]byte, []int) {
-	return file_osmi_proto_rawDescGZIP(), []int{67}
+	return file_osmi_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *WebhookRequest) GetPayload() string {
@@ -5986,7 +6145,25 @@ const file_osmi_proto_rawDesc = "" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x18\n" +
 	"\aservice\x18\x02 \x01(\tR\aservice\x12\x18\n" +
 	"\aversion\x18\x03 \x01(\tR\aversion\x128\n" +
-	"\ttimestamp\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestampJ\x05\bd\x10\xc8\x01\"\x90\x01\n" +
+	"\ttimestamp\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestampJ\x05\bd\x10\xc8\x01\"A\n" +
+	"\x1fValidateTicketCredentialRequest\x12\x1e\n" +
+	"\n" +
+	"credential\x18\x01 \x01(\tR\n" +
+	"credential\"\x99\x03\n" +
+	" ValidateTicketCredentialResponse\x12\x1c\n" +
+	"\tauthentic\x18\x01 \x01(\bR\tauthentic\x12 \n" +
+	"\fcan_check_in\x18\x02 \x01(\bR\n" +
+	"canCheckIn\x12\x16\n" +
+	"\x06result\x18\x03 \x01(\tR\x06result\x12\x1b\n" +
+	"\tticket_id\x18\x04 \x01(\tR\bticketId\x12\x1f\n" +
+	"\vticket_code\x18\x05 \x01(\tR\n" +
+	"ticketCode\x12\x19\n" +
+	"\bevent_id\x18\x06 \x01(\x03R\aeventId\x12$\n" +
+	"\x0eticket_type_id\x18\a \x01(\x03R\fticketTypeId\x12\x16\n" +
+	"\x06status\x18\b \x01(\tR\x06status\x12>\n" +
+	"\rchecked_in_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\vcheckedInAt\x12F\n" +
+	"\x11last_validated_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\x0flastValidatedAt\"\x90\x01\n" +
 	"\x14ReserveTicketRequest\x12$\n" +
 	"\x0eticket_type_id\x18\x01 \x01(\tR\fticketTypeId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x129\n" +
@@ -6605,7 +6782,7 @@ const file_osmi_proto_rawDesc = "" +
 	"\x14CUSTOMER_SEGMENT_NEW\x10\x01\x12\x1f\n" +
 	"\x1bCUSTOMER_SEGMENT_OCCASIONAL\x10\x02\x12\x1c\n" +
 	"\x18CUSTOMER_SEGMENT_REGULAR\x10\x03\x12\x18\n" +
-	"\x14CUSTOMER_SEGMENT_VIP\x10\x042\xcd\x1f\n" +
+	"\x14CUSTOMER_SEGMENT_VIP\x10\x042\xda \n" +
 	"\vOsmiService\x12t\n" +
 	"\x13CreatePaymentIntent\x12 .osmi.CreatePaymentIntentRequest\x1a\x1b.osmi.PaymentIntentResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/v1/payments/intent\x12e\n" +
 	"\rCreatePayment\x12\x1a.osmi.CreatePaymentRequest\x1a\x1f.osmi.PaymentProcessingResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/payments\x12R\n" +
@@ -6645,7 +6822,8 @@ const file_osmi_proto_rawDesc = "" +
 	"\rGetTicketType\x12\x1a.osmi.GetTicketTypeRequest\x1a\x18.osmi.TicketTypeResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/v1/ticket-types/{id}\x12g\n" +
 	"\x0fListTicketTypes\x12\x1c.osmi.ListTicketTypesRequest\x1a\x1c.osmi.TicketTypeListResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/ticket-types\x12m\n" +
 	"\x10UpdateTicketType\x12\x1d.osmi.UpdateTicketTypeRequest\x1a\x18.osmi.TicketTypeResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*2\x15/v1/ticket-types/{id}\x12]\n" +
-	"\x10DeleteTicketType\x12\x1d.osmi.DeleteTicketTypeRequest\x1a\v.osmi.Empty\"\x1d\x82\xd3\xe4\x93\x02\x17*\x15/v1/ticket-types/{id}\x12a\n" +
+	"\x10DeleteTicketType\x12\x1d.osmi.DeleteTicketTypeRequest\x1a\v.osmi.Empty\"\x1d\x82\xd3\xe4\x93\x02\x17*\x15/v1/ticket-types/{id}\x12\x8a\x01\n" +
+	"\x18ValidateTicketCredential\x12%.osmi.ValidateTicketCredentialRequest\x1a&.osmi.ValidateTicketCredentialResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/v1/tickets/validate\x12a\n" +
 	"\rReserveTicket\x12\x1a.osmi.ReserveTicketRequest\x1a\x14.osmi.TicketResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/v1/tickets/reserve\x12m\n" +
 	"\rCheckInTicket\x12\x1a.osmi.CheckInTicketRequest\x1a\x14.osmi.TicketResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/v1/tickets/{ticket_id}/checkin\x12p\n" +
 	"\x0eTransferTicket\x12\x1b.osmi.TransferTicketRequest\x1a\x14.osmi.TicketResponse\"+\x82\xd3\xe4\x93\x02%:\x01*\" /v1/tickets/{ticket_id}/transfer\x12V\n" +
@@ -6670,220 +6848,226 @@ func file_osmi_proto_rawDescGZIP() []byte {
 }
 
 var file_osmi_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_osmi_proto_msgTypes = make([]protoimpl.MessageInfo, 70)
+var file_osmi_proto_msgTypes = make([]protoimpl.MessageInfo, 72)
 var file_osmi_proto_goTypes = []any{
-	(TaxIdType)(0),                      // 0: osmi.TaxIdType
-	(CustomerType)(0),                   // 1: osmi.CustomerType
-	(CustomerSource)(0),                 // 2: osmi.CustomerSource
-	(CustomerSegment)(0),                // 3: osmi.CustomerSegment
-	(*Empty)(nil),                       // 4: osmi.Empty
-	(*HealthResponse)(nil),              // 5: osmi.HealthResponse
-	(*ReserveTicketRequest)(nil),        // 6: osmi.ReserveTicketRequest
-	(*CheckInTicketRequest)(nil),        // 7: osmi.CheckInTicketRequest
-	(*TransferTicketRequest)(nil),       // 8: osmi.TransferTicketRequest
-	(*ListTicketsRequest)(nil),          // 9: osmi.ListTicketsRequest
-	(*UpdateTicketRequest)(nil),         // 10: osmi.UpdateTicketRequest
-	(*UpdateTicketStatusRequest)(nil),   // 11: osmi.UpdateTicketStatusRequest
-	(*GetTicketRequest)(nil),            // 12: osmi.GetTicketRequest
-	(*GetTicketStatsRequest)(nil),       // 13: osmi.GetTicketStatsRequest
-	(*TicketResponse)(nil),              // 14: osmi.TicketResponse
-	(*TicketListResponse)(nil),          // 15: osmi.TicketListResponse
-	(*TicketStatsResponse)(nil),         // 16: osmi.TicketStatsResponse
-	(*ExpireReservationsResponse)(nil),  // 17: osmi.ExpireReservationsResponse
-	(*CreateTicketTypeRequest)(nil),     // 18: osmi.CreateTicketTypeRequest
-	(*GetTicketTypeRequest)(nil),        // 19: osmi.GetTicketTypeRequest
-	(*ListTicketTypesRequest)(nil),      // 20: osmi.ListTicketTypesRequest
-	(*UpdateTicketTypeRequest)(nil),     // 21: osmi.UpdateTicketTypeRequest
-	(*DeleteTicketTypeRequest)(nil),     // 22: osmi.DeleteTicketTypeRequest
-	(*TicketTypeResponse)(nil),          // 23: osmi.TicketTypeResponse
-	(*TicketTypeListResponse)(nil),      // 24: osmi.TicketTypeListResponse
-	(*CreateCustomerRequest)(nil),       // 25: osmi.CreateCustomerRequest
-	(*GetCustomerRequest)(nil),          // 26: osmi.GetCustomerRequest
-	(*UpdateCustomerRequest)(nil),       // 27: osmi.UpdateCustomerRequest
-	(*CustomerFilter)(nil),              // 28: osmi.CustomerFilter
-	(*ListCustomersRequest)(nil),        // 29: osmi.ListCustomersRequest
-	(*GetCustomerTicketsRequest)(nil),   // 30: osmi.GetCustomerTicketsRequest
-	(*CustomerLookup)(nil),              // 31: osmi.CustomerLookup
-	(*CustomerResponse)(nil),            // 32: osmi.CustomerResponse
-	(*CustomerListResponse)(nil),        // 33: osmi.CustomerListResponse
-	(*CustomerStatsResponse)(nil),       // 34: osmi.CustomerStatsResponse
-	(*CountryStats)(nil),                // 35: osmi.CountryStats
-	(*CreateUserRequest)(nil),           // 36: osmi.CreateUserRequest
-	(*GetUserRequest)(nil),              // 37: osmi.GetUserRequest
-	(*UpdateUserRequest)(nil),           // 38: osmi.UpdateUserRequest
-	(*DeleteUserRequest)(nil),           // 39: osmi.DeleteUserRequest
-	(*GetUserTicketsRequest)(nil),       // 40: osmi.GetUserTicketsRequest
-	(*UserLookup)(nil),                  // 41: osmi.UserLookup
-	(*UserResponse)(nil),                // 42: osmi.UserResponse
-	(*LoginRequest)(nil),                // 43: osmi.LoginRequest
-	(*LoginResponse)(nil),               // 44: osmi.LoginResponse
-	(*LogoutRequest)(nil),               // 45: osmi.LogoutRequest
-	(*RefreshTokenRequest)(nil),         // 46: osmi.RefreshTokenRequest
-	(*RefreshTokenResponse)(nil),        // 47: osmi.RefreshTokenResponse
-	(*CreateEventRequest)(nil),          // 48: osmi.CreateEventRequest
-	(*GetEventRequest)(nil),             // 49: osmi.GetEventRequest
-	(*UpdateEventRequest)(nil),          // 50: osmi.UpdateEventRequest
-	(*ListEventsRequest)(nil),           // 51: osmi.ListEventsRequest
-	(*EventLookup)(nil),                 // 52: osmi.EventLookup
-	(*EventResponse)(nil),               // 53: osmi.EventResponse
-	(*EventListResponse)(nil),           // 54: osmi.EventListResponse
-	(*CreateCategoryRequest)(nil),       // 55: osmi.CreateCategoryRequest
-	(*GetEventCategoriesRequest)(nil),   // 56: osmi.GetEventCategoriesRequest
-	(*CategoryResponse)(nil),            // 57: osmi.CategoryResponse
-	(*CategoryListResponse)(nil),        // 58: osmi.CategoryListResponse
-	(*ListUsersRequest)(nil),            // 59: osmi.ListUsersRequest
-	(*UserListResponse)(nil),            // 60: osmi.UserListResponse
-	(*CreateOrderRequest)(nil),          // 61: osmi.CreateOrderRequest
-	(*OrderItem)(nil),                   // 62: osmi.OrderItem
-	(*OrderResponse)(nil),               // 63: osmi.OrderResponse
-	(*GetOrderConfirmationRequest)(nil), // 64: osmi.GetOrderConfirmationRequest
-	(*OrderConfirmationItem)(nil),       // 65: osmi.OrderConfirmationItem
-	(*OrderConfirmationResponse)(nil),   // 66: osmi.OrderConfirmationResponse
-	(*CreatePaymentIntentRequest)(nil),  // 67: osmi.CreatePaymentIntentRequest
-	(*PaymentIntentResponse)(nil),       // 68: osmi.PaymentIntentResponse
-	(*CreatePaymentRequest)(nil),        // 69: osmi.CreatePaymentRequest
-	(*PaymentProcessingResponse)(nil),   // 70: osmi.PaymentProcessingResponse
-	(*WebhookRequest)(nil),              // 71: osmi.WebhookRequest
-	nil,                                 // 72: osmi.CreatePaymentRequest.PaymentMethodDetailsEntry
-	nil,                                 // 73: osmi.PaymentProcessingResponse.ProviderInstructionsEntry
-	(*timestamppb.Timestamp)(nil),       // 74: google.protobuf.Timestamp
-	(*wrapperspb.BoolValue)(nil),        // 75: google.protobuf.BoolValue
+	(TaxIdType)(0),                           // 0: osmi.TaxIdType
+	(CustomerType)(0),                        // 1: osmi.CustomerType
+	(CustomerSource)(0),                      // 2: osmi.CustomerSource
+	(CustomerSegment)(0),                     // 3: osmi.CustomerSegment
+	(*Empty)(nil),                            // 4: osmi.Empty
+	(*HealthResponse)(nil),                   // 5: osmi.HealthResponse
+	(*ValidateTicketCredentialRequest)(nil),  // 6: osmi.ValidateTicketCredentialRequest
+	(*ValidateTicketCredentialResponse)(nil), // 7: osmi.ValidateTicketCredentialResponse
+	(*ReserveTicketRequest)(nil),             // 8: osmi.ReserveTicketRequest
+	(*CheckInTicketRequest)(nil),             // 9: osmi.CheckInTicketRequest
+	(*TransferTicketRequest)(nil),            // 10: osmi.TransferTicketRequest
+	(*ListTicketsRequest)(nil),               // 11: osmi.ListTicketsRequest
+	(*UpdateTicketRequest)(nil),              // 12: osmi.UpdateTicketRequest
+	(*UpdateTicketStatusRequest)(nil),        // 13: osmi.UpdateTicketStatusRequest
+	(*GetTicketRequest)(nil),                 // 14: osmi.GetTicketRequest
+	(*GetTicketStatsRequest)(nil),            // 15: osmi.GetTicketStatsRequest
+	(*TicketResponse)(nil),                   // 16: osmi.TicketResponse
+	(*TicketListResponse)(nil),               // 17: osmi.TicketListResponse
+	(*TicketStatsResponse)(nil),              // 18: osmi.TicketStatsResponse
+	(*ExpireReservationsResponse)(nil),       // 19: osmi.ExpireReservationsResponse
+	(*CreateTicketTypeRequest)(nil),          // 20: osmi.CreateTicketTypeRequest
+	(*GetTicketTypeRequest)(nil),             // 21: osmi.GetTicketTypeRequest
+	(*ListTicketTypesRequest)(nil),           // 22: osmi.ListTicketTypesRequest
+	(*UpdateTicketTypeRequest)(nil),          // 23: osmi.UpdateTicketTypeRequest
+	(*DeleteTicketTypeRequest)(nil),          // 24: osmi.DeleteTicketTypeRequest
+	(*TicketTypeResponse)(nil),               // 25: osmi.TicketTypeResponse
+	(*TicketTypeListResponse)(nil),           // 26: osmi.TicketTypeListResponse
+	(*CreateCustomerRequest)(nil),            // 27: osmi.CreateCustomerRequest
+	(*GetCustomerRequest)(nil),               // 28: osmi.GetCustomerRequest
+	(*UpdateCustomerRequest)(nil),            // 29: osmi.UpdateCustomerRequest
+	(*CustomerFilter)(nil),                   // 30: osmi.CustomerFilter
+	(*ListCustomersRequest)(nil),             // 31: osmi.ListCustomersRequest
+	(*GetCustomerTicketsRequest)(nil),        // 32: osmi.GetCustomerTicketsRequest
+	(*CustomerLookup)(nil),                   // 33: osmi.CustomerLookup
+	(*CustomerResponse)(nil),                 // 34: osmi.CustomerResponse
+	(*CustomerListResponse)(nil),             // 35: osmi.CustomerListResponse
+	(*CustomerStatsResponse)(nil),            // 36: osmi.CustomerStatsResponse
+	(*CountryStats)(nil),                     // 37: osmi.CountryStats
+	(*CreateUserRequest)(nil),                // 38: osmi.CreateUserRequest
+	(*GetUserRequest)(nil),                   // 39: osmi.GetUserRequest
+	(*UpdateUserRequest)(nil),                // 40: osmi.UpdateUserRequest
+	(*DeleteUserRequest)(nil),                // 41: osmi.DeleteUserRequest
+	(*GetUserTicketsRequest)(nil),            // 42: osmi.GetUserTicketsRequest
+	(*UserLookup)(nil),                       // 43: osmi.UserLookup
+	(*UserResponse)(nil),                     // 44: osmi.UserResponse
+	(*LoginRequest)(nil),                     // 45: osmi.LoginRequest
+	(*LoginResponse)(nil),                    // 46: osmi.LoginResponse
+	(*LogoutRequest)(nil),                    // 47: osmi.LogoutRequest
+	(*RefreshTokenRequest)(nil),              // 48: osmi.RefreshTokenRequest
+	(*RefreshTokenResponse)(nil),             // 49: osmi.RefreshTokenResponse
+	(*CreateEventRequest)(nil),               // 50: osmi.CreateEventRequest
+	(*GetEventRequest)(nil),                  // 51: osmi.GetEventRequest
+	(*UpdateEventRequest)(nil),               // 52: osmi.UpdateEventRequest
+	(*ListEventsRequest)(nil),                // 53: osmi.ListEventsRequest
+	(*EventLookup)(nil),                      // 54: osmi.EventLookup
+	(*EventResponse)(nil),                    // 55: osmi.EventResponse
+	(*EventListResponse)(nil),                // 56: osmi.EventListResponse
+	(*CreateCategoryRequest)(nil),            // 57: osmi.CreateCategoryRequest
+	(*GetEventCategoriesRequest)(nil),        // 58: osmi.GetEventCategoriesRequest
+	(*CategoryResponse)(nil),                 // 59: osmi.CategoryResponse
+	(*CategoryListResponse)(nil),             // 60: osmi.CategoryListResponse
+	(*ListUsersRequest)(nil),                 // 61: osmi.ListUsersRequest
+	(*UserListResponse)(nil),                 // 62: osmi.UserListResponse
+	(*CreateOrderRequest)(nil),               // 63: osmi.CreateOrderRequest
+	(*OrderItem)(nil),                        // 64: osmi.OrderItem
+	(*OrderResponse)(nil),                    // 65: osmi.OrderResponse
+	(*GetOrderConfirmationRequest)(nil),      // 66: osmi.GetOrderConfirmationRequest
+	(*OrderConfirmationItem)(nil),            // 67: osmi.OrderConfirmationItem
+	(*OrderConfirmationResponse)(nil),        // 68: osmi.OrderConfirmationResponse
+	(*CreatePaymentIntentRequest)(nil),       // 69: osmi.CreatePaymentIntentRequest
+	(*PaymentIntentResponse)(nil),            // 70: osmi.PaymentIntentResponse
+	(*CreatePaymentRequest)(nil),             // 71: osmi.CreatePaymentRequest
+	(*PaymentProcessingResponse)(nil),        // 72: osmi.PaymentProcessingResponse
+	(*WebhookRequest)(nil),                   // 73: osmi.WebhookRequest
+	nil,                                      // 74: osmi.CreatePaymentRequest.PaymentMethodDetailsEntry
+	nil,                                      // 75: osmi.PaymentProcessingResponse.ProviderInstructionsEntry
+	(*timestamppb.Timestamp)(nil),            // 76: google.protobuf.Timestamp
+	(*wrapperspb.BoolValue)(nil),             // 77: google.protobuf.BoolValue
 }
 var file_osmi_proto_depIdxs = []int32{
-	74, // 0: osmi.HealthResponse.timestamp:type_name -> google.protobuf.Timestamp
-	74, // 1: osmi.ReserveTicketRequest.expires_at:type_name -> google.protobuf.Timestamp
-	74, // 2: osmi.TicketResponse.created_at:type_name -> google.protobuf.Timestamp
-	74, // 3: osmi.TicketResponse.used_at:type_name -> google.protobuf.Timestamp
-	14, // 4: osmi.TicketListResponse.tickets:type_name -> osmi.TicketResponse
-	74, // 5: osmi.CreateTicketTypeRequest.sale_starts_at:type_name -> google.protobuf.Timestamp
-	74, // 6: osmi.CreateTicketTypeRequest.sale_ends_at:type_name -> google.protobuf.Timestamp
-	74, // 7: osmi.UpdateTicketTypeRequest.sale_starts_at:type_name -> google.protobuf.Timestamp
-	74, // 8: osmi.UpdateTicketTypeRequest.sale_ends_at:type_name -> google.protobuf.Timestamp
-	74, // 9: osmi.TicketTypeResponse.sale_starts_at:type_name -> google.protobuf.Timestamp
-	74, // 10: osmi.TicketTypeResponse.sale_ends_at:type_name -> google.protobuf.Timestamp
-	74, // 11: osmi.TicketTypeResponse.created_at:type_name -> google.protobuf.Timestamp
-	74, // 12: osmi.TicketTypeResponse.updated_at:type_name -> google.protobuf.Timestamp
-	23, // 13: osmi.TicketTypeListResponse.ticket_types:type_name -> osmi.TicketTypeResponse
-	1,  // 14: osmi.CreateCustomerRequest.customer_type:type_name -> osmi.CustomerType
-	2,  // 15: osmi.CreateCustomerRequest.source:type_name -> osmi.CustomerSource
-	0,  // 16: osmi.CreateCustomerRequest.tax_id_type:type_name -> osmi.TaxIdType
-	1,  // 17: osmi.UpdateCustomerRequest.customer_type:type_name -> osmi.CustomerType
-	75, // 18: osmi.CustomerFilter.is_active:type_name -> google.protobuf.BoolValue
-	75, // 19: osmi.CustomerFilter.is_vip:type_name -> google.protobuf.BoolValue
-	28, // 20: osmi.ListCustomersRequest.filter:type_name -> osmi.CustomerFilter
-	1,  // 21: osmi.CustomerResponse.customer_type:type_name -> osmi.CustomerType
-	2,  // 22: osmi.CustomerResponse.source:type_name -> osmi.CustomerSource
-	0,  // 23: osmi.CustomerResponse.tax_id_type:type_name -> osmi.TaxIdType
-	3,  // 24: osmi.CustomerResponse.customer_segment:type_name -> osmi.CustomerSegment
-	74, // 25: osmi.CustomerResponse.created_at:type_name -> google.protobuf.Timestamp
-	74, // 26: osmi.CustomerResponse.updated_at:type_name -> google.protobuf.Timestamp
-	32, // 27: osmi.CustomerListResponse.customers:type_name -> osmi.CustomerResponse
-	35, // 28: osmi.CustomerStatsResponse.top_countries:type_name -> osmi.CountryStats
-	74, // 29: osmi.UserResponse.created_at:type_name -> google.protobuf.Timestamp
-	42, // 30: osmi.LoginResponse.user:type_name -> osmi.UserResponse
-	74, // 31: osmi.LoginResponse.expires_at:type_name -> google.protobuf.Timestamp
-	74, // 32: osmi.RefreshTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
-	74, // 33: osmi.EventResponse.created_at:type_name -> google.protobuf.Timestamp
-	74, // 34: osmi.EventResponse.updated_at:type_name -> google.protobuf.Timestamp
-	53, // 35: osmi.EventListResponse.events:type_name -> osmi.EventResponse
-	74, // 36: osmi.CategoryResponse.created_at:type_name -> google.protobuf.Timestamp
-	74, // 37: osmi.CategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
-	57, // 38: osmi.CategoryListResponse.categories:type_name -> osmi.CategoryResponse
-	42, // 39: osmi.UserListResponse.users:type_name -> osmi.UserResponse
-	62, // 40: osmi.CreateOrderRequest.items:type_name -> osmi.OrderItem
-	14, // 41: osmi.OrderResponse.tickets:type_name -> osmi.TicketResponse
-	74, // 42: osmi.OrderResponse.created_at:type_name -> google.protobuf.Timestamp
-	65, // 43: osmi.OrderConfirmationResponse.items:type_name -> osmi.OrderConfirmationItem
-	72, // 44: osmi.CreatePaymentRequest.payment_method_details:type_name -> osmi.CreatePaymentRequest.PaymentMethodDetailsEntry
-	73, // 45: osmi.PaymentProcessingResponse.provider_instructions:type_name -> osmi.PaymentProcessingResponse.ProviderInstructionsEntry
-	74, // 46: osmi.PaymentProcessingResponse.estimated_completion:type_name -> google.protobuf.Timestamp
-	67, // 47: osmi.OsmiService.CreatePaymentIntent:input_type -> osmi.CreatePaymentIntentRequest
-	69, // 48: osmi.OsmiService.CreatePayment:input_type -> osmi.CreatePaymentRequest
-	71, // 49: osmi.OsmiService.HandleWebhook:input_type -> osmi.WebhookRequest
-	4,  // 50: osmi.OsmiService.HealthCheck:input_type -> osmi.Empty
-	61, // 51: osmi.OsmiService.CreateOrder:input_type -> osmi.CreateOrderRequest
-	64, // 52: osmi.OsmiService.GetOrderConfirmation:input_type -> osmi.GetOrderConfirmationRequest
-	43, // 53: osmi.OsmiService.Login:input_type -> osmi.LoginRequest
-	45, // 54: osmi.OsmiService.Logout:input_type -> osmi.LogoutRequest
-	46, // 55: osmi.OsmiService.RefreshToken:input_type -> osmi.RefreshTokenRequest
-	36, // 56: osmi.OsmiService.CreateUser:input_type -> osmi.CreateUserRequest
-	37, // 57: osmi.OsmiService.GetUser:input_type -> osmi.GetUserRequest
-	38, // 58: osmi.OsmiService.UpdateUser:input_type -> osmi.UpdateUserRequest
-	39, // 59: osmi.OsmiService.DeleteUser:input_type -> osmi.DeleteUserRequest
-	59, // 60: osmi.OsmiService.ListUsers:input_type -> osmi.ListUsersRequest
-	25, // 61: osmi.OsmiService.CreateCustomer:input_type -> osmi.CreateCustomerRequest
-	26, // 62: osmi.OsmiService.GetCustomer:input_type -> osmi.GetCustomerRequest
-	27, // 63: osmi.OsmiService.UpdateCustomer:input_type -> osmi.UpdateCustomerRequest
-	29, // 64: osmi.OsmiService.ListCustomers:input_type -> osmi.ListCustomersRequest
-	4,  // 65: osmi.OsmiService.GetCustomerStats:input_type -> osmi.Empty
-	30, // 66: osmi.OsmiService.GetCustomerTickets:input_type -> osmi.GetCustomerTicketsRequest
-	48, // 67: osmi.OsmiService.CreateEvent:input_type -> osmi.CreateEventRequest
-	49, // 68: osmi.OsmiService.GetEvent:input_type -> osmi.GetEventRequest
-	51, // 69: osmi.OsmiService.ListEvents:input_type -> osmi.ListEventsRequest
-	50, // 70: osmi.OsmiService.UpdateEvent:input_type -> osmi.UpdateEventRequest
-	55, // 71: osmi.OsmiService.CreateCategory:input_type -> osmi.CreateCategoryRequest
-	56, // 72: osmi.OsmiService.GetEventCategories:input_type -> osmi.GetEventCategoriesRequest
-	18, // 73: osmi.OsmiService.CreateTicketType:input_type -> osmi.CreateTicketTypeRequest
-	19, // 74: osmi.OsmiService.GetTicketType:input_type -> osmi.GetTicketTypeRequest
-	20, // 75: osmi.OsmiService.ListTicketTypes:input_type -> osmi.ListTicketTypesRequest
-	21, // 76: osmi.OsmiService.UpdateTicketType:input_type -> osmi.UpdateTicketTypeRequest
-	22, // 77: osmi.OsmiService.DeleteTicketType:input_type -> osmi.DeleteTicketTypeRequest
-	6,  // 78: osmi.OsmiService.ReserveTicket:input_type -> osmi.ReserveTicketRequest
-	7,  // 79: osmi.OsmiService.CheckInTicket:input_type -> osmi.CheckInTicketRequest
-	8,  // 80: osmi.OsmiService.TransferTicket:input_type -> osmi.TransferTicketRequest
-	9,  // 81: osmi.OsmiService.ListTickets:input_type -> osmi.ListTicketsRequest
-	40, // 82: osmi.OsmiService.GetUserTickets:input_type -> osmi.GetUserTicketsRequest
-	11, // 83: osmi.OsmiService.UpdateTicketStatus:input_type -> osmi.UpdateTicketStatusRequest
-	10, // 84: osmi.OsmiService.UpdateTicket:input_type -> osmi.UpdateTicketRequest
-	12, // 85: osmi.OsmiService.GetTicketDetails:input_type -> osmi.GetTicketRequest
-	13, // 86: osmi.OsmiService.GetTicketStats:input_type -> osmi.GetTicketStatsRequest
-	4,  // 87: osmi.OsmiService.ExpireReservations:input_type -> osmi.Empty
-	68, // 88: osmi.OsmiService.CreatePaymentIntent:output_type -> osmi.PaymentIntentResponse
-	70, // 89: osmi.OsmiService.CreatePayment:output_type -> osmi.PaymentProcessingResponse
-	4,  // 90: osmi.OsmiService.HandleWebhook:output_type -> osmi.Empty
-	5,  // 91: osmi.OsmiService.HealthCheck:output_type -> osmi.HealthResponse
-	63, // 92: osmi.OsmiService.CreateOrder:output_type -> osmi.OrderResponse
-	66, // 93: osmi.OsmiService.GetOrderConfirmation:output_type -> osmi.OrderConfirmationResponse
-	44, // 94: osmi.OsmiService.Login:output_type -> osmi.LoginResponse
-	4,  // 95: osmi.OsmiService.Logout:output_type -> osmi.Empty
-	47, // 96: osmi.OsmiService.RefreshToken:output_type -> osmi.RefreshTokenResponse
-	42, // 97: osmi.OsmiService.CreateUser:output_type -> osmi.UserResponse
-	42, // 98: osmi.OsmiService.GetUser:output_type -> osmi.UserResponse
-	42, // 99: osmi.OsmiService.UpdateUser:output_type -> osmi.UserResponse
-	4,  // 100: osmi.OsmiService.DeleteUser:output_type -> osmi.Empty
-	60, // 101: osmi.OsmiService.ListUsers:output_type -> osmi.UserListResponse
-	32, // 102: osmi.OsmiService.CreateCustomer:output_type -> osmi.CustomerResponse
-	32, // 103: osmi.OsmiService.GetCustomer:output_type -> osmi.CustomerResponse
-	32, // 104: osmi.OsmiService.UpdateCustomer:output_type -> osmi.CustomerResponse
-	33, // 105: osmi.OsmiService.ListCustomers:output_type -> osmi.CustomerListResponse
-	34, // 106: osmi.OsmiService.GetCustomerStats:output_type -> osmi.CustomerStatsResponse
-	15, // 107: osmi.OsmiService.GetCustomerTickets:output_type -> osmi.TicketListResponse
-	53, // 108: osmi.OsmiService.CreateEvent:output_type -> osmi.EventResponse
-	53, // 109: osmi.OsmiService.GetEvent:output_type -> osmi.EventResponse
-	54, // 110: osmi.OsmiService.ListEvents:output_type -> osmi.EventListResponse
-	53, // 111: osmi.OsmiService.UpdateEvent:output_type -> osmi.EventResponse
-	57, // 112: osmi.OsmiService.CreateCategory:output_type -> osmi.CategoryResponse
-	58, // 113: osmi.OsmiService.GetEventCategories:output_type -> osmi.CategoryListResponse
-	23, // 114: osmi.OsmiService.CreateTicketType:output_type -> osmi.TicketTypeResponse
-	23, // 115: osmi.OsmiService.GetTicketType:output_type -> osmi.TicketTypeResponse
-	24, // 116: osmi.OsmiService.ListTicketTypes:output_type -> osmi.TicketTypeListResponse
-	23, // 117: osmi.OsmiService.UpdateTicketType:output_type -> osmi.TicketTypeResponse
-	4,  // 118: osmi.OsmiService.DeleteTicketType:output_type -> osmi.Empty
-	14, // 119: osmi.OsmiService.ReserveTicket:output_type -> osmi.TicketResponse
-	14, // 120: osmi.OsmiService.CheckInTicket:output_type -> osmi.TicketResponse
-	14, // 121: osmi.OsmiService.TransferTicket:output_type -> osmi.TicketResponse
-	15, // 122: osmi.OsmiService.ListTickets:output_type -> osmi.TicketListResponse
-	15, // 123: osmi.OsmiService.GetUserTickets:output_type -> osmi.TicketListResponse
-	14, // 124: osmi.OsmiService.UpdateTicketStatus:output_type -> osmi.TicketResponse
-	14, // 125: osmi.OsmiService.UpdateTicket:output_type -> osmi.TicketResponse
-	14, // 126: osmi.OsmiService.GetTicketDetails:output_type -> osmi.TicketResponse
-	16, // 127: osmi.OsmiService.GetTicketStats:output_type -> osmi.TicketStatsResponse
-	17, // 128: osmi.OsmiService.ExpireReservations:output_type -> osmi.ExpireReservationsResponse
-	88, // [88:129] is the sub-list for method output_type
-	47, // [47:88] is the sub-list for method input_type
-	47, // [47:47] is the sub-list for extension type_name
-	47, // [47:47] is the sub-list for extension extendee
-	0,  // [0:47] is the sub-list for field type_name
+	76, // 0: osmi.HealthResponse.timestamp:type_name -> google.protobuf.Timestamp
+	76, // 1: osmi.ValidateTicketCredentialResponse.checked_in_at:type_name -> google.protobuf.Timestamp
+	76, // 2: osmi.ValidateTicketCredentialResponse.last_validated_at:type_name -> google.protobuf.Timestamp
+	76, // 3: osmi.ReserveTicketRequest.expires_at:type_name -> google.protobuf.Timestamp
+	76, // 4: osmi.TicketResponse.created_at:type_name -> google.protobuf.Timestamp
+	76, // 5: osmi.TicketResponse.used_at:type_name -> google.protobuf.Timestamp
+	16, // 6: osmi.TicketListResponse.tickets:type_name -> osmi.TicketResponse
+	76, // 7: osmi.CreateTicketTypeRequest.sale_starts_at:type_name -> google.protobuf.Timestamp
+	76, // 8: osmi.CreateTicketTypeRequest.sale_ends_at:type_name -> google.protobuf.Timestamp
+	76, // 9: osmi.UpdateTicketTypeRequest.sale_starts_at:type_name -> google.protobuf.Timestamp
+	76, // 10: osmi.UpdateTicketTypeRequest.sale_ends_at:type_name -> google.protobuf.Timestamp
+	76, // 11: osmi.TicketTypeResponse.sale_starts_at:type_name -> google.protobuf.Timestamp
+	76, // 12: osmi.TicketTypeResponse.sale_ends_at:type_name -> google.protobuf.Timestamp
+	76, // 13: osmi.TicketTypeResponse.created_at:type_name -> google.protobuf.Timestamp
+	76, // 14: osmi.TicketTypeResponse.updated_at:type_name -> google.protobuf.Timestamp
+	25, // 15: osmi.TicketTypeListResponse.ticket_types:type_name -> osmi.TicketTypeResponse
+	1,  // 16: osmi.CreateCustomerRequest.customer_type:type_name -> osmi.CustomerType
+	2,  // 17: osmi.CreateCustomerRequest.source:type_name -> osmi.CustomerSource
+	0,  // 18: osmi.CreateCustomerRequest.tax_id_type:type_name -> osmi.TaxIdType
+	1,  // 19: osmi.UpdateCustomerRequest.customer_type:type_name -> osmi.CustomerType
+	77, // 20: osmi.CustomerFilter.is_active:type_name -> google.protobuf.BoolValue
+	77, // 21: osmi.CustomerFilter.is_vip:type_name -> google.protobuf.BoolValue
+	30, // 22: osmi.ListCustomersRequest.filter:type_name -> osmi.CustomerFilter
+	1,  // 23: osmi.CustomerResponse.customer_type:type_name -> osmi.CustomerType
+	2,  // 24: osmi.CustomerResponse.source:type_name -> osmi.CustomerSource
+	0,  // 25: osmi.CustomerResponse.tax_id_type:type_name -> osmi.TaxIdType
+	3,  // 26: osmi.CustomerResponse.customer_segment:type_name -> osmi.CustomerSegment
+	76, // 27: osmi.CustomerResponse.created_at:type_name -> google.protobuf.Timestamp
+	76, // 28: osmi.CustomerResponse.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 29: osmi.CustomerListResponse.customers:type_name -> osmi.CustomerResponse
+	37, // 30: osmi.CustomerStatsResponse.top_countries:type_name -> osmi.CountryStats
+	76, // 31: osmi.UserResponse.created_at:type_name -> google.protobuf.Timestamp
+	44, // 32: osmi.LoginResponse.user:type_name -> osmi.UserResponse
+	76, // 33: osmi.LoginResponse.expires_at:type_name -> google.protobuf.Timestamp
+	76, // 34: osmi.RefreshTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
+	76, // 35: osmi.EventResponse.created_at:type_name -> google.protobuf.Timestamp
+	76, // 36: osmi.EventResponse.updated_at:type_name -> google.protobuf.Timestamp
+	55, // 37: osmi.EventListResponse.events:type_name -> osmi.EventResponse
+	76, // 38: osmi.CategoryResponse.created_at:type_name -> google.protobuf.Timestamp
+	76, // 39: osmi.CategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
+	59, // 40: osmi.CategoryListResponse.categories:type_name -> osmi.CategoryResponse
+	44, // 41: osmi.UserListResponse.users:type_name -> osmi.UserResponse
+	64, // 42: osmi.CreateOrderRequest.items:type_name -> osmi.OrderItem
+	16, // 43: osmi.OrderResponse.tickets:type_name -> osmi.TicketResponse
+	76, // 44: osmi.OrderResponse.created_at:type_name -> google.protobuf.Timestamp
+	67, // 45: osmi.OrderConfirmationResponse.items:type_name -> osmi.OrderConfirmationItem
+	74, // 46: osmi.CreatePaymentRequest.payment_method_details:type_name -> osmi.CreatePaymentRequest.PaymentMethodDetailsEntry
+	75, // 47: osmi.PaymentProcessingResponse.provider_instructions:type_name -> osmi.PaymentProcessingResponse.ProviderInstructionsEntry
+	76, // 48: osmi.PaymentProcessingResponse.estimated_completion:type_name -> google.protobuf.Timestamp
+	69, // 49: osmi.OsmiService.CreatePaymentIntent:input_type -> osmi.CreatePaymentIntentRequest
+	71, // 50: osmi.OsmiService.CreatePayment:input_type -> osmi.CreatePaymentRequest
+	73, // 51: osmi.OsmiService.HandleWebhook:input_type -> osmi.WebhookRequest
+	4,  // 52: osmi.OsmiService.HealthCheck:input_type -> osmi.Empty
+	63, // 53: osmi.OsmiService.CreateOrder:input_type -> osmi.CreateOrderRequest
+	66, // 54: osmi.OsmiService.GetOrderConfirmation:input_type -> osmi.GetOrderConfirmationRequest
+	45, // 55: osmi.OsmiService.Login:input_type -> osmi.LoginRequest
+	47, // 56: osmi.OsmiService.Logout:input_type -> osmi.LogoutRequest
+	48, // 57: osmi.OsmiService.RefreshToken:input_type -> osmi.RefreshTokenRequest
+	38, // 58: osmi.OsmiService.CreateUser:input_type -> osmi.CreateUserRequest
+	39, // 59: osmi.OsmiService.GetUser:input_type -> osmi.GetUserRequest
+	40, // 60: osmi.OsmiService.UpdateUser:input_type -> osmi.UpdateUserRequest
+	41, // 61: osmi.OsmiService.DeleteUser:input_type -> osmi.DeleteUserRequest
+	61, // 62: osmi.OsmiService.ListUsers:input_type -> osmi.ListUsersRequest
+	27, // 63: osmi.OsmiService.CreateCustomer:input_type -> osmi.CreateCustomerRequest
+	28, // 64: osmi.OsmiService.GetCustomer:input_type -> osmi.GetCustomerRequest
+	29, // 65: osmi.OsmiService.UpdateCustomer:input_type -> osmi.UpdateCustomerRequest
+	31, // 66: osmi.OsmiService.ListCustomers:input_type -> osmi.ListCustomersRequest
+	4,  // 67: osmi.OsmiService.GetCustomerStats:input_type -> osmi.Empty
+	32, // 68: osmi.OsmiService.GetCustomerTickets:input_type -> osmi.GetCustomerTicketsRequest
+	50, // 69: osmi.OsmiService.CreateEvent:input_type -> osmi.CreateEventRequest
+	51, // 70: osmi.OsmiService.GetEvent:input_type -> osmi.GetEventRequest
+	53, // 71: osmi.OsmiService.ListEvents:input_type -> osmi.ListEventsRequest
+	52, // 72: osmi.OsmiService.UpdateEvent:input_type -> osmi.UpdateEventRequest
+	57, // 73: osmi.OsmiService.CreateCategory:input_type -> osmi.CreateCategoryRequest
+	58, // 74: osmi.OsmiService.GetEventCategories:input_type -> osmi.GetEventCategoriesRequest
+	20, // 75: osmi.OsmiService.CreateTicketType:input_type -> osmi.CreateTicketTypeRequest
+	21, // 76: osmi.OsmiService.GetTicketType:input_type -> osmi.GetTicketTypeRequest
+	22, // 77: osmi.OsmiService.ListTicketTypes:input_type -> osmi.ListTicketTypesRequest
+	23, // 78: osmi.OsmiService.UpdateTicketType:input_type -> osmi.UpdateTicketTypeRequest
+	24, // 79: osmi.OsmiService.DeleteTicketType:input_type -> osmi.DeleteTicketTypeRequest
+	6,  // 80: osmi.OsmiService.ValidateTicketCredential:input_type -> osmi.ValidateTicketCredentialRequest
+	8,  // 81: osmi.OsmiService.ReserveTicket:input_type -> osmi.ReserveTicketRequest
+	9,  // 82: osmi.OsmiService.CheckInTicket:input_type -> osmi.CheckInTicketRequest
+	10, // 83: osmi.OsmiService.TransferTicket:input_type -> osmi.TransferTicketRequest
+	11, // 84: osmi.OsmiService.ListTickets:input_type -> osmi.ListTicketsRequest
+	42, // 85: osmi.OsmiService.GetUserTickets:input_type -> osmi.GetUserTicketsRequest
+	13, // 86: osmi.OsmiService.UpdateTicketStatus:input_type -> osmi.UpdateTicketStatusRequest
+	12, // 87: osmi.OsmiService.UpdateTicket:input_type -> osmi.UpdateTicketRequest
+	14, // 88: osmi.OsmiService.GetTicketDetails:input_type -> osmi.GetTicketRequest
+	15, // 89: osmi.OsmiService.GetTicketStats:input_type -> osmi.GetTicketStatsRequest
+	4,  // 90: osmi.OsmiService.ExpireReservations:input_type -> osmi.Empty
+	70, // 91: osmi.OsmiService.CreatePaymentIntent:output_type -> osmi.PaymentIntentResponse
+	72, // 92: osmi.OsmiService.CreatePayment:output_type -> osmi.PaymentProcessingResponse
+	4,  // 93: osmi.OsmiService.HandleWebhook:output_type -> osmi.Empty
+	5,  // 94: osmi.OsmiService.HealthCheck:output_type -> osmi.HealthResponse
+	65, // 95: osmi.OsmiService.CreateOrder:output_type -> osmi.OrderResponse
+	68, // 96: osmi.OsmiService.GetOrderConfirmation:output_type -> osmi.OrderConfirmationResponse
+	46, // 97: osmi.OsmiService.Login:output_type -> osmi.LoginResponse
+	4,  // 98: osmi.OsmiService.Logout:output_type -> osmi.Empty
+	49, // 99: osmi.OsmiService.RefreshToken:output_type -> osmi.RefreshTokenResponse
+	44, // 100: osmi.OsmiService.CreateUser:output_type -> osmi.UserResponse
+	44, // 101: osmi.OsmiService.GetUser:output_type -> osmi.UserResponse
+	44, // 102: osmi.OsmiService.UpdateUser:output_type -> osmi.UserResponse
+	4,  // 103: osmi.OsmiService.DeleteUser:output_type -> osmi.Empty
+	62, // 104: osmi.OsmiService.ListUsers:output_type -> osmi.UserListResponse
+	34, // 105: osmi.OsmiService.CreateCustomer:output_type -> osmi.CustomerResponse
+	34, // 106: osmi.OsmiService.GetCustomer:output_type -> osmi.CustomerResponse
+	34, // 107: osmi.OsmiService.UpdateCustomer:output_type -> osmi.CustomerResponse
+	35, // 108: osmi.OsmiService.ListCustomers:output_type -> osmi.CustomerListResponse
+	36, // 109: osmi.OsmiService.GetCustomerStats:output_type -> osmi.CustomerStatsResponse
+	17, // 110: osmi.OsmiService.GetCustomerTickets:output_type -> osmi.TicketListResponse
+	55, // 111: osmi.OsmiService.CreateEvent:output_type -> osmi.EventResponse
+	55, // 112: osmi.OsmiService.GetEvent:output_type -> osmi.EventResponse
+	56, // 113: osmi.OsmiService.ListEvents:output_type -> osmi.EventListResponse
+	55, // 114: osmi.OsmiService.UpdateEvent:output_type -> osmi.EventResponse
+	59, // 115: osmi.OsmiService.CreateCategory:output_type -> osmi.CategoryResponse
+	60, // 116: osmi.OsmiService.GetEventCategories:output_type -> osmi.CategoryListResponse
+	25, // 117: osmi.OsmiService.CreateTicketType:output_type -> osmi.TicketTypeResponse
+	25, // 118: osmi.OsmiService.GetTicketType:output_type -> osmi.TicketTypeResponse
+	26, // 119: osmi.OsmiService.ListTicketTypes:output_type -> osmi.TicketTypeListResponse
+	25, // 120: osmi.OsmiService.UpdateTicketType:output_type -> osmi.TicketTypeResponse
+	4,  // 121: osmi.OsmiService.DeleteTicketType:output_type -> osmi.Empty
+	7,  // 122: osmi.OsmiService.ValidateTicketCredential:output_type -> osmi.ValidateTicketCredentialResponse
+	16, // 123: osmi.OsmiService.ReserveTicket:output_type -> osmi.TicketResponse
+	16, // 124: osmi.OsmiService.CheckInTicket:output_type -> osmi.TicketResponse
+	16, // 125: osmi.OsmiService.TransferTicket:output_type -> osmi.TicketResponse
+	17, // 126: osmi.OsmiService.ListTickets:output_type -> osmi.TicketListResponse
+	17, // 127: osmi.OsmiService.GetUserTickets:output_type -> osmi.TicketListResponse
+	16, // 128: osmi.OsmiService.UpdateTicketStatus:output_type -> osmi.TicketResponse
+	16, // 129: osmi.OsmiService.UpdateTicket:output_type -> osmi.TicketResponse
+	16, // 130: osmi.OsmiService.GetTicketDetails:output_type -> osmi.TicketResponse
+	18, // 131: osmi.OsmiService.GetTicketStats:output_type -> osmi.TicketStatsResponse
+	19, // 132: osmi.OsmiService.ExpireReservations:output_type -> osmi.ExpireReservationsResponse
+	91, // [91:133] is the sub-list for method output_type
+	49, // [49:91] is the sub-list for method input_type
+	49, // [49:49] is the sub-list for extension type_name
+	49, // [49:49] is the sub-list for extension extendee
+	0,  // [0:49] is the sub-list for field type_name
 }
 
 func init() { file_osmi_proto_init() }
@@ -6891,23 +7075,23 @@ func file_osmi_proto_init() {
 	if File_osmi_proto != nil {
 		return
 	}
-	file_osmi_proto_msgTypes[6].OneofWrappers = []any{}
-	file_osmi_proto_msgTypes[17].OneofWrappers = []any{}
-	file_osmi_proto_msgTypes[23].OneofWrappers = []any{}
-	file_osmi_proto_msgTypes[27].OneofWrappers = []any{
+	file_osmi_proto_msgTypes[8].OneofWrappers = []any{}
+	file_osmi_proto_msgTypes[19].OneofWrappers = []any{}
+	file_osmi_proto_msgTypes[25].OneofWrappers = []any{}
+	file_osmi_proto_msgTypes[29].OneofWrappers = []any{
 		(*CustomerLookup_Id)(nil),
 		(*CustomerLookup_PublicId)(nil),
 		(*CustomerLookup_Email)(nil),
 	}
-	file_osmi_proto_msgTypes[34].OneofWrappers = []any{}
-	file_osmi_proto_msgTypes[46].OneofWrappers = []any{}
+	file_osmi_proto_msgTypes[36].OneofWrappers = []any{}
+	file_osmi_proto_msgTypes[48].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_osmi_proto_rawDesc), len(file_osmi_proto_rawDesc)),
 			NumEnums:      4,
-			NumMessages:   70,
+			NumMessages:   72,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

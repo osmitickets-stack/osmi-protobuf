@@ -240,6 +240,15 @@ service OsmiService {
   // =========================
   // TICKETS
   // =========================
+
+  rpc ValidateTicketCredential(ValidateTicketCredentialRequest)
+    returns (ValidateTicketCredentialResponse) {
+  option (google.api.http) = {
+    post: "/v1/tickets/validate"
+    body: "*"
+  };
+}
+
   rpc ReserveTicket(ReserveTicketRequest) returns (TicketResponse) {
     option (google.api.http) = {
       post: "/v1/tickets/reserve"
@@ -319,6 +328,28 @@ message HealthResponse {
 }
 
 // ============ TICKETS ============
+
+message ValidateTicketCredentialRequest {
+  string credential = 1;
+}
+
+message ValidateTicketCredentialResponse {
+  bool authentic = 1;
+  bool can_check_in = 2;
+  string result = 3;
+
+  string ticket_id = 4;
+  string ticket_code = 5;
+
+  int64 event_id = 6;
+  int64 ticket_type_id = 7;
+
+  string status = 8;
+
+  google.protobuf.Timestamp checked_in_at = 9;
+  google.protobuf.Timestamp last_validated_at = 10;
+}
+
 message ReserveTicketRequest {
   string ticket_type_id = 1;
   string user_id = 2;

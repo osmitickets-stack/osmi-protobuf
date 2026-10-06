@@ -19,47 +19,48 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	OsmiService_CreatePaymentIntent_FullMethodName  = "/osmi.OsmiService/CreatePaymentIntent"
-	OsmiService_CreatePayment_FullMethodName        = "/osmi.OsmiService/CreatePayment"
-	OsmiService_HandleWebhook_FullMethodName        = "/osmi.OsmiService/HandleWebhook"
-	OsmiService_HealthCheck_FullMethodName          = "/osmi.OsmiService/HealthCheck"
-	OsmiService_CreateOrder_FullMethodName          = "/osmi.OsmiService/CreateOrder"
-	OsmiService_GetOrderConfirmation_FullMethodName = "/osmi.OsmiService/GetOrderConfirmation"
-	OsmiService_Login_FullMethodName                = "/osmi.OsmiService/Login"
-	OsmiService_Logout_FullMethodName               = "/osmi.OsmiService/Logout"
-	OsmiService_RefreshToken_FullMethodName         = "/osmi.OsmiService/RefreshToken"
-	OsmiService_CreateUser_FullMethodName           = "/osmi.OsmiService/CreateUser"
-	OsmiService_GetUser_FullMethodName              = "/osmi.OsmiService/GetUser"
-	OsmiService_UpdateUser_FullMethodName           = "/osmi.OsmiService/UpdateUser"
-	OsmiService_DeleteUser_FullMethodName           = "/osmi.OsmiService/DeleteUser"
-	OsmiService_ListUsers_FullMethodName            = "/osmi.OsmiService/ListUsers"
-	OsmiService_CreateCustomer_FullMethodName       = "/osmi.OsmiService/CreateCustomer"
-	OsmiService_GetCustomer_FullMethodName          = "/osmi.OsmiService/GetCustomer"
-	OsmiService_UpdateCustomer_FullMethodName       = "/osmi.OsmiService/UpdateCustomer"
-	OsmiService_ListCustomers_FullMethodName        = "/osmi.OsmiService/ListCustomers"
-	OsmiService_GetCustomerStats_FullMethodName     = "/osmi.OsmiService/GetCustomerStats"
-	OsmiService_GetCustomerTickets_FullMethodName   = "/osmi.OsmiService/GetCustomerTickets"
-	OsmiService_CreateEvent_FullMethodName          = "/osmi.OsmiService/CreateEvent"
-	OsmiService_GetEvent_FullMethodName             = "/osmi.OsmiService/GetEvent"
-	OsmiService_ListEvents_FullMethodName           = "/osmi.OsmiService/ListEvents"
-	OsmiService_UpdateEvent_FullMethodName          = "/osmi.OsmiService/UpdateEvent"
-	OsmiService_CreateCategory_FullMethodName       = "/osmi.OsmiService/CreateCategory"
-	OsmiService_GetEventCategories_FullMethodName   = "/osmi.OsmiService/GetEventCategories"
-	OsmiService_CreateTicketType_FullMethodName     = "/osmi.OsmiService/CreateTicketType"
-	OsmiService_GetTicketType_FullMethodName        = "/osmi.OsmiService/GetTicketType"
-	OsmiService_ListTicketTypes_FullMethodName      = "/osmi.OsmiService/ListTicketTypes"
-	OsmiService_UpdateTicketType_FullMethodName     = "/osmi.OsmiService/UpdateTicketType"
-	OsmiService_DeleteTicketType_FullMethodName     = "/osmi.OsmiService/DeleteTicketType"
-	OsmiService_ReserveTicket_FullMethodName        = "/osmi.OsmiService/ReserveTicket"
-	OsmiService_CheckInTicket_FullMethodName        = "/osmi.OsmiService/CheckInTicket"
-	OsmiService_TransferTicket_FullMethodName       = "/osmi.OsmiService/TransferTicket"
-	OsmiService_ListTickets_FullMethodName          = "/osmi.OsmiService/ListTickets"
-	OsmiService_GetUserTickets_FullMethodName       = "/osmi.OsmiService/GetUserTickets"
-	OsmiService_UpdateTicketStatus_FullMethodName   = "/osmi.OsmiService/UpdateTicketStatus"
-	OsmiService_UpdateTicket_FullMethodName         = "/osmi.OsmiService/UpdateTicket"
-	OsmiService_GetTicketDetails_FullMethodName     = "/osmi.OsmiService/GetTicketDetails"
-	OsmiService_GetTicketStats_FullMethodName       = "/osmi.OsmiService/GetTicketStats"
-	OsmiService_ExpireReservations_FullMethodName   = "/osmi.OsmiService/ExpireReservations"
+	OsmiService_CreatePaymentIntent_FullMethodName      = "/osmi.OsmiService/CreatePaymentIntent"
+	OsmiService_CreatePayment_FullMethodName            = "/osmi.OsmiService/CreatePayment"
+	OsmiService_HandleWebhook_FullMethodName            = "/osmi.OsmiService/HandleWebhook"
+	OsmiService_HealthCheck_FullMethodName              = "/osmi.OsmiService/HealthCheck"
+	OsmiService_CreateOrder_FullMethodName              = "/osmi.OsmiService/CreateOrder"
+	OsmiService_GetOrderConfirmation_FullMethodName     = "/osmi.OsmiService/GetOrderConfirmation"
+	OsmiService_Login_FullMethodName                    = "/osmi.OsmiService/Login"
+	OsmiService_Logout_FullMethodName                   = "/osmi.OsmiService/Logout"
+	OsmiService_RefreshToken_FullMethodName             = "/osmi.OsmiService/RefreshToken"
+	OsmiService_CreateUser_FullMethodName               = "/osmi.OsmiService/CreateUser"
+	OsmiService_GetUser_FullMethodName                  = "/osmi.OsmiService/GetUser"
+	OsmiService_UpdateUser_FullMethodName               = "/osmi.OsmiService/UpdateUser"
+	OsmiService_DeleteUser_FullMethodName               = "/osmi.OsmiService/DeleteUser"
+	OsmiService_ListUsers_FullMethodName                = "/osmi.OsmiService/ListUsers"
+	OsmiService_CreateCustomer_FullMethodName           = "/osmi.OsmiService/CreateCustomer"
+	OsmiService_GetCustomer_FullMethodName              = "/osmi.OsmiService/GetCustomer"
+	OsmiService_UpdateCustomer_FullMethodName           = "/osmi.OsmiService/UpdateCustomer"
+	OsmiService_ListCustomers_FullMethodName            = "/osmi.OsmiService/ListCustomers"
+	OsmiService_GetCustomerStats_FullMethodName         = "/osmi.OsmiService/GetCustomerStats"
+	OsmiService_GetCustomerTickets_FullMethodName       = "/osmi.OsmiService/GetCustomerTickets"
+	OsmiService_CreateEvent_FullMethodName              = "/osmi.OsmiService/CreateEvent"
+	OsmiService_GetEvent_FullMethodName                 = "/osmi.OsmiService/GetEvent"
+	OsmiService_ListEvents_FullMethodName               = "/osmi.OsmiService/ListEvents"
+	OsmiService_UpdateEvent_FullMethodName              = "/osmi.OsmiService/UpdateEvent"
+	OsmiService_CreateCategory_FullMethodName           = "/osmi.OsmiService/CreateCategory"
+	OsmiService_GetEventCategories_FullMethodName       = "/osmi.OsmiService/GetEventCategories"
+	OsmiService_CreateTicketType_FullMethodName         = "/osmi.OsmiService/CreateTicketType"
+	OsmiService_GetTicketType_FullMethodName            = "/osmi.OsmiService/GetTicketType"
+	OsmiService_ListTicketTypes_FullMethodName          = "/osmi.OsmiService/ListTicketTypes"
+	OsmiService_UpdateTicketType_FullMethodName         = "/osmi.OsmiService/UpdateTicketType"
+	OsmiService_DeleteTicketType_FullMethodName         = "/osmi.OsmiService/DeleteTicketType"
+	OsmiService_ValidateTicketCredential_FullMethodName = "/osmi.OsmiService/ValidateTicketCredential"
+	OsmiService_ReserveTicket_FullMethodName            = "/osmi.OsmiService/ReserveTicket"
+	OsmiService_CheckInTicket_FullMethodName            = "/osmi.OsmiService/CheckInTicket"
+	OsmiService_TransferTicket_FullMethodName           = "/osmi.OsmiService/TransferTicket"
+	OsmiService_ListTickets_FullMethodName              = "/osmi.OsmiService/ListTickets"
+	OsmiService_GetUserTickets_FullMethodName           = "/osmi.OsmiService/GetUserTickets"
+	OsmiService_UpdateTicketStatus_FullMethodName       = "/osmi.OsmiService/UpdateTicketStatus"
+	OsmiService_UpdateTicket_FullMethodName             = "/osmi.OsmiService/UpdateTicket"
+	OsmiService_GetTicketDetails_FullMethodName         = "/osmi.OsmiService/GetTicketDetails"
+	OsmiService_GetTicketStats_FullMethodName           = "/osmi.OsmiService/GetTicketStats"
+	OsmiService_ExpireReservations_FullMethodName       = "/osmi.OsmiService/ExpireReservations"
 )
 
 // OsmiServiceClient is the client API for OsmiService service.
@@ -124,9 +125,7 @@ type OsmiServiceClient interface {
 	ListTicketTypes(ctx context.Context, in *ListTicketTypesRequest, opts ...grpc.CallOption) (*TicketTypeListResponse, error)
 	UpdateTicketType(ctx context.Context, in *UpdateTicketTypeRequest, opts ...grpc.CallOption) (*TicketTypeResponse, error)
 	DeleteTicketType(ctx context.Context, in *DeleteTicketTypeRequest, opts ...grpc.CallOption) (*Empty, error)
-	// =========================
-	// TICKETS
-	// =========================
+	ValidateTicketCredential(ctx context.Context, in *ValidateTicketCredentialRequest, opts ...grpc.CallOption) (*ValidateTicketCredentialResponse, error)
 	ReserveTicket(ctx context.Context, in *ReserveTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
 	CheckInTicket(ctx context.Context, in *CheckInTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
 	TransferTicket(ctx context.Context, in *TransferTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
@@ -458,6 +457,16 @@ func (c *osmiServiceClient) DeleteTicketType(ctx context.Context, in *DeleteTick
 	return out, nil
 }
 
+func (c *osmiServiceClient) ValidateTicketCredential(ctx context.Context, in *ValidateTicketCredentialRequest, opts ...grpc.CallOption) (*ValidateTicketCredentialResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ValidateTicketCredentialResponse)
+	err := c.cc.Invoke(ctx, OsmiService_ValidateTicketCredential_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *osmiServiceClient) ReserveTicket(ctx context.Context, in *ReserveTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(TicketResponse)
@@ -620,9 +629,7 @@ type OsmiServiceServer interface {
 	ListTicketTypes(context.Context, *ListTicketTypesRequest) (*TicketTypeListResponse, error)
 	UpdateTicketType(context.Context, *UpdateTicketTypeRequest) (*TicketTypeResponse, error)
 	DeleteTicketType(context.Context, *DeleteTicketTypeRequest) (*Empty, error)
-	// =========================
-	// TICKETS
-	// =========================
+	ValidateTicketCredential(context.Context, *ValidateTicketCredentialRequest) (*ValidateTicketCredentialResponse, error)
 	ReserveTicket(context.Context, *ReserveTicketRequest) (*TicketResponse, error)
 	CheckInTicket(context.Context, *CheckInTicketRequest) (*TicketResponse, error)
 	TransferTicket(context.Context, *TransferTicketRequest) (*TicketResponse, error)
@@ -736,6 +743,9 @@ func (UnimplementedOsmiServiceServer) UpdateTicketType(context.Context, *UpdateT
 }
 func (UnimplementedOsmiServiceServer) DeleteTicketType(context.Context, *DeleteTicketTypeRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteTicketType not implemented")
+}
+func (UnimplementedOsmiServiceServer) ValidateTicketCredential(context.Context, *ValidateTicketCredentialRequest) (*ValidateTicketCredentialResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ValidateTicketCredential not implemented")
 }
 func (UnimplementedOsmiServiceServer) ReserveTicket(context.Context, *ReserveTicketRequest) (*TicketResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ReserveTicket not implemented")
@@ -1346,6 +1356,24 @@ func _OsmiService_DeleteTicketType_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OsmiService_ValidateTicketCredential_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ValidateTicketCredentialRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OsmiServiceServer).ValidateTicketCredential(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OsmiService_ValidateTicketCredential_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OsmiServiceServer).ValidateTicketCredential(ctx, req.(*ValidateTicketCredentialRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _OsmiService_ReserveTicket_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReserveTicketRequest)
 	if err := dec(in); err != nil {
@@ -1656,6 +1684,10 @@ var OsmiService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteTicketType",
 			Handler:    _OsmiService_DeleteTicketType_Handler,
+		},
+		{
+			MethodName: "ValidateTicketCredential",
+			Handler:    _OsmiService_ValidateTicketCredential_Handler,
 		},
 		{
 			MethodName: "ReserveTicket",
