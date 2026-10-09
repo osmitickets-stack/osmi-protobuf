@@ -127,7 +127,7 @@ type OsmiServiceClient interface {
 	DeleteTicketType(ctx context.Context, in *DeleteTicketTypeRequest, opts ...grpc.CallOption) (*Empty, error)
 	ValidateTicketCredential(ctx context.Context, in *ValidateTicketCredentialRequest, opts ...grpc.CallOption) (*ValidateTicketCredentialResponse, error)
 	ReserveTicket(ctx context.Context, in *ReserveTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
-	CheckInTicket(ctx context.Context, in *CheckInTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
+	CheckInTicket(ctx context.Context, in *CheckInTicketRequest, opts ...grpc.CallOption) (*CheckInTicketResponse, error)
 	TransferTicket(ctx context.Context, in *TransferTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
 	ListTickets(ctx context.Context, in *ListTicketsRequest, opts ...grpc.CallOption) (*TicketListResponse, error)
 	GetUserTickets(ctx context.Context, in *GetUserTicketsRequest, opts ...grpc.CallOption) (*TicketListResponse, error)
@@ -477,9 +477,9 @@ func (c *osmiServiceClient) ReserveTicket(ctx context.Context, in *ReserveTicket
 	return out, nil
 }
 
-func (c *osmiServiceClient) CheckInTicket(ctx context.Context, in *CheckInTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error) {
+func (c *osmiServiceClient) CheckInTicket(ctx context.Context, in *CheckInTicketRequest, opts ...grpc.CallOption) (*CheckInTicketResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(TicketResponse)
+	out := new(CheckInTicketResponse)
 	err := c.cc.Invoke(ctx, OsmiService_CheckInTicket_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -631,7 +631,7 @@ type OsmiServiceServer interface {
 	DeleteTicketType(context.Context, *DeleteTicketTypeRequest) (*Empty, error)
 	ValidateTicketCredential(context.Context, *ValidateTicketCredentialRequest) (*ValidateTicketCredentialResponse, error)
 	ReserveTicket(context.Context, *ReserveTicketRequest) (*TicketResponse, error)
-	CheckInTicket(context.Context, *CheckInTicketRequest) (*TicketResponse, error)
+	CheckInTicket(context.Context, *CheckInTicketRequest) (*CheckInTicketResponse, error)
 	TransferTicket(context.Context, *TransferTicketRequest) (*TicketResponse, error)
 	ListTickets(context.Context, *ListTicketsRequest) (*TicketListResponse, error)
 	GetUserTickets(context.Context, *GetUserTicketsRequest) (*TicketListResponse, error)
@@ -750,7 +750,7 @@ func (UnimplementedOsmiServiceServer) ValidateTicketCredential(context.Context, 
 func (UnimplementedOsmiServiceServer) ReserveTicket(context.Context, *ReserveTicketRequest) (*TicketResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ReserveTicket not implemented")
 }
-func (UnimplementedOsmiServiceServer) CheckInTicket(context.Context, *CheckInTicketRequest) (*TicketResponse, error) {
+func (UnimplementedOsmiServiceServer) CheckInTicket(context.Context, *CheckInTicketRequest) (*CheckInTicketResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CheckInTicket not implemented")
 }
 func (UnimplementedOsmiServiceServer) TransferTicket(context.Context, *TransferTicketRequest) (*TicketResponse, error) {

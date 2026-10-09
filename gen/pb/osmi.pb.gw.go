@@ -1144,21 +1144,12 @@ func request_OsmiService_CheckInTicket_0(ctx context.Context, marshaler runtime.
 	var (
 		protoReq CheckInTicketRequest
 		metadata runtime.ServerMetadata
-		err      error
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
-	}
-	val, ok := pathParams["ticket_id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "ticket_id")
-	}
-	protoReq.TicketId, err = runtime.String(val)
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "ticket_id", err)
 	}
 	msg, err := client.CheckInTicket(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -1168,18 +1159,9 @@ func local_request_OsmiService_CheckInTicket_0(ctx context.Context, marshaler ru
 	var (
 		protoReq CheckInTicketRequest
 		metadata runtime.ServerMetadata
-		err      error
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	val, ok := pathParams["ticket_id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "ticket_id")
-	}
-	protoReq.TicketId, err = runtime.String(val)
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "ticket_id", err)
 	}
 	msg, err := server.CheckInTicket(ctx, &protoReq)
 	return msg, metadata, err
@@ -2165,7 +2147,7 @@ func RegisterOsmiServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/osmi.OsmiService/CheckInTicket", runtime.WithHTTPPathPattern("/v1/tickets/{ticket_id}/checkin"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/osmi.OsmiService/CheckInTicket", runtime.WithHTTPPathPattern("/v1/tickets/check-in"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -2944,7 +2926,7 @@ func RegisterOsmiServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/osmi.OsmiService/CheckInTicket", runtime.WithHTTPPathPattern("/v1/tickets/{ticket_id}/checkin"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/osmi.OsmiService/CheckInTicket", runtime.WithHTTPPathPattern("/v1/tickets/check-in"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -3130,7 +3112,7 @@ var (
 	pattern_OsmiService_DeleteTicketType_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "ticket-types", "id"}, ""))
 	pattern_OsmiService_ValidateTicketCredential_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "tickets", "validate"}, ""))
 	pattern_OsmiService_ReserveTicket_0            = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "tickets", "reserve"}, ""))
-	pattern_OsmiService_CheckInTicket_0            = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "tickets", "ticket_id", "checkin"}, ""))
+	pattern_OsmiService_CheckInTicket_0            = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "tickets", "check-in"}, ""))
 	pattern_OsmiService_TransferTicket_0           = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "tickets", "ticket_id", "transfer"}, ""))
 	pattern_OsmiService_ListTickets_0              = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "tickets"}, ""))
 	pattern_OsmiService_GetUserTickets_0           = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "users", "user_id", "tickets"}, ""))
