@@ -348,8 +348,10 @@ func (x *HealthResponse) GetTimestamp() *timestamppb.Timestamp {
 }
 
 type ValidateTicketCredentialRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Credential    string                 `protobuf:"bytes,1,opt,name=credential,proto3" json:"credential,omitempty"`
+	state      protoimpl.MessageState `protogen:"open.v1"`
+	Credential string                 `protobuf:"bytes,1,opt,name=credential,proto3" json:"credential,omitempty"`
+	// Public event UUID, required for authorization.
+	EventId       string `protobuf:"bytes,2,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -387,6 +389,13 @@ func (*ValidateTicketCredentialRequest) Descriptor() ([]byte, []int) {
 func (x *ValidateTicketCredentialRequest) GetCredential() string {
 	if x != nil {
 		return x.Credential
+	}
+	return ""
+}
+
+func (x *ValidateTicketCredentialRequest) GetEventId() string {
+	if x != nil {
+		return x.EventId
 	}
 	return ""
 }
@@ -6237,11 +6246,12 @@ const file_osmi_proto_rawDesc = "" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x18\n" +
 	"\aservice\x18\x02 \x01(\tR\aservice\x12\x18\n" +
 	"\aversion\x18\x03 \x01(\tR\aversion\x128\n" +
-	"\ttimestamp\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestampJ\x05\bd\x10\xc8\x01\"A\n" +
+	"\ttimestamp\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestampJ\x05\bd\x10\xc8\x01\"\\\n" +
 	"\x1fValidateTicketCredentialRequest\x12\x1e\n" +
 	"\n" +
 	"credential\x18\x01 \x01(\tR\n" +
-	"credential\"\x99\x03\n" +
+	"credential\x12\x19\n" +
+	"\bevent_id\x18\x02 \x01(\tR\aeventId\"\x99\x03\n" +
 	" ValidateTicketCredentialResponse\x12\x1c\n" +
 	"\tauthentic\x18\x01 \x01(\bR\tauthentic\x12 \n" +
 	"\fcan_check_in\x18\x02 \x01(\bR\n" +

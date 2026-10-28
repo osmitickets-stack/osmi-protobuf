@@ -331,6 +331,8 @@ message HealthResponse {
 
 message ValidateTicketCredentialRequest {
   string credential = 1;
+  // Public event UUID, required for authorization.
+  string event_id = 2;
 }
 
 message ValidateTicketCredentialResponse {
