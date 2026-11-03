@@ -50,6 +50,7 @@ const (
 	OsmiService_ListTicketTypes_FullMethodName          = "/osmi.OsmiService/ListTicketTypes"
 	OsmiService_UpdateTicketType_FullMethodName         = "/osmi.OsmiService/UpdateTicketType"
 	OsmiService_DeleteTicketType_FullMethodName         = "/osmi.OsmiService/DeleteTicketType"
+	OsmiService_ListCheckInEvents_FullMethodName        = "/osmi.OsmiService/ListCheckInEvents"
 	OsmiService_ValidateTicketCredential_FullMethodName = "/osmi.OsmiService/ValidateTicketCredential"
 	OsmiService_ReserveTicket_FullMethodName            = "/osmi.OsmiService/ReserveTicket"
 	OsmiService_CheckInTicket_FullMethodName            = "/osmi.OsmiService/CheckInTicket"
@@ -125,6 +126,7 @@ type OsmiServiceClient interface {
 	ListTicketTypes(ctx context.Context, in *ListTicketTypesRequest, opts ...grpc.CallOption) (*TicketTypeListResponse, error)
 	UpdateTicketType(ctx context.Context, in *UpdateTicketTypeRequest, opts ...grpc.CallOption) (*TicketTypeResponse, error)
 	DeleteTicketType(ctx context.Context, in *DeleteTicketTypeRequest, opts ...grpc.CallOption) (*Empty, error)
+	ListCheckInEvents(ctx context.Context, in *ListCheckInEventsRequest, opts ...grpc.CallOption) (*ListCheckInEventsResponse, error)
 	ValidateTicketCredential(ctx context.Context, in *ValidateTicketCredentialRequest, opts ...grpc.CallOption) (*ValidateTicketCredentialResponse, error)
 	ReserveTicket(ctx context.Context, in *ReserveTicketRequest, opts ...grpc.CallOption) (*TicketResponse, error)
 	CheckInTicket(ctx context.Context, in *CheckInTicketRequest, opts ...grpc.CallOption) (*CheckInTicketResponse, error)
@@ -457,6 +459,16 @@ func (c *osmiServiceClient) DeleteTicketType(ctx context.Context, in *DeleteTick
 	return out, nil
 }
 
+func (c *osmiServiceClient) ListCheckInEvents(ctx context.Context, in *ListCheckInEventsRequest, opts ...grpc.CallOption) (*ListCheckInEventsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCheckInEventsResponse)
+	err := c.cc.Invoke(ctx, OsmiService_ListCheckInEvents_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *osmiServiceClient) ValidateTicketCredential(ctx context.Context, in *ValidateTicketCredentialRequest, opts ...grpc.CallOption) (*ValidateTicketCredentialResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ValidateTicketCredentialResponse)
@@ -629,6 +641,7 @@ type OsmiServiceServer interface {
 	ListTicketTypes(context.Context, *ListTicketTypesRequest) (*TicketTypeListResponse, error)
 	UpdateTicketType(context.Context, *UpdateTicketTypeRequest) (*TicketTypeResponse, error)
 	DeleteTicketType(context.Context, *DeleteTicketTypeRequest) (*Empty, error)
+	ListCheckInEvents(context.Context, *ListCheckInEventsRequest) (*ListCheckInEventsResponse, error)
 	ValidateTicketCredential(context.Context, *ValidateTicketCredentialRequest) (*ValidateTicketCredentialResponse, error)
 	ReserveTicket(context.Context, *ReserveTicketRequest) (*TicketResponse, error)
 	CheckInTicket(context.Context, *CheckInTicketRequest) (*CheckInTicketResponse, error)
@@ -743,6 +756,9 @@ func (UnimplementedOsmiServiceServer) UpdateTicketType(context.Context, *UpdateT
 }
 func (UnimplementedOsmiServiceServer) DeleteTicketType(context.Context, *DeleteTicketTypeRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteTicketType not implemented")
+}
+func (UnimplementedOsmiServiceServer) ListCheckInEvents(context.Context, *ListCheckInEventsRequest) (*ListCheckInEventsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListCheckInEvents not implemented")
 }
 func (UnimplementedOsmiServiceServer) ValidateTicketCredential(context.Context, *ValidateTicketCredentialRequest) (*ValidateTicketCredentialResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ValidateTicketCredential not implemented")
@@ -1356,6 +1372,24 @@ func _OsmiService_DeleteTicketType_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OsmiService_ListCheckInEvents_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCheckInEventsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OsmiServiceServer).ListCheckInEvents(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OsmiService_ListCheckInEvents_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OsmiServiceServer).ListCheckInEvents(ctx, req.(*ListCheckInEventsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _OsmiService_ValidateTicketCredential_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ValidateTicketCredentialRequest)
 	if err := dec(in); err != nil {
@@ -1684,6 +1718,10 @@ var OsmiService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteTicketType",
 			Handler:    _OsmiService_DeleteTicketType_Handler,
+		},
+		{
+			MethodName: "ListCheckInEvents",
+			Handler:    _OsmiService_ListCheckInEvents_Handler,
 		},
 		{
 			MethodName: "ValidateTicketCredential",

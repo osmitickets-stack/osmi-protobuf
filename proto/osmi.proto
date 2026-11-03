@@ -241,6 +241,10 @@ service OsmiService {
   // TICKETS
   // =========================
 
+  rpc ListCheckInEvents(ListCheckInEventsRequest) returns (ListCheckInEventsResponse) {
+    option (google.api.http) = { get: "/v1/check-in/events" };
+  }
+
   rpc ValidateTicketCredential(ValidateTicketCredentialRequest)
     returns (ValidateTicketCredentialResponse) {
   option (google.api.http) = {
@@ -328,6 +332,22 @@ message HealthResponse {
 }
 
 // ============ TICKETS ============
+
+message ListCheckInEventsRequest {
+  string cursor = 1;
+}
+
+message CheckInEvent {
+  string public_id = 1;
+  string name = 2;
+  string starts_at = 3;
+}
+
+message ListCheckInEventsResponse {
+  repeated CheckInEvent events = 1;
+  // Continue even if events is empty: a candidate page may have no permissions.
+  string next_cursor = 2;
+}
 
 message ValidateTicketCredentialRequest {
   string credential = 1;
